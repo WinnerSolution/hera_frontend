@@ -1,0 +1,83 @@
+name: hera_admin
+description: A new Flutter application.
+
+publish_to: 'none'
+
+version: 1.0.1+2
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+
+  hera_core:
+    path: ../hera_core
+
+  get:
+  flutter_platform_widgets: 
+  velocity_x: 
+  flutter_vector_icons:
+  percent_indicator:
+  google_fonts:
+  # material_design_icons_flutter:
+  # cupertino_icons: 
+  # flutter_phoenix: 
+  # country_code_picker: 
+  # grouped_buttons: 
+  # google_fonts: 
+  # flutter_bloc: 
+  # flattener: 
+  # cached_network_image:
+  # smart_select: 
+  # flutter_staggered_animations:
+  # tabbar:
+  # flutter_multi_formatter:
+  # responsive_builder:
+  # flutter_image_compress:
+  # secure_random:
+  # font_awesome_flutter:
+  # reorderables:
+  # photo_view:
+  # adaptive_dialog:
+  # flutter_speed_dial_material_design:
+  # libphonenumber: 
+  # the_country_number:
+  # libphonenumber_plugin: ^0.1.0
+
+
+
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  faker:
+
+dependency_overrides:
+  intl: 0.17.0-nullsafety.2
+  extended_image: 1.5.0-dev
+  
+flutter:
+
+  uses-material-design: true
+  fonts:
+    - family: ProductSans
+      fonts:
+        - asset: assets/fonts/ProductSans-Regular.ttf
+        - asset: assets/fonts/ProductSans-Bold.ttf
+  
+  assets:
+    - assets/
+    - assets/image.png
+    - assets/food_items/
+    - assets/ItemCategory/
+    - assets/images/
+    - assets/images/account/
+    - assets/images/footermenu/
+    - assets/images/payment/
+    - assets/images/icons/
+

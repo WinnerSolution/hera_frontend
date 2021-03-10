@@ -1,0 +1,42 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+part of 'user.dart';
+
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+_$_TUser _$_$_TUserFromJson(Map<String, dynamic> json) {
+  return _$_TUser(
+    id: json['id'] as String,
+    fullname: json['fullname'] as String,
+    dateOfBirth: const CustomDateTimeConverter()
+        .fromJson(json['dateOfBirth'] as DateTime),
+    gender: json['gender'] as int,
+    profileImage: json['profileImage'] == null
+        ? null
+        : RemoteImage.fromJson(json['profileImage'] as Map<String, dynamic>),
+    email: json['email'] as String,
+    phone: json['phone'] as String,
+    contactInfo: json['contactInfo'] == null
+        ? null
+        : ContactInfo.fromJson(json['contactInfo'] as Map<String, dynamic>),
+    companyInfo: json['companyInfo'] == null
+        ? null
+        : CompanyInfo.fromJson(json['companyInfo'] as Map<String, dynamic>),
+  )..path = json['path'] as String;
+}
+
+Map<String, dynamic> _$_$_TUserToJson(_$_TUser instance) => <String, dynamic>{
+      'path': instance.path,
+      'id': instance.id,
+      'fullname': instance.fullname,
+      'dateOfBirth':
+          const CustomDateTimeConverter().toJson(instance.dateOfBirth),
+      'gender': instance.gender,
+      'profileImage': instance.profileImage?.toJson(),
+      'email': instance.email,
+      'phone': instance.phone,
+      'contactInfo': instance.contactInfo?.toJson(),
+      'companyInfo': instance.companyInfo?.toJson(),
+    };
