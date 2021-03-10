@@ -70,7 +70,11 @@ class ProductForm extends StatelessWidget {
                     FormBuilderImagePicker(
                       name: 'photos',
                       decoration: const InputDecoration(labelText: 'Pick Photos'),
-                      maxImages: 1,
+                      maxImages: 2,
+                      valueTransformer: (imageList) async {
+                        print(imageList);
+                        return imageList;
+                      },
                     ),
                     FormBuilderTextField(
                       name: 'title',
