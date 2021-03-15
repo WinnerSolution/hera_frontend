@@ -35,6 +35,8 @@ dependencies:
   phone_number:
   nested:
   geocoding:
+  dio:
+  retrofit:
 
 
 # flutter packages pub run build_runner watch --delete-conflicting-outputs
@@ -45,6 +47,7 @@ dev_dependencies:
   pedantic:
   build_runner:
   json_serializable:
+  retrofit_generator:
   freezed:
 
 dependency_overrides:

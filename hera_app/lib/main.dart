@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_config/flutter_config.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 import 'package:hera_app/controllers/app_controller.dart';
@@ -10,6 +11,9 @@ import 'package:softi_common/services.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  ///
+  await FlutterConfig.loadEnvVariables();
 
   ///
   await coreDependenciesSetup();
