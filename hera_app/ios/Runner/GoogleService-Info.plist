@@ -29,7 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>$(GOOGLE_APP_ID)</string>
-	<!-- <string>1:81921250246:ios:884091a126d2ff252498c7</string> -->
+	<string>1:81921250246:ios:884091a126d2ff252498c7</string>
 </dict>
 </plist>

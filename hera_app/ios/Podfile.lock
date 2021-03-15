@@ -425,7 +425,7 @@ PODS:
   - nanopb/encode (2.30906.0)
   - path_provider (0.0.1):
     - Flutter
-  - phone_number (0.8.1):
+  - phone_number (0.9.0):
     - Flutter
     - PhoneNumberKit/PhoneNumberKitCore (= 3.3.3)
   - PhoneNumberKit/PhoneNumberKitCore (3.3.3)
@@ -616,7 +616,7 @@ SPEC CHECKSUMS:
   Mantle: 4c0ed6ce47c96eccc4dc3bb071deb3def0e2c3be
   nanopb: 1bf24dd71191072e120b83dd02d08f3da0d65e53
   path_provider: abfe2b5c733d04e238b0d8691db0cfd63a27a93c
-  phone_number: d8878dcca7cd860747ec18b2e3b8dc0db5535ce1
+  phone_number: a6f99d06cd46c2ff32e07b228ee5cd93b76a1814
   PhoneNumberKit: 4ce83273551c4d2ae10b7361162f4283dd02835f
   photo_manager: f7c619c2cc8c2adb8d85c63363babac477de9c67
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
