@@ -1,0 +1,63 @@
+name: hera_core
+description: A new Flutter package project.
+version: 0.0.1
+author: Atoumbre
+homepage: atoumbre.com
+publish_to: none
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+  flutter: ">=1.17.0 <2.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  softi_common:
+    path: ../../../packages/package_flutter_common
+     
+  softi_firebase:
+    path: ../../../packages/package_flutter_firebase
+
+  # softi_common:
+  #   git:
+  #     url: https://github.com/atoumbre/package_flutter_common.git
+  #     ref: v0.3.1
+  
+  # softi_firebase:
+  #   git:
+  #     url: https://github.com/atoumbre/package_flutter_firebase.git
+  #     ref: v0.1.2
+  
+  cloud_functions:
+  freezed_annotation:
+  json_annotation:
+  phone_number:
+  nested:
+  geocoding:
+  dio:
+  retrofit:
+  flutter_config: ^1.0.8
+
+
+# flutter packages pub run build_runner watch --delete-conflicting-outputs
+# flutter packages pub run build_runner build --delete-conflicting-outputs
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  pedantic:
+  build_runner:
+  json_serializable:
+  retrofit_generator:
+  freezed:
+
+dependency_overrides:
+  intl: 0.17.0-nullsafety.2
+  extended_image: 1.5.0-dev
+  
+flutter:
+
+analyzer:
+  exclude:
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"

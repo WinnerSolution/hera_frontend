@@ -1,0 +1,23 @@
+{
+  "hosting": {
+    "site": "civilio-ci",
+    "public": "public",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "appAssociation": "AUTO",
+    "trailingSlash": false,
+    "rewrites": [
+      {
+        "source": "/links/**",
+        "dynamicLinks": true
+      },
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
