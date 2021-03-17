@@ -15,10 +15,13 @@
 .svn/
 
 # IntelliJ related
-*.iml
-*.ipr
-*.iws
-.idea/
+**/*.iml
+**/*.ipr
+**/*.iws
+**/.idea/
+
+# VS Code
+**/*.vscode
 
 # Firebase
 **/GoogleService-Info.plist
