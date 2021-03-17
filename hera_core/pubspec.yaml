@@ -37,6 +37,7 @@ dependencies:
   geocoding:
   dio:
   retrofit:
+  flutter_config: ^1.0.8
 
 
 # flutter packages pub run build_runner watch --delete-conflicting-outputs

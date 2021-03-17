@@ -1,3 +1,4 @@
+import 'package:flutter_config/flutter_config.dart';
 import 'package:softi_firebase/auth.dart';
 
 const firebaseSettings = FirebaseSettings(
@@ -24,7 +25,8 @@ const firebaseSettings = FirebaseSettings(
 );
 
 /// Google Map API
-const String googleMapApiKey = 'AIzaSyDpIeE1fBZZRUMurd0awPMosZxcwtVDvI8';
+String googleMapApiKey = FlutterConfig.get('API_KEY_GOOGLE_MAP');
+// const String googleMapApiKey = 'AIzaSyDpIeE1fBZZRUMurd0awPMosZxcwtVDvI8';
 
 /// Cloud Storage
 const String users_remote_folder = 'users';
