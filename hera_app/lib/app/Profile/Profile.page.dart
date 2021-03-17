@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:get/get.dart';
-import 'package:hera_app/app/EditProfile/EditProfilePage.dart';
-import 'package:hera_app/app/EditProfile/EditProfileProduct.dart';
 import 'package:hera_app/components/extensions/string_extentions.dart';
+import 'package:hera_app/components/forms/ProductForm.dart';
+import 'package:hera_app/components/forms/ProfileForm.dart';
 import 'package:hera_app/controllers/app_controller.dart';
 import 'package:hera_core/hera_core.dart';
 import 'package:image_picker/image_picker.dart';
@@ -80,7 +80,7 @@ class ProfilePageController extends BaseController {
     uploadImage(file);
   }
 
-  void handleEditProfilePressed() => Get.to(() => UserProfileForm(AppState.find.user()));
+  void handleEditProfilePressed() => Get.to(() => ProfileForm(AppState.find.user()));
   void handleAddProductPressed() => Get.to(() => ProductForm(TProduct()));
 }
 

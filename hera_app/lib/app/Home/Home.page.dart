@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:hera_app/app/Profile/ProfilePage.dart';
+import 'package:hera_app/app/Profile/Profile.page.dart';
 import 'package:hera_app/components/extensions/string_extentions.dart';
 import 'package:hera_app/controllers/app_controller.dart';
 import 'package:flutter/material.dart';

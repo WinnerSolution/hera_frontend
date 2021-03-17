@@ -12,10 +12,10 @@ import 'package:softi_common/services.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 // class UserProfileFormController extends BaseController with FormControllerMixin<TUser> {
-class UserProfileFormController extends ResourceFormController<TUser> {
+class ProfileFormController extends ResourceFormController<TUser> {
   var maxImageWidth = 640;
 
-  UserProfileFormController(TUser user) : super(editingRecord: user, db: firestore);
+  ProfileFormController(TUser user) : super(editingRecord: user, db: firestore);
 
   @override
   Future<void> afterResourceSave(record) async {
@@ -56,12 +56,12 @@ class UserProfileFormController extends ResourceFormController<TUser> {
   }
 }
 
-class UserProfileForm extends StatelessWidget {
+class ProfileForm extends StatelessWidget {
   final TUser user;
-  UserProfileForm(this.user);
+  ProfileForm(this.user);
 
-  UserProfileFormController get controller => Get.put<UserProfileFormController>(
-        UserProfileFormController(user),
+  ProfileFormController get controller => Get.put<ProfileFormController>(
+        ProfileFormController(user),
       );
 
   @override

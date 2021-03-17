@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:get/get.dart';
-import 'package:hera_app/app/Home/HomePage.dart';
-import 'package:hera_app/app/Login/LoginPage.dart';
+import 'package:hera_app/app/Home/Home.page.dart';
+import 'package:hera_app/app/Login/Login.page.dart';
 import 'package:hera_app/controllers/app_controller.dart';
 
 class AuthMiddleware extends GetMiddleware {
