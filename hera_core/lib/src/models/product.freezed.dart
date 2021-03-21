@@ -22,13 +22,15 @@ class _$TProductTearOff {
       String title,
       String description,
       List<RemoteImage> images,
-      String shopUrl}) {
+      String shopUrl,
+      num price}) {
     return _TProduct(
       id: id,
       title: title,
       description: description,
       images: images,
       shopUrl: shopUrl,
+      price: price,
     );
   }
 
@@ -49,6 +51,7 @@ mixin _$TProduct {
   String get description;
   List<RemoteImage> get images;
   String get shopUrl;
+  num get price;
 
   Map<String, dynamic> toJson();
   @JsonKey(ignore: true)
@@ -64,7 +67,8 @@ abstract class $TProductCopyWith<$Res> {
       String title,
       String description,
       List<RemoteImage> images,
-      String shopUrl});
+      String shopUrl,
+      num price});
 }
 
 /// @nodoc
@@ -82,6 +86,7 @@ class _$TProductCopyWithImpl<$Res> implements $TProductCopyWith<$Res> {
     Object description = freezed,
     Object images = freezed,
     Object shopUrl = freezed,
+    Object price = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed ? _value.id : id as String,
@@ -90,6 +95,7 @@ class _$TProductCopyWithImpl<$Res> implements $TProductCopyWith<$Res> {
           description == freezed ? _value.description : description as String,
       images: images == freezed ? _value.images : images as List<RemoteImage>,
       shopUrl: shopUrl == freezed ? _value.shopUrl : shopUrl as String,
+      price: price == freezed ? _value.price : price as num,
     ));
   }
 }
@@ -104,7 +110,8 @@ abstract class _$TProductCopyWith<$Res> implements $TProductCopyWith<$Res> {
       String title,
       String description,
       List<RemoteImage> images,
-      String shopUrl});
+      String shopUrl,
+      num price});
 }
 
 /// @nodoc
@@ -123,6 +130,7 @@ class __$TProductCopyWithImpl<$Res> extends _$TProductCopyWithImpl<$Res>
     Object description = freezed,
     Object images = freezed,
     Object shopUrl = freezed,
+    Object price = freezed,
   }) {
     return _then(_TProduct(
       id: id == freezed ? _value.id : id as String,
@@ -131,6 +139,7 @@ class __$TProductCopyWithImpl<$Res> extends _$TProductCopyWithImpl<$Res>
           description == freezed ? _value.description : description as String,
       images: images == freezed ? _value.images : images as List<RemoteImage>,
       shopUrl: shopUrl == freezed ? _value.shopUrl : shopUrl as String,
+      price: price == freezed ? _value.price : price as num,
     ));
   }
 }
@@ -141,7 +150,12 @@ class __$TProductCopyWithImpl<$Res> extends _$TProductCopyWithImpl<$Res>
 /// @nodoc
 class _$_TProduct extends _TProduct with DiagnosticableTreeMixin {
   _$_TProduct(
-      {this.id, this.title, this.description, this.images, this.shopUrl})
+      {this.id,
+      this.title,
+      this.description,
+      this.images,
+      this.shopUrl,
+      this.price})
       : super._();
 
   factory _$_TProduct.fromJson(Map<String, dynamic> json) =>
@@ -157,10 +171,12 @@ class _$_TProduct extends _TProduct with DiagnosticableTreeMixin {
   final List<RemoteImage> images;
   @override
   final String shopUrl;
+  @override
+  final num price;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'TProduct(id: $id, title: $title, description: $description, images: $images, shopUrl: $shopUrl)';
+    return 'TProduct(id: $id, title: $title, description: $description, images: $images, shopUrl: $shopUrl, price: $price)';
   }
 
   @override
@@ -172,7 +188,8 @@ class _$_TProduct extends _TProduct with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('title', title))
       ..add(DiagnosticsProperty('description', description))
       ..add(DiagnosticsProperty('images', images))
-      ..add(DiagnosticsProperty('shopUrl', shopUrl));
+      ..add(DiagnosticsProperty('shopUrl', shopUrl))
+      ..add(DiagnosticsProperty('price', price));
   }
 
   @override
@@ -189,7 +206,10 @@ class _$_TProduct extends _TProduct with DiagnosticableTreeMixin {
             (identical(other.images, images) ||
                 const DeepCollectionEquality().equals(other.images, images)) &&
             (identical(other.shopUrl, shopUrl) ||
-                const DeepCollectionEquality().equals(other.shopUrl, shopUrl)));
+                const DeepCollectionEquality()
+                    .equals(other.shopUrl, shopUrl)) &&
+            (identical(other.price, price) ||
+                const DeepCollectionEquality().equals(other.price, price)));
   }
 
   @override
@@ -199,7 +219,8 @@ class _$_TProduct extends _TProduct with DiagnosticableTreeMixin {
       const DeepCollectionEquality().hash(title) ^
       const DeepCollectionEquality().hash(description) ^
       const DeepCollectionEquality().hash(images) ^
-      const DeepCollectionEquality().hash(shopUrl);
+      const DeepCollectionEquality().hash(shopUrl) ^
+      const DeepCollectionEquality().hash(price);
 
   @JsonKey(ignore: true)
   @override
@@ -219,7 +240,8 @@ abstract class _TProduct extends TProduct {
       String title,
       String description,
       List<RemoteImage> images,
-      String shopUrl}) = _$_TProduct;
+      String shopUrl,
+      num price}) = _$_TProduct;
 
   factory _TProduct.fromJson(Map<String, dynamic> json) = _$_TProduct.fromJson;
 
@@ -233,6 +255,8 @@ abstract class _TProduct extends TProduct {
   List<RemoteImage> get images;
   @override
   String get shopUrl;
+  @override
+  num get price;
   @override
   @JsonKey(ignore: true)
   _$TProductCopyWith<_TProduct> get copyWith;

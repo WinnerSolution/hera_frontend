@@ -16,6 +16,7 @@ _$_TProduct _$_$_TProductFromJson(Map<String, dynamic> json) {
             e == null ? null : RemoteImage.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     shopUrl: json['shopUrl'] as String,
+    price: json['price'] as num,
   )..path = json['path'] as String;
 }
 
@@ -27,4 +28,5 @@ Map<String, dynamic> _$_$_TProductToJson(_$_TProduct instance) =>
       'description': instance.description,
       'images': instance.images?.map((e) => e?.toJson())?.toList(),
       'shopUrl': instance.shopUrl,
+      'price': instance.price,
     };

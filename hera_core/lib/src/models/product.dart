@@ -21,6 +21,7 @@ abstract class TProduct extends IResourceData with BaseResourceDataMixin impleme
     String description,
     List<RemoteImage> images,
     String shopUrl,
+    num price,
   }) = _TProduct;
 
   factory TProduct.fromJson(Map<String, dynamic> json) => _$TProductFromJson(json);

@@ -1,22 +1,11 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:get/get.dart';
+import 'package:hera_app/app/Home/Home.page.controller.dart';
 import 'package:hera_app/app/Profile/Profile.page.dart';
 import 'package:hera_app/components/extensions/string_extentions.dart';
 import 'package:hera_app/controllers/app_controller.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:velocity_x/velocity_x.dart';
-import 'package:softi_common/core.dart';
-
-class HomePageController extends BaseController with IndexControllerMixin {
-  PlatformTabController tabController;
-
-  @override
-  void onInit() {
-    super.onInit();
-    index(2);
-    tabController = PlatformTabController(initialIndex: index());
-  }
-}
 
 class HomePage extends StatelessWidget {
   get con => Get.put(HomePageController());
@@ -25,7 +14,9 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return PlatformTabScaffold(
       tabController: con.tabController,
-      appBarBuilder: (_, index) => PlatformAppBar(),
+      appBarBuilder: (_, index) => PlatformAppBar(
+        backgroundColor: Colors.black,
+      ),
       bodyBuilder: (_, index) {
         if (index == 2) {
           return Padding(

@@ -37,7 +37,7 @@ dependencies:
   geocoding:
   dio:
   retrofit:
-  flutter_config: ^1.0.8
+  flutter_config: #^1.0.8
 
 
 # flutter packages pub run build_runner watch --delete-conflicting-outputs
@@ -52,8 +52,8 @@ dev_dependencies:
   freezed:
 
 dependency_overrides:
-  intl: 0.17.0-nullsafety.2
-  extended_image: 1.5.0-dev
+  # intl: 0.17.0-nullsafety.2
+  # extended_image: 1.5.0-dev
   
 flutter:
 

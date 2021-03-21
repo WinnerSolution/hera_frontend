@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:form_builder_image_picker/form_builder_image_picker.dart';
 import 'package:get/get.dart';
 import 'package:hera_app/components/extensions/string_extentions.dart';
 import 'package:hera_core/hera_core.dart';
@@ -42,7 +41,7 @@ class ProductFormController extends ResourceFormController<TProduct> {
 
 class ProductForm extends StatelessWidget {
   final TProduct product;
-  ProductForm(this.product);
+  ProductForm({this.product});
 
   ProductFormController get controller => Get.put<ProductFormController>(ProductFormController(product));
 
@@ -67,15 +66,15 @@ class ProductForm extends StatelessWidget {
                     24.heightBox,
                     'Base infos'.headline4.make(),
                     16.heightBox,
-                    FormBuilderImagePicker(
-                      name: 'photos',
-                      decoration: const InputDecoration(labelText: 'Pick Photos'),
-                      maxImages: 2,
-                      valueTransformer: (imageList) async {
-                        print(imageList);
-                        return imageList;
-                      },
-                    ),
+                    // FormBuilderImagePicker(
+                    //   name: 'photos',
+                    //   decoration: const InputDecoration(labelText: 'Pick Photos'),
+                    //   maxImages: 2,
+                    //   valueTransformer: (imageList) async {
+                    //     print(imageList);
+                    //     return imageList;
+                    //   },
+                    // ),
                     FormBuilderTextField(
                       name: 'title',
                       decoration: InputDecoration(
