@@ -60,9 +60,7 @@ class ProfileForm extends StatelessWidget {
   final TUser user;
   ProfileForm(this.user);
 
-  ProfileFormController get controller => Get.put<ProfileFormController>(
-        ProfileFormController(user),
-      );
+  ProfileFormController get controller => Get.put(ProfileFormController(user));
 
   @override
   Widget build(BuildContext context) {

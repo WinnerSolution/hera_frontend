@@ -9,13 +9,6 @@ import 'package:hera_core/hera_core.dart';
 import 'package:softi_common/form.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-class FormFieldData {
-  String name;
-  Type fieldType;
-}
-
-class FormGenerator {}
-
 class ProductFormController extends ResourceFormController<TProduct> {
   var maxImageWidth = 640;
 

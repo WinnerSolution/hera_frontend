@@ -1,9 +1,9 @@
 import 'dart:async';
-// import 'dart:html';
+
 import 'package:get/get.dart';
 import 'package:hera_app/controllers/user_presence.dart';
-import 'package:hera_core/hera_core.dart';
 import 'package:hera_app/routes/routes.dart';
+import 'package:hera_core/hera_core.dart';
 import 'package:softi_common/auth.dart';
 import 'package:softi_common/core.dart';
 
@@ -18,8 +18,11 @@ class AppState extends BaseController //
 
   final user = TUser().obs;
   final userStats = TUserStats().obs;
+
   final isNewAuthUser = false.obs;
   final isNewUser = false.obs;
+
+  // var presence = UserPresence();
 
   // final userStore = TStore().obs;
   // final categories = RxList<TCategory>();
@@ -133,12 +136,21 @@ class AppState extends BaseController //
         Get.offNamed(Routes.login);
         //
       }
+
+      authApi.authUserStream.listen((event) {
+        Get.find<UserPresence>().rtdbAndLocalFsPresence(event);
+      });
     }
 
     /// Reactive routing
     // if (_userEventCount > 0) _listner(user());
     user.stream.listen(_listner);
-    user.stream.listen((event) => UserPresence.rtdbAndLocalFsPresence(event.id));
+    // user.stream.listen((event) => );
+  }
+
+  logout() {
+    Get.find<UserPresence>().setOffline();
+    authApi.signOut();
   }
 
   @override
@@ -177,6 +189,6 @@ class AppState extends BaseController //
 
   // utils
   String get userProfileImageUrl =>
-      AppState.find.user().profileImage?.url ??
+      user().profileImage?.url ??
       'https://firebasestorage.googleapis.com/v0/b/softi-hera.appspot.com/o/dummy450x450.jpg?alt=media&token=10a37525-a4a5-4376-bd34-229b2d1a508c';
 }

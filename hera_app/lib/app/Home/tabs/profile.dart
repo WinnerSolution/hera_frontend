@@ -9,9 +9,12 @@ import 'package:hera_core/hera_core.dart';
 
 class Profile extends StatelessWidget {
   final TUser profile;
+  final bool isTab;
+  // final ProfileController controller;
 
   Profile(
     this.profile, {
+    this.isTab = true,
     Key key,
   }) : super(key: key);
 
@@ -25,29 +28,33 @@ class Profile extends StatelessWidget {
       () => Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
-          actions: <Widget>[
-            Padding(
-              padding: const EdgeInsets.only(right: 20.0),
-              child: Image.asset(
-                'assets/icons/menuicon.png',
-                width: 20,
-                height: 20,
-              ),
-            )
-          ],
+          automaticallyImplyLeading: false,
+          leading: (isTab)
+              ? null
+              : InkWell(
+                  onTap: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Image.asset(
+                    "assets/icons/backarrow.png",
+                    scale: 3,
+                    color: secondary,
+                  ),
+                ),
+          // actions: <Widget>[
+          //   if (isTab)
+          //     Padding(
+          //       padding: const EdgeInsets.only(right: 20.0),
+          //       child: Image.asset(
+          //         'assets/icons/menuicon.png',
+          //         width: 20,
+          //         height: 20,
+          //       ),
+          //     )
+          // ],
           iconTheme: IconThemeData(color: secondary),
           backgroundColor: Colors.white,
           elevation: 0.3,
-          leading: InkWell(
-            onTap: () {
-              Navigator.of(context).pop();
-            },
-            child: Image.asset(
-              "assets/icons/backarrow.png",
-              scale: 3,
-              color: secondary,
-            ),
-          ),
         ),
         body: ListView(
           children: <Widget>[
@@ -165,17 +172,19 @@ class Profile extends StatelessWidget {
             ],
           ),
           SizedBox(height: 20),
-          if (!con.isConnectedUser)
+          if (con.isConnectedUser)
             Container(
               width: 335,
               height: 44,
               // ignore: deprecated_member_use
               child: RaisedButton(
                 onPressed: () {
-                  Navigator.push(
-                    Get.context,
-                    MaterialPageRoute(builder: (context) => EditProfile()),
-                  );
+                  Get.to(() => EditProfile(profile));
+
+                  // Navigator.push(
+                  //   Get.context,
+                  //   MaterialPageRoute(builder: (context) => EditProfile()),
+                  // );
                 },
                 color: Colors.transparent,
                 elevation: 0,
@@ -187,7 +196,7 @@ class Profile extends StatelessWidget {
                 ),
               ),
             ),
-          if (!con.isConnectedUser)
+          if (con.isConnectedUser)
             Container(
               width: 335,
               height: 44,
@@ -206,7 +215,7 @@ class Profile extends StatelessWidget {
                 ),
               ),
             ),
-          if (con.isConnectedUser)
+          if (!con.isConnectedUser)
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[

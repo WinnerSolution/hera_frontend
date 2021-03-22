@@ -16,13 +16,17 @@ class ProfileController extends BaseController {
   AuthUser get authUser => AppState.find.authUser();
 
   // TUser get profile => profile;
-  TUser get user => AppState.find.user();
+  // TUser get user => AppState.find.user();
   TUserStats get userStats => AppState.find.userStats();
 
-  bool get isConnectedUser => user.id == profile.id;
+  bool get isConnectedUser {
+    var _result = (AppState.find.user()?.id == profile?.id) && AppState.find.user().isValid() && profile.isValid();
+    print((AppState.find.user()?.id ?? '') + '/' + (profile?.id ?? ''));
+    return _result;
+  }
 
   String get profileImage =>
-      AppState.find.user().profileImage?.url ??
+      profile.profileImage?.url ??
       'https://firebasestorage.googleapis.com/v0/b/softi-hera.appspot.com/o/dummy450x450.jpg?alt=media&token=10a37525-a4a5-4376-bd34-229b2d1a508c';
 
   // /// Alters the actual image
@@ -52,7 +56,7 @@ class ProfileController extends BaseController {
     super.onInit();
   }
 
-  void logout() => AppState.find.authApi.signOut();
+  void logout() => AppState.find.logout();
 
   void handleEditProfilePressed() => Get.to(() => ProfileForm(AppState.find.user()));
   void handleAddProductPressed() => Get.to(() => ProductForm(product: TProduct()));

@@ -44,7 +44,7 @@ class ProfileFormController extends ResourceFormController<TUser> {
         minHeight: maxImageWidth,
         minWidth: maxImageWidth,
       ),
-      title: 'users_picutures/' + AppState.find.authUser().uid + '/profile_image',
+      title: 'users_picutures/' + AppState.find.user().id + '/profile_image',
     );
 
     if (result.result?.url != null) {
@@ -54,26 +54,4 @@ class ProfileFormController extends ResourceFormController<TUser> {
     }
     busy(false);
   }
-
-  //! Handlers
-  // void handleProfileImageChange(File file) async {
-  //   print("I changed the file to: ${file.path}");
-  //   busy(true);
-  //   var result = await cloudStorage.uploadMedia(
-  //     imageToUpload: await FlutterImageCompress.compressWithFile(
-  //       file.absolute.path,
-  //       minHeight: maxImageWidth,
-  //       minWidth: maxImageWidth,
-  //     ),
-  //     title: 'title',
-  //   );
-
-  //   if (result.result?.url != null) {
-  //     await firestore.save<TUser>(user().copyWith(
-  //       profileImage: RemoteImage.fromNetworAsset(result.result),
-  //     ));
-  //   }
-  //   busy(false);
-  // }
-
 }

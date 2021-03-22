@@ -92,7 +92,7 @@ class _SearchState extends State<Search> {
               child: InkWell(
             onTap: () async {
               var _profile = await firestore.get<TUser>('MDjOnScHNBZxrg9UzHdInNzGps53').first;
-              Get.to(Profile(_profile));
+              Get.to(() => Profile(_profile, isTab: false));
             },
             child: Column(
               children: [

@@ -1,13 +1,19 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:hera_app/controllers/app_controller.dart';
 import 'package:hera_app/themes/styles.dart';
+import 'package:hera_core/hera_core.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 import 'editprofile.controller.dart';
 
 class EditProfile extends StatelessWidget {
+  final TUser user;
+  EditProfile(this.user);
+
   ProfileFormController get con => Get.put(ProfileFormController(AppState.find.user()));
 
   @override
@@ -43,7 +49,7 @@ class EditProfile extends StatelessWidget {
               child: Text(
                 'Save',
                 style: textArialBoldxsprimary(),
-              ),
+              ).onInkTap(() => con.save()),
             ),
           )
         ],
@@ -104,31 +110,34 @@ class EditProfile extends StatelessWidget {
   }
 
   Widget buildEditProfileCard() {
-    return Container(
-      padding: EdgeInsets.all(20),
-      decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: new BorderRadius.only(
-            topLeft: Radius.circular(40.0),
-            topRight: Radius.circular(40.0),
-          ),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.20),
-              blurRadius: 10,
-            )
-          ]),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          buildprofilenametext(),
-          buildprofilenametextfield(),
-          buildplacenametext(),
-          buildplacenametextfield(),
-          buildemailtext(),
-          buildemailtextfield(),
-          buildAccounttext(),
-        ],
+    return FormBuilder(
+      key: con.formKey,
+      child: Container(
+        padding: EdgeInsets.all(20),
+        decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: new BorderRadius.only(
+              topLeft: Radius.circular(40.0),
+              topRight: Radius.circular(40.0),
+            ),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.20),
+                blurRadius: 10,
+              )
+            ]),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            buildprofilenametext(),
+            buildprofilenametextfield(),
+            buildplacenametext(),
+            buildplacenametextfield(),
+            buildemailtext(),
+            buildemailtextfield(),
+            buildAccounttext(),
+          ],
+        ),
       ),
     );
   }
@@ -155,7 +164,8 @@ class EditProfile extends StatelessWidget {
       child: Container(
         height: 50,
         decoration: BoxDecoration(color: Color(0xFFF6F9FD), borderRadius: BorderRadius.circular(10)),
-        child: TextFormField(
+        child: FormBuilderTextField(
+          name: 'fullname',
           style: textArialRegularsecondary(),
           keyboardType: TextInputType.emailAddress,
           decoration: InputDecoration(

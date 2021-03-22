@@ -4,6 +4,7 @@ import 'package:flutter_config/flutter_config.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 import 'package:hera_app/controllers/app_controller.dart';
+import 'package:hera_app/controllers/user_presence.dart';
 import 'package:hera_app/routes/routes.dart';
 import 'package:hera_core/hera_core.dart';
 import 'package:nested/nested.dart';
@@ -32,7 +33,7 @@ class CivilioApp extends StatelessWidget {
 
       // ROUTING
       getPages: Routes.pages,
-      initialRoute: Routes.home,
+      initialRoute: Routes.start,
       // initialBinding: BindingsBuilder.put(() => AppState()),
 
       // LOCALES
@@ -60,6 +61,7 @@ class CivilioApp extends StatelessWidget {
           // BackgroundServiceManager([
           //   Get.find<ILocationService>(),
           // ]),
+          ManageState(),
           HideKeyboardManager(),
           LoadingManager()
         ],
