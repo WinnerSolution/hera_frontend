@@ -6,7 +6,7 @@ import 'package:hera_app/app.svg/Profile/Profile.page.dart';
 import 'package:hera_app/components/extensions/string_extentions.dart';
 import 'package:hera_app/controllers/app_controller.dart';
 import 'package:hera_app/screens/Home/tabs/notification.dart';
-import 'package:hera_app/screens/Home/tabs/profile.dart';
+import 'package:hera_app/app/Home/tabs/profile.dart';
 import 'package:hera_app/screens/Home/tabs/search.dart';
 import 'package:velocity_x/velocity_x.dart';
 

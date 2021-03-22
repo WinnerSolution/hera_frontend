@@ -25,6 +25,8 @@ class _$TUserTearOff {
       RemoteImage profileImage,
       String email,
       String phone,
+      String bio,
+      String status,
       ContactInfo contactInfo,
       CompanyInfo companyInfo}) {
     return _TUser(
@@ -35,6 +37,8 @@ class _$TUserTearOff {
       profileImage: profileImage,
       email: email,
       phone: phone,
+      bio: bio,
+      status: status,
       contactInfo: contactInfo,
       companyInfo: companyInfo,
     );
@@ -59,7 +63,9 @@ mixin _$TUser {
   RemoteImage get profileImage; // 0 => Female , 1 => Male, 2 => Other
 // Contacts (Identifiers)
   String get email;
-  String get phone; //
+  String get phone;
+  String get bio;
+  String get status; //
   ContactInfo get contactInfo;
   CompanyInfo get companyInfo;
 
@@ -80,6 +86,8 @@ abstract class $TUserCopyWith<$Res> {
       RemoteImage profileImage,
       String email,
       String phone,
+      String bio,
+      String status,
       ContactInfo contactInfo,
       CompanyInfo companyInfo});
 
@@ -105,6 +113,8 @@ class _$TUserCopyWithImpl<$Res> implements $TUserCopyWith<$Res> {
     Object profileImage = freezed,
     Object email = freezed,
     Object phone = freezed,
+    Object bio = freezed,
+    Object status = freezed,
     Object contactInfo = freezed,
     Object companyInfo = freezed,
   }) {
@@ -119,6 +129,8 @@ class _$TUserCopyWithImpl<$Res> implements $TUserCopyWith<$Res> {
           : profileImage as RemoteImage,
       email: email == freezed ? _value.email : email as String,
       phone: phone == freezed ? _value.phone : phone as String,
+      bio: bio == freezed ? _value.bio : bio as String,
+      status: status == freezed ? _value.status : status as String,
       contactInfo: contactInfo == freezed
           ? _value.contactInfo
           : contactInfo as ContactInfo,
@@ -172,6 +184,8 @@ abstract class _$TUserCopyWith<$Res> implements $TUserCopyWith<$Res> {
       RemoteImage profileImage,
       String email,
       String phone,
+      String bio,
+      String status,
       ContactInfo contactInfo,
       CompanyInfo companyInfo});
 
@@ -201,6 +215,8 @@ class __$TUserCopyWithImpl<$Res> extends _$TUserCopyWithImpl<$Res>
     Object profileImage = freezed,
     Object email = freezed,
     Object phone = freezed,
+    Object bio = freezed,
+    Object status = freezed,
     Object contactInfo = freezed,
     Object companyInfo = freezed,
   }) {
@@ -215,6 +231,8 @@ class __$TUserCopyWithImpl<$Res> extends _$TUserCopyWithImpl<$Res>
           : profileImage as RemoteImage,
       email: email == freezed ? _value.email : email as String,
       phone: phone == freezed ? _value.phone : phone as String,
+      bio: bio == freezed ? _value.bio : bio as String,
+      status: status == freezed ? _value.status : status as String,
       contactInfo: contactInfo == freezed
           ? _value.contactInfo
           : contactInfo as ContactInfo,
@@ -238,6 +256,8 @@ class _$_TUser extends _TUser with DiagnosticableTreeMixin {
       this.profileImage,
       this.email,
       this.phone,
+      this.bio,
+      this.status,
       this.contactInfo,
       this.companyInfo})
       : super._();
@@ -260,6 +280,10 @@ class _$_TUser extends _TUser with DiagnosticableTreeMixin {
   final String email;
   @override
   final String phone;
+  @override
+  final String bio;
+  @override
+  final String status;
   @override //
   final ContactInfo contactInfo;
   @override
@@ -267,7 +291,7 @@ class _$_TUser extends _TUser with DiagnosticableTreeMixin {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'TUser(id: $id, fullname: $fullname, dateOfBirth: $dateOfBirth, gender: $gender, profileImage: $profileImage, email: $email, phone: $phone, contactInfo: $contactInfo, companyInfo: $companyInfo)';
+    return 'TUser(id: $id, fullname: $fullname, dateOfBirth: $dateOfBirth, gender: $gender, profileImage: $profileImage, email: $email, phone: $phone, bio: $bio, status: $status, contactInfo: $contactInfo, companyInfo: $companyInfo)';
   }
 
   @override
@@ -282,6 +306,8 @@ class _$_TUser extends _TUser with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('profileImage', profileImage))
       ..add(DiagnosticsProperty('email', email))
       ..add(DiagnosticsProperty('phone', phone))
+      ..add(DiagnosticsProperty('bio', bio))
+      ..add(DiagnosticsProperty('status', status))
       ..add(DiagnosticsProperty('contactInfo', contactInfo))
       ..add(DiagnosticsProperty('companyInfo', companyInfo));
   }
@@ -307,6 +333,10 @@ class _$_TUser extends _TUser with DiagnosticableTreeMixin {
                 const DeepCollectionEquality().equals(other.email, email)) &&
             (identical(other.phone, phone) ||
                 const DeepCollectionEquality().equals(other.phone, phone)) &&
+            (identical(other.bio, bio) ||
+                const DeepCollectionEquality().equals(other.bio, bio)) &&
+            (identical(other.status, status) ||
+                const DeepCollectionEquality().equals(other.status, status)) &&
             (identical(other.contactInfo, contactInfo) ||
                 const DeepCollectionEquality()
                     .equals(other.contactInfo, contactInfo)) &&
@@ -325,6 +355,8 @@ class _$_TUser extends _TUser with DiagnosticableTreeMixin {
       const DeepCollectionEquality().hash(profileImage) ^
       const DeepCollectionEquality().hash(email) ^
       const DeepCollectionEquality().hash(phone) ^
+      const DeepCollectionEquality().hash(bio) ^
+      const DeepCollectionEquality().hash(status) ^
       const DeepCollectionEquality().hash(contactInfo) ^
       const DeepCollectionEquality().hash(companyInfo);
 
@@ -349,6 +381,8 @@ abstract class _TUser extends TUser {
       RemoteImage profileImage,
       String email,
       String phone,
+      String bio,
+      String status,
       ContactInfo contactInfo,
       CompanyInfo companyInfo}) = _$_TUser;
 
@@ -369,6 +403,10 @@ abstract class _TUser extends TUser {
   String get email;
   @override
   String get phone;
+  @override
+  String get bio;
+  @override
+  String get status;
   @override //
   ContactInfo get contactInfo;
   @override

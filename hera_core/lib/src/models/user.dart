@@ -26,6 +26,8 @@ abstract class TUser extends IResourceData with BaseResourceDataMixin implements
     // Contacts (Identifiers)
     String email,
     String phone,
+    String bio,
+    String status,
 
     //
     ContactInfo contactInfo,

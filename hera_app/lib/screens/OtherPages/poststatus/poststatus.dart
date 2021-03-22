@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
-import 'package:hera_app/screens/Home/home.dart';
+import 'package:hera_app/app/Home/home.dart';
 import 'package:hera_app/themes/styles.dart';
 
 class PostStatus extends StatefulWidget {

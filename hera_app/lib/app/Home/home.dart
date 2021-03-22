@@ -3,7 +3,7 @@ import 'package:getwidget/getwidget.dart';
 import 'package:hera_app/screens/Home/tabs/addpost/addposttab.dart';
 import 'package:hera_app/screens/Home/tabs/homepage.dart';
 import 'package:hera_app/screens/Home/tabs/notification.dart';
-import 'package:hera_app/screens/Home/tabs/profile.dart';
+import 'package:hera_app/app/Home/tabs/profile.dart';
 import 'package:hera_app/screens/Home/tabs/search.dart';
 import 'package:hera_app/themes/styles.dart';
 

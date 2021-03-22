@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hera_app/screens/Home/home.dart';
+import 'package:hera_app/app/Home/home.dart';
 import 'package:hera_app/screens/OtherPages/likes/likes.dart';
 import 'package:hera_app/themes/styles.dart';
 

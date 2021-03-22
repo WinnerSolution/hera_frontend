@@ -1,6 +1,7 @@
 import 'dart:async';
 // import 'dart:html';
 import 'package:get/get.dart';
+import 'package:hera_app/controllers/user_presence.dart';
 import 'package:hera_core/hera_core.dart';
 import 'package:hera_app/routes/routes.dart';
 import 'package:softi_common/auth.dart';
@@ -16,6 +17,7 @@ class AppState extends BaseController //
   static AppState get find => Get.find<AppState>();
 
   final user = TUser().obs;
+  final userStats = TUserStats().obs;
   final isNewAuthUser = false.obs;
   final isNewUser = false.obs;
 
@@ -41,6 +43,32 @@ class AppState extends BaseController //
             id: _authUser.uid,
             email: _authUser.email,
             phone: _authUser.phoneNumber,
+          ));
+        }
+      },
+      // masterHandler: (_authUser) {
+      //   if (_authUser?.uid == null) user(TUser());
+      // },
+    );
+
+    //
+    binder<TUser, TUserStats>(
+      user.stream,
+      userStats,
+      binder: (_user) => firestore.get<TUserStats>(_user.id, reactive: true),
+      canBind: (_user) => _user?.isValid() ?? false,
+      handler: (_user, _event) {
+        // _userEventCount++;
+        if (_event?.isValid() ?? false) {
+          userStats(_event);
+        } else {
+          // isNewUser(true);
+          firestore.save<TUserStats>(TUserStats(
+            id: _user.id,
+            followersCount: 0,
+            followingCount: 0,
+            likesCount: 0,
+            postsCount: 0,
           ));
         }
       },
@@ -110,6 +138,7 @@ class AppState extends BaseController //
     /// Reactive routing
     // if (_userEventCount > 0) _listner(user());
     user.stream.listen(_listner);
+    user.stream.listen((event) => UserPresence.rtdbAndLocalFsPresence(event.id));
   }
 
   @override
@@ -145,4 +174,9 @@ class AppState extends BaseController //
     _userSub.cancel();
     super.onClose();
   }
+
+  // utils
+  String get userProfileImageUrl =>
+      AppState.find.user().profileImage?.url ??
+      'https://firebasestorage.googleapis.com/v0/b/softi-hera.appspot.com/o/dummy450x450.jpg?alt=media&token=10a37525-a4a5-4376-bd34-229b2d1a508c';
 }

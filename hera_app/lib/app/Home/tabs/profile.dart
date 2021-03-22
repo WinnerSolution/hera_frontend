@@ -1,57 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hera_app/components/forms/ProductForm.dart';
-import 'package:hera_app/components/forms/ProfileForm.dart';
-import 'package:hera_app/controllers/app_controller.dart';
-import 'package:hera_app/screens/OtherPages/editprofile/editprofile.dart';
+import 'package:hera_app/app/Home/tabs/profile.controller.dart';
+import 'package:hera_app/app/Pages/editprofile.dart';
+import 'package:hera_app/screens/OtherPages/chat/chat.dart';
 import 'package:hera_app/themes/styles.dart';
-import 'package:hera_core/hera_core.dart';
-import 'package:softi_common/auth.dart';
-import 'package:softi_common/core.dart';
-
-class ProfileController extends BaseController {
-  final maxImageWidth = 640;
-
-  ProfileController();
-
-  Rx<TUser> get user => AppState.find.user;
-  Rx<AuthUser> get authUser => AppState.find.authUser;
-
-  String get profileImage =>
-      AppState.find.user().profileImage?.url ??
-      'https://firebasestorage.googleapis.com/v0/b/softi-hera.appspot.com/o/dummy450x450.jpg?alt=media&token=10a37525-a4a5-4376-bd34-229b2d1a508c';
-
-  // /// Alters the actual image
-  // Future<File> changeImage1(Widget modal) async {
-  //   final ImagePicker _picker = ImagePicker();
-
-  //   File response;
-  //   ImageSource type = await Get.bottomSheet(modal);
-  //   if (type != null) {
-  //     final PickedFile _picked = await _picker.getImage(source: type);
-  //     if (_picked != null) {
-  //       response = File(_picked.path);
-  //     }
-  //   }
-  //   return response;
-  // }
-
-  //
-  @override
-  onInit() {
-    busy.listen((isBusy) {
-      if (isBusy)
-        loading.showStatus();
-      else
-        loading.dismiss();
-    });
-    super.onInit();
-  }
-
-  void handleEditProfilePressed() => Get.to(() => ProfileForm(AppState.find.user()));
-  void handleAddProductPressed() => Get.to(() => ProductForm(product: TProduct()));
-}
 
 class Profile extends StatelessWidget {
   ProfileController get con => Get.put<ProfileController>(ProfileController());
@@ -65,7 +18,7 @@ class Profile extends StatelessWidget {
         body: ListView(
           children: <Widget>[
             buildProfileCard(),
-            SizedBox(height: 10),
+            SizedBox(height: 44),
             buildPhotoGrid(),
           ],
         ),
@@ -74,110 +27,169 @@ class Profile extends StatelessWidget {
   }
 
   Widget buildProfileCard() {
-    return Stack(
-      children: <Widget>[
-        Container(
-          width: Get.mediaQuery.size.width,
-          height: Get.mediaQuery.size.height * 0.5,
-          decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: new BorderRadius.only(
-                bottomLeft: Radius.circular(20.0),
-                bottomRight: Radius.circular(20.0),
-              ),
-              boxShadow: [
-                BoxShadow(
-                    color: Colors.black.withOpacity(0.20),
-                    blurRadius: 5,
-                    offset: Offset(
-                      0.0,
-                      0.75,
-                    ))
-              ]),
-          child: Column(
-            // mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
+    return Container(
+      width: Get.mediaQuery.size.width,
+      // height: Get.mediaQuery.size.height * 0.5,
+      decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: new BorderRadius.only(
+            bottomLeft: Radius.circular(20.0),
+            bottomRight: Radius.circular(20.0),
+          ),
+          boxShadow: [
+            BoxShadow(
+                color: Colors.black.withOpacity(0.20),
+                blurRadius: 5,
+                offset: Offset(
+                  0.0,
+                  0.75,
+                ))
+          ]),
+      child: Column(
+        // mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          // SizedBox(height: 20),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              // SizedBox(height: 20),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+              Text(
+                'Profile',
+                style: textArialBoldsecondary(),
+              ),
+            ],
+          ),
+          SizedBox(height: 25),
+          Container(
+            width: 80,
+            height: 80,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(50),
+                image: DecorationImage(image: CachedNetworkImageProvider(con.profileImage), fit: BoxFit.cover)),
+
+            // image: DecorationImage(image: AssetImage('assets/images/user1.png'))),
+            child: Container(),
+            // child: Image.asset(''),
+          ),
+          Text(
+            con.user()?.fullname ?? '',
+            style: textArialBoldlgSecondary(),
+          ),
+          Text(
+            con.user()?.status ?? '',
+            style: textArialRegularsecondarydull(),
+          ),
+          SizedBox(height: 20),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Column(
                 children: <Widget>[
                   Text(
-                    'Profile',
-                    style: textArialBoldsecondary(),
+                    'Likes',
+                    style: textArialRegularsecondarydull(),
+                  ),
+                  Text(
+                    con.userStats().likesCount.toString(),
+                    style: textArialBoldlgSecondary(),
                   ),
                 ],
               ),
-              SizedBox(height: 25),
-              Container(
-                  width: 80,
-                  height: 80,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(50),
-                      image: DecorationImage(image: CachedNetworkImageProvider(con.profileImage), fit: BoxFit.cover)),
-
-                  // image: DecorationImage(image: AssetImage('assets/images/user1.png'))),
-                  child: Image.asset('')),
-              Text(
-                'Sansa Stark',
-                style: textArialBoldlgSecondary(),
-              ),
-              Text(
-                'Westeros, Seven Kingdoms',
-                style: textArialRegularsecondarydull(),
-              ),
-              SizedBox(height: 20),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              Column(
                 children: <Widget>[
-                  Column(
-                    children: <Widget>[
-                      Text(
-                        'Photos',
-                        style: textArialRegularsecondarydull(),
-                      ),
-                      Text(
-                        '1234',
-                        style: textArialBoldlgSecondary(),
-                      ),
-                    ],
+                  Text(
+                    'Post',
+                    style: textArialRegularsecondarydull(),
                   ),
-                  Column(
-                    children: <Widget>[
-                      Text(
-                        'Followers',
-                        style: textArialRegularsecondarydull(),
-                      ),
-                      Text(
-                        '1234',
-                        style: textArialBoldlgSecondary(),
-                      ),
-                    ],
-                  ),
-                  Column(
-                    children: <Widget>[
-                      Text(
-                        'Following',
-                        style: textArialRegularsecondarydull(),
-                      ),
-                      Text(
-                        '1234',
-                        style: textArialBoldlgSecondary(),
-                      ),
-                    ],
+                  Text(
+                    con.userStats().postsCount.toString(),
+                    style: textArialBoldlgSecondary(),
                   ),
                 ],
               ),
-              SizedBox(height: 20),
+              Column(
+                children: <Widget>[
+                  Text(
+                    'Followers',
+                    style: textArialRegularsecondarydull(),
+                  ),
+                  Text(
+                    con.userStats().followersCount.toString(),
+                    style: textArialBoldlgSecondary(),
+                  ),
+                ],
+              ),
+              Column(
+                children: <Widget>[
+                  Text(
+                    'Following',
+                    style: textArialRegularsecondarydull(),
+                  ),
+                  Text(
+                    con.userStats().followingCount.toString(),
+                    style: textArialBoldlgSecondary(),
+                  ),
+                ],
+              ),
+            ],
+          ),
+          SizedBox(height: 20),
+          Container(
+            width: 335,
+            height: 44,
+            // ignore: deprecated_member_use
+            child: RaisedButton(
+              onPressed: () {
+                Navigator.push(
+                  Get.context,
+                  MaterialPageRoute(builder: (context) => EditProfile()),
+                );
+              },
+              color: Colors.transparent,
+              elevation: 0,
+              shape: RoundedRectangleBorder(
+                  borderRadius: new BorderRadius.circular(10.0), side: BorderSide(color: secondary)),
+              child: Text(
+                'Edit Profile',
+                style: textArialRegularlgsecondary(),
+              ),
+            ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
               Container(
-                width: 335,
-                height: 44,
+                height: 40,
+                // ignore: deprecated_member_use
+                child: RaisedButton(
+                  onPressed: () {},
+                  shape: RoundedRectangleBorder(
+                    borderRadius: new BorderRadius.circular(10.0),
+                  ),
+                  color: primary,
+                  child: Row(
+                    children: <Widget>[
+                      Image.asset(
+                        'assets/icons/addfriend.png',
+                        color: Colors.white,
+                      ),
+                      Text(
+                        'Follow Back',
+                        style: textArialRegularlgwhite(),
+                      )
+                    ],
+                  ),
+                  padding: EdgeInsets.only(left: 20, right: 20),
+                ),
+              ),
+              Container(
+                height: 40,
                 // ignore: deprecated_member_use
                 child: RaisedButton(
                   onPressed: () {
                     Navigator.push(
                       Get.context,
-                      MaterialPageRoute(builder: (context) => EditProfile()),
+                      MaterialPageRoute(builder: (context) => Chat()),
                     );
                   },
                   color: Colors.transparent,
@@ -185,23 +197,18 @@ class Profile extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                       borderRadius: new BorderRadius.circular(10.0), side: BorderSide(color: secondary)),
                   child: Text(
-                    'Edit Profile',
+                    'Message',
                     style: textArialRegularlgsecondary(),
                   ),
                 ),
-              )
+              ),
             ],
           ),
-        ),
-        Positioned(
-            right: 25,
-            top: 20,
-            child: Image.asset(
-              'assets/icons/menuicon.png',
-              width: 20,
-              height: 20,
-            ))
-      ],
+          SizedBox(
+            height: 32,
+          )
+        ],
+      ),
     );
   }
 

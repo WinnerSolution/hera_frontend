@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:get/get.dart';
@@ -8,15 +9,16 @@ import 'package:hera_app/controllers/app_controller.dart';
 import 'package:hera_app/themes/styles.dart';
 import 'package:hera_core/hera_core.dart';
 import 'package:softi_common/form.dart';
-import 'package:softi_common/services.dart';
+import 'package:softi_mediamanager/index.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class ProfileFormController extends ResourceFormController<TUser> {
   var maxImageWidth = 640;
-  Rx<TUser> get user => AppState.find.user;
-  // Rx<AuthUser> get authUser => AppState.find.authUser;
 
   ProfileFormController(TUser user) : super(editingRecord: user, db: firestore);
+
+  Rx<TUser> get user => AppState.find.user;
+  String get userProfileImageUrl => AppState.find.userProfileImageUrl;
 
   @override
   Future<void> afterResourceSave(record) async {
@@ -36,7 +38,7 @@ class ProfileFormController extends ResourceFormController<TUser> {
   }
 
   changeProfileImage() async {
-    final file = await mediaPicker.singleImageSelect(source: PickerSource.camera, crop: true);
+    final file = await mediaPicker.singleImageSelect(source: await selectPickerSource(), crop: true);
     if (file == null) return;
     print("I changed the file to: ${file.path}");
     busy(true);
@@ -81,8 +83,8 @@ class ProfileFormController extends ResourceFormController<TUser> {
 }
 
 class EditProfile extends StatelessWidget {
-  final bool fav = true;
-  ProfileFormController get con => Get.put<ProfileFormController>(ProfileFormController(AppState.find.user()));
+  // final bool fav = true;
+  ProfileFormController get con => Get.put(ProfileFormController(AppState.find.user()));
 
   // File _image;
 
@@ -156,7 +158,11 @@ class EditProfile extends StatelessWidget {
               height: 140,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(50),
-                  image: DecorationImage(image: AssetImage('assets/images/u4.png'), fit: BoxFit.cover)),
+                  image: DecorationImage(
+                    image: CachedNetworkImageProvider(con.userProfileImageUrl),
+                    fit: BoxFit.cover,
+                  )),
+              // image: DecorationImage(image: AssetImage('assets/images/u4.png'), fit: BoxFit.cover)),
               child: Image.asset('')),
           SizedBox(height: 20),
           Container(

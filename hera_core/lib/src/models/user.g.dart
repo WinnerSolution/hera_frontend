@@ -18,6 +18,8 @@ _$_TUser _$_$_TUserFromJson(Map<String, dynamic> json) {
         : RemoteImage.fromJson(json['profileImage'] as Map<String, dynamic>),
     email: json['email'] as String,
     phone: json['phone'] as String,
+    bio: json['bio'] as String,
+    status: json['status'] as String,
     contactInfo: json['contactInfo'] == null
         ? null
         : ContactInfo.fromJson(json['contactInfo'] as Map<String, dynamic>),
@@ -37,6 +39,8 @@ Map<String, dynamic> _$_$_TUserToJson(_$_TUser instance) => <String, dynamic>{
       'profileImage': instance.profileImage?.toJson(),
       'email': instance.email,
       'phone': instance.phone,
+      'bio': instance.bio,
+      'status': instance.status,
       'contactInfo': instance.contactInfo?.toJson(),
       'companyInfo': instance.companyInfo?.toJson(),
     };

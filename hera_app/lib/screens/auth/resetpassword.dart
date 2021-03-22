@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:pin_entry_text_field/pin_entry_text_field.dart';
-import 'package:hera_app/screens/Home/home.dart';
+import 'package:hera_app/app/Home/home.dart';
 import 'package:hera_app/themes/styles.dart';
 
 class ResetPassword extends StatefulWidget {

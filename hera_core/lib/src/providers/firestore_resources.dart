@@ -1,5 +1,6 @@
 import 'package:hera_core/hera_core.dart';
 import 'package:hera_core/src/models/user.dart';
+import 'package:hera_core/src/models/user_stats.dart';
 import 'package:softi_firebase/firestore.dart';
 
 final resourceMapper = <Type, FirestoreResource>{
@@ -14,10 +15,10 @@ final resourceMapper = <Type, FirestoreResource>{
     endpoint: 'civi_products',
   ),
 
-  // TRequestor: FirestoreResource<TRequestor>(
-  //   fromJson: (map) => TRequestor.fromJson(map),
-  //   endpoint: 'civi_stores',
-  // ),
+  TUserStats: FirestoreResource<TUserStats>(
+    fromJson: (map) => TUserStats.fromJson(map),
+    endpoint: 'civi_users_stats',
+  ),
 
   // TCategory: FirestoreResource<TCategory>(
   //   fromJson: (map) => TCategory.fromJson(map),
