@@ -20,10 +20,11 @@ class _$TUserStatsTearOff {
   _TUserStats call(
       {String id,
       DateTime lastPostTime,
-      int postsCount,
-      int likesCount,
-      int followingCount,
-      int followersCount}) {
+      int postsCount = 0,
+      int likesCount = 0,
+      int followingCount = 0,
+      int followersCount = 0,
+      PresenceState presenceState}) {
     return _TUserStats(
       id: id,
       lastPostTime: lastPostTime,
@@ -31,6 +32,7 @@ class _$TUserStatsTearOff {
       likesCount: likesCount,
       followingCount: followingCount,
       followersCount: followersCount,
+      presenceState: presenceState,
     );
   }
 
@@ -52,6 +54,7 @@ mixin _$TUserStats {
   int get likesCount;
   int get followingCount;
   int get followersCount;
+  PresenceState get presenceState;
 
   Map<String, dynamic> toJson();
   @JsonKey(ignore: true)
@@ -69,7 +72,10 @@ abstract class $TUserStatsCopyWith<$Res> {
       int postsCount,
       int likesCount,
       int followingCount,
-      int followersCount});
+      int followersCount,
+      PresenceState presenceState});
+
+  $PresenceStateCopyWith<$Res> get presenceState;
 }
 
 /// @nodoc
@@ -88,6 +94,7 @@ class _$TUserStatsCopyWithImpl<$Res> implements $TUserStatsCopyWith<$Res> {
     Object likesCount = freezed,
     Object followingCount = freezed,
     Object followersCount = freezed,
+    Object presenceState = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed ? _value.id : id as String,
@@ -102,7 +109,20 @@ class _$TUserStatsCopyWithImpl<$Res> implements $TUserStatsCopyWith<$Res> {
       followersCount: followersCount == freezed
           ? _value.followersCount
           : followersCount as int,
+      presenceState: presenceState == freezed
+          ? _value.presenceState
+          : presenceState as PresenceState,
     ));
+  }
+
+  @override
+  $PresenceStateCopyWith<$Res> get presenceState {
+    if (_value.presenceState == null) {
+      return null;
+    }
+    return $PresenceStateCopyWith<$Res>(_value.presenceState, (value) {
+      return _then(_value.copyWith(presenceState: value));
+    });
   }
 }
 
@@ -118,7 +138,11 @@ abstract class _$TUserStatsCopyWith<$Res> implements $TUserStatsCopyWith<$Res> {
       int postsCount,
       int likesCount,
       int followingCount,
-      int followersCount});
+      int followersCount,
+      PresenceState presenceState});
+
+  @override
+  $PresenceStateCopyWith<$Res> get presenceState;
 }
 
 /// @nodoc
@@ -139,6 +163,7 @@ class __$TUserStatsCopyWithImpl<$Res> extends _$TUserStatsCopyWithImpl<$Res>
     Object likesCount = freezed,
     Object followingCount = freezed,
     Object followersCount = freezed,
+    Object presenceState = freezed,
   }) {
     return _then(_TUserStats(
       id: id == freezed ? _value.id : id as String,
@@ -153,6 +178,9 @@ class __$TUserStatsCopyWithImpl<$Res> extends _$TUserStatsCopyWithImpl<$Res>
       followersCount: followersCount == freezed
           ? _value.followersCount
           : followersCount as int,
+      presenceState: presenceState == freezed
+          ? _value.presenceState
+          : presenceState as PresenceState,
     ));
   }
 }
@@ -165,11 +193,16 @@ class _$_TUserStats extends _TUserStats with DiagnosticableTreeMixin {
   _$_TUserStats(
       {this.id,
       this.lastPostTime,
-      this.postsCount,
-      this.likesCount,
-      this.followingCount,
-      this.followersCount})
-      : super._();
+      this.postsCount = 0,
+      this.likesCount = 0,
+      this.followingCount = 0,
+      this.followersCount = 0,
+      this.presenceState})
+      : assert(postsCount != null),
+        assert(likesCount != null),
+        assert(followingCount != null),
+        assert(followersCount != null),
+        super._();
 
   factory _$_TUserStats.fromJson(Map<String, dynamic> json) =>
       _$_$_TUserStatsFromJson(json);
@@ -178,18 +211,24 @@ class _$_TUserStats extends _TUserStats with DiagnosticableTreeMixin {
   final String id;
   @override
   final DateTime lastPostTime;
+  @JsonKey(defaultValue: 0)
   @override
   final int postsCount;
+  @JsonKey(defaultValue: 0)
   @override
   final int likesCount;
+  @JsonKey(defaultValue: 0)
   @override
   final int followingCount;
+  @JsonKey(defaultValue: 0)
   @override
   final int followersCount;
+  @override
+  final PresenceState presenceState;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'TUserStats(id: $id, lastPostTime: $lastPostTime, postsCount: $postsCount, likesCount: $likesCount, followingCount: $followingCount, followersCount: $followersCount)';
+    return 'TUserStats(id: $id, lastPostTime: $lastPostTime, postsCount: $postsCount, likesCount: $likesCount, followingCount: $followingCount, followersCount: $followersCount, presenceState: $presenceState)';
   }
 
   @override
@@ -202,7 +241,8 @@ class _$_TUserStats extends _TUserStats with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('postsCount', postsCount))
       ..add(DiagnosticsProperty('likesCount', likesCount))
       ..add(DiagnosticsProperty('followingCount', followingCount))
-      ..add(DiagnosticsProperty('followersCount', followersCount));
+      ..add(DiagnosticsProperty('followersCount', followersCount))
+      ..add(DiagnosticsProperty('presenceState', presenceState));
   }
 
   @override
@@ -225,7 +265,10 @@ class _$_TUserStats extends _TUserStats with DiagnosticableTreeMixin {
                     .equals(other.followingCount, followingCount)) &&
             (identical(other.followersCount, followersCount) ||
                 const DeepCollectionEquality()
-                    .equals(other.followersCount, followersCount)));
+                    .equals(other.followersCount, followersCount)) &&
+            (identical(other.presenceState, presenceState) ||
+                const DeepCollectionEquality()
+                    .equals(other.presenceState, presenceState)));
   }
 
   @override
@@ -236,7 +279,8 @@ class _$_TUserStats extends _TUserStats with DiagnosticableTreeMixin {
       const DeepCollectionEquality().hash(postsCount) ^
       const DeepCollectionEquality().hash(likesCount) ^
       const DeepCollectionEquality().hash(followingCount) ^
-      const DeepCollectionEquality().hash(followersCount);
+      const DeepCollectionEquality().hash(followersCount) ^
+      const DeepCollectionEquality().hash(presenceState);
 
   @JsonKey(ignore: true)
   @override
@@ -257,7 +301,8 @@ abstract class _TUserStats extends TUserStats {
       int postsCount,
       int likesCount,
       int followingCount,
-      int followersCount}) = _$_TUserStats;
+      int followersCount,
+      PresenceState presenceState}) = _$_TUserStats;
 
   factory _TUserStats.fromJson(Map<String, dynamic> json) =
       _$_TUserStats.fromJson;
@@ -274,6 +319,8 @@ abstract class _TUserStats extends TUserStats {
   int get followingCount;
   @override
   int get followersCount;
+  @override
+  PresenceState get presenceState;
   @override
   @JsonKey(ignore: true)
   _$TUserStatsCopyWith<_TUserStats> get copyWith;

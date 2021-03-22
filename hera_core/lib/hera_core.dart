@@ -7,6 +7,7 @@ export 'package:hera_core/src/models/user.dart';
 export 'package:hera_core/src/models/user_stats.dart';
 export 'package:hera_core/src/models/temp/requestor.dart';
 export 'package:hera_core/src/models/value_object/address.dart';
+export 'package:hera_core/src/models/value_object/presence_state.dart';
 export 'package:hera_core/src/models/value_object/company_info.dart';
 export 'package:hera_core/src/models/value_object/contact_info.dart';
 export 'package:hera_core/src/models/value_object/remote_image.dart';

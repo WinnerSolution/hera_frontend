@@ -5,16 +5,50 @@ import 'package:hera_app/app/Home/tabs/profile.controller.dart';
 import 'package:hera_app/app/Pages/editprofile.dart';
 import 'package:hera_app/screens/OtherPages/chat/chat.dart';
 import 'package:hera_app/themes/styles.dart';
+import 'package:hera_core/hera_core.dart';
 
 class Profile extends StatelessWidget {
-  ProfileController get con => Get.put<ProfileController>(ProfileController());
+  final TUser profile;
 
-  final bool fav = true;
+  Profile(
+    this.profile, {
+    Key key,
+  }) : super(key: key);
+
+  ProfileController get con {
+    return Get.put<ProfileController>(ProfileController(profile), tag: profile.id);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Obx(
       () => Scaffold(
         backgroundColor: Colors.white,
+        appBar: AppBar(
+          actions: <Widget>[
+            Padding(
+              padding: const EdgeInsets.only(right: 20.0),
+              child: Image.asset(
+                'assets/icons/menuicon.png',
+                width: 20,
+                height: 20,
+              ),
+            )
+          ],
+          iconTheme: IconThemeData(color: secondary),
+          backgroundColor: Colors.white,
+          elevation: 0.3,
+          leading: InkWell(
+            onTap: () {
+              Navigator.of(context).pop();
+            },
+            child: Image.asset(
+              "assets/icons/backarrow.png",
+              scale: 3,
+              color: secondary,
+            ),
+          ),
+        ),
         body: ListView(
           children: <Widget>[
             buildProfileCard(),
@@ -66,17 +100,14 @@ class Profile extends StatelessWidget {
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(50),
                 image: DecorationImage(image: CachedNetworkImageProvider(con.profileImage), fit: BoxFit.cover)),
-
-            // image: DecorationImage(image: AssetImage('assets/images/user1.png'))),
             child: Container(),
-            // child: Image.asset(''),
           ),
           Text(
-            con.user()?.fullname ?? '',
+            con.profile?.fullname ?? '',
             style: textArialBoldlgSecondary(),
           ),
           Text(
-            con.user()?.status ?? '',
+            con.profile?.status ?? '',
             style: textArialRegularsecondarydull(),
           ),
           SizedBox(height: 20),
@@ -90,7 +121,7 @@ class Profile extends StatelessWidget {
                     style: textArialRegularsecondarydull(),
                   ),
                   Text(
-                    con.userStats().likesCount.toString(),
+                    con.userStats.likesCount.toString(),
                     style: textArialBoldlgSecondary(),
                   ),
                 ],
@@ -102,7 +133,7 @@ class Profile extends StatelessWidget {
                     style: textArialRegularsecondarydull(),
                   ),
                   Text(
-                    con.userStats().postsCount.toString(),
+                    con.userStats.postsCount.toString(),
                     style: textArialBoldlgSecondary(),
                   ),
                 ],
@@ -114,7 +145,7 @@ class Profile extends StatelessWidget {
                     style: textArialRegularsecondarydull(),
                   ),
                   Text(
-                    con.userStats().followersCount.toString(),
+                    con.userStats.followersCount.toString(),
                     style: textArialBoldlgSecondary(),
                   ),
                 ],
@@ -126,7 +157,7 @@ class Profile extends StatelessWidget {
                     style: textArialRegularsecondarydull(),
                   ),
                   Text(
-                    con.userStats().followingCount.toString(),
+                    con.userStats.followingCount.toString(),
                     style: textArialBoldlgSecondary(),
                   ),
                 ],
@@ -134,76 +165,97 @@ class Profile extends StatelessWidget {
             ],
           ),
           SizedBox(height: 20),
-          Container(
-            width: 335,
-            height: 44,
-            // ignore: deprecated_member_use
-            child: RaisedButton(
-              onPressed: () {
-                Navigator.push(
-                  Get.context,
-                  MaterialPageRoute(builder: (context) => EditProfile()),
-                );
-              },
-              color: Colors.transparent,
-              elevation: 0,
-              shape: RoundedRectangleBorder(
-                  borderRadius: new BorderRadius.circular(10.0), side: BorderSide(color: secondary)),
-              child: Text(
-                'Edit Profile',
-                style: textArialRegularlgsecondary(),
+          if (!con.isConnectedUser)
+            Container(
+              width: 335,
+              height: 44,
+              // ignore: deprecated_member_use
+              child: RaisedButton(
+                onPressed: () {
+                  Navigator.push(
+                    Get.context,
+                    MaterialPageRoute(builder: (context) => EditProfile()),
+                  );
+                },
+                color: Colors.transparent,
+                elevation: 0,
+                shape: RoundedRectangleBorder(
+                    borderRadius: new BorderRadius.circular(10.0), side: BorderSide(color: secondary)),
+                child: Text(
+                  'Edit Profile',
+                  style: textArialRegularlgsecondary(),
+                ),
               ),
             ),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              Container(
-                height: 40,
-                // ignore: deprecated_member_use
-                child: RaisedButton(
-                  onPressed: () {},
-                  shape: RoundedRectangleBorder(
-                    borderRadius: new BorderRadius.circular(10.0),
-                  ),
-                  color: primary,
-                  child: Row(
-                    children: <Widget>[
-                      Image.asset(
-                        'assets/icons/addfriend.png',
-                        color: Colors.white,
-                      ),
-                      Text(
-                        'Follow Back',
-                        style: textArialRegularlgwhite(),
-                      )
-                    ],
-                  ),
-                  padding: EdgeInsets.only(left: 20, right: 20),
+          if (!con.isConnectedUser)
+            Container(
+              width: 335,
+              height: 44,
+              // ignore: deprecated_member_use
+              child: RaisedButton(
+                onPressed: () {
+                  con.logout();
+                },
+                color: Colors.transparent,
+                elevation: 0,
+                shape: RoundedRectangleBorder(
+                    borderRadius: new BorderRadius.circular(10.0), side: BorderSide(color: Colors.red)),
+                child: Text(
+                  'Edit Profile',
+                  style: textArialRegularlgsecondary(),
                 ),
               ),
-              Container(
-                height: 40,
-                // ignore: deprecated_member_use
-                child: RaisedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      Get.context,
-                      MaterialPageRoute(builder: (context) => Chat()),
-                    );
-                  },
-                  color: Colors.transparent,
-                  elevation: 0,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: new BorderRadius.circular(10.0), side: BorderSide(color: secondary)),
-                  child: Text(
-                    'Message',
-                    style: textArialRegularlgsecondary(),
+            ),
+          if (con.isConnectedUser)
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                Container(
+                  height: 40,
+                  // ignore: deprecated_member_use
+                  child: RaisedButton(
+                    onPressed: () {},
+                    shape: RoundedRectangleBorder(
+                      borderRadius: new BorderRadius.circular(10.0),
+                    ),
+                    color: primary,
+                    child: Row(
+                      children: <Widget>[
+                        Image.asset(
+                          'assets/icons/addfriend.png',
+                          color: Colors.white,
+                        ),
+                        Text(
+                          'Follow Back',
+                          style: textArialRegularlgwhite(),
+                        )
+                      ],
+                    ),
+                    padding: EdgeInsets.only(left: 20, right: 20),
                   ),
                 ),
-              ),
-            ],
-          ),
+                Container(
+                  height: 40,
+                  // ignore: deprecated_member_use
+                  child: RaisedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        Get.context,
+                        MaterialPageRoute(builder: (context) => Chat()),
+                      );
+                    },
+                    color: Colors.transparent,
+                    elevation: 0,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: new BorderRadius.circular(10.0), side: BorderSide(color: secondary)),
+                    child: Text(
+                      'Message',
+                      style: textArialRegularlgsecondary(),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           SizedBox(
             height: 32,
           )

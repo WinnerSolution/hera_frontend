@@ -1,100 +1,14 @@
-import 'dart:async';
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:hera_app/controllers/app_controller.dart';
 import 'package:hera_app/themes/styles.dart';
-import 'package:hera_core/hera_core.dart';
-import 'package:softi_common/form.dart';
-import 'package:softi_mediamanager/index.dart';
-import 'package:velocity_x/velocity_x.dart';
 
-class ProfileFormController extends ResourceFormController<TUser> {
-  var maxImageWidth = 640;
-
-  ProfileFormController(TUser user) : super(editingRecord: user, db: firestore);
-
-  Rx<TUser> get user => AppState.find.user;
-  String get userProfileImageUrl => AppState.find.userProfileImageUrl;
-
-  @override
-  Future<void> afterResourceSave(record) async {
-    await loading.showSuccess('Saved', duration: 200.milliseconds);
-    Get.back<TUser>(result: record);
-  }
-
-  @override
-  onInit() {
-    busy.listen((isBusy) {
-      if (isBusy)
-        loading.showStatus();
-      else
-        loading.dismiss();
-    });
-    super.onInit();
-  }
-
-  changeProfileImage() async {
-    final file = await mediaPicker.singleImageSelect(source: await selectPickerSource(), crop: true);
-    if (file == null) return;
-    print("I changed the file to: ${file.path}");
-    busy(true);
-    var result = await cloudStorage.uploadMedia(
-      imageToUpload: await FlutterImageCompress.compressWithFile(
-        file.absolute.path,
-        minHeight: maxImageWidth,
-        minWidth: maxImageWidth,
-      ),
-      title: 'title',
-    );
-
-    if (result.result?.url != null) {
-      await firestore.save<TUser>(user().copyWith(
-        profileImage: RemoteImage.fromNetworAsset(result.result),
-      ));
-    }
-    busy(false);
-  }
-
-  //! Handlers
-  // void handleProfileImageChange(File file) async {
-  //   print("I changed the file to: ${file.path}");
-  //   busy(true);
-  //   var result = await cloudStorage.uploadMedia(
-  //     imageToUpload: await FlutterImageCompress.compressWithFile(
-  //       file.absolute.path,
-  //       minHeight: maxImageWidth,
-  //       minWidth: maxImageWidth,
-  //     ),
-  //     title: 'title',
-  //   );
-
-  //   if (result.result?.url != null) {
-  //     await firestore.save<TUser>(user().copyWith(
-  //       profileImage: RemoteImage.fromNetworAsset(result.result),
-  //     ));
-  //   }
-  //   busy(false);
-  // }
-
-}
+import 'editprofile.controller.dart';
 
 class EditProfile extends StatelessWidget {
-  // final bool fav = true;
   ProfileFormController get con => Get.put(ProfileFormController(AppState.find.user()));
-
-  // File _image;
-
-  // Future getImagefromCamera() async {
-  //   var image = await ImagePicker.pickImage(source: ImageSource.camera);
-
-  //   setState(() {
-  //     _image = image;
-  //   });
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -154,16 +68,18 @@ class EditProfile extends StatelessWidget {
         children: <Widget>[
           // SizedBox(height: 25),
           Container(
-              width: 140,
-              height: 140,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(50),
-                  image: DecorationImage(
-                    image: CachedNetworkImageProvider(con.userProfileImageUrl),
-                    fit: BoxFit.cover,
-                  )),
-              // image: DecorationImage(image: AssetImage('assets/images/u4.png'), fit: BoxFit.cover)),
-              child: Image.asset('')),
+            width: 140,
+            height: 140,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(50),
+                image: DecorationImage(
+                  image: CachedNetworkImageProvider(con.userProfileImageUrl),
+                  fit: BoxFit.cover,
+                )),
+            // image: DecorationImage(image: AssetImage('assets/images/u4.png'), fit: BoxFit.cover)),
+            child: Container(),
+            // Image.asset('')
+          ),
           SizedBox(height: 20),
           Container(
             width: Get.mediaQuery.size.width,

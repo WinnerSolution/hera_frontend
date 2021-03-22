@@ -11,10 +11,13 @@ _$_TUserStats _$_$_TUserStatsFromJson(Map<String, dynamic> json) {
     id: json['id'] as String,
     lastPostTime: const CustomDateTimeConverter()
         .fromJson(json['lastPostTime'] as DateTime),
-    postsCount: json['postsCount'] as int,
-    likesCount: json['likesCount'] as int,
-    followingCount: json['followingCount'] as int,
-    followersCount: json['followersCount'] as int,
+    postsCount: json['postsCount'] as int ?? 0,
+    likesCount: json['likesCount'] as int ?? 0,
+    followingCount: json['followingCount'] as int ?? 0,
+    followersCount: json['followersCount'] as int ?? 0,
+    presenceState: json['presenceState'] == null
+        ? null
+        : PresenceState.fromJson(json['presenceState'] as Map<String, dynamic>),
   )..path = json['path'] as String;
 }
 
@@ -28,4 +31,5 @@ Map<String, dynamic> _$_$_TUserStatsToJson(_$_TUserStats instance) =>
       'likesCount': instance.likesCount,
       'followingCount': instance.followingCount,
       'followersCount': instance.followersCount,
+      'presenceState': instance.presenceState?.toJson(),
     };

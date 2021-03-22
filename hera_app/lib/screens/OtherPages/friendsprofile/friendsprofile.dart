@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:hera_app/screens/OtherPages/chat/chat.dart';
 import 'package:hera_app/themes/styles.dart';
 
-class FriendsProfile extends StatefulWidget {
+class FriendsProfile1 extends StatefulWidget {
   @override
   _FriendsProfileState createState() => _FriendsProfileState();
 }
 
-class _FriendsProfileState extends State<FriendsProfile> {
+class _FriendsProfileState extends State<FriendsProfile1> {
   bool fav = true;
   @override
   Widget build(BuildContext context) {

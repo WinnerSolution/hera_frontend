@@ -9,13 +9,13 @@ class UserPresence {
     var userStatusDatabaseRef = _db.reference().child('status/' + uid);
 
     var isOfflineForDatabase = {
-      "state": 'offline',
-      "last_changed": ServerValue.timestamp,
+      'state': 'offline',
+      'lastChanged': ServerValue.timestamp,
     };
 
     var isOnlineForDatabase = {
-      "state": 'online',
-      "last_changed": ServerValue.timestamp,
+      'state': 'online',
+      'lastChanged': ServerValue.timestamp,
     };
 
     _db.reference().child('.info/connected').onValue.listen((Event event) async {

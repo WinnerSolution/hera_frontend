@@ -9,11 +9,17 @@ import 'package:softi_common/core.dart';
 class ProfileController extends BaseController {
   final maxImageWidth = 640;
 
-  ProfileController();
+  final TUser profile;
 
-  Rx<TUser> get user => AppState.find.user;
-  Rx<AuthUser> get authUser => AppState.find.authUser;
-  Rx<TUserStats> get userStats => AppState.find.userStats;
+  ProfileController(this.profile);
+
+  AuthUser get authUser => AppState.find.authUser();
+
+  // TUser get profile => profile;
+  TUser get user => AppState.find.user();
+  TUserStats get userStats => AppState.find.userStats();
+
+  bool get isConnectedUser => user.id == profile.id;
 
   String get profileImage =>
       AppState.find.user().profileImage?.url ??
@@ -45,6 +51,8 @@ class ProfileController extends BaseController {
     });
     super.onInit();
   }
+
+  void logout() => AppState.find.authApi.signOut();
 
   void handleEditProfilePressed() => Get.to(() => ProfileForm(AppState.find.user()));
   void handleAddProductPressed() => Get.to(() => ProductForm(product: TProduct()));

@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hera_core/src/models/convertors/date.dart';
+import 'package:hera_core/src/models/value_object/presence_state.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:softi_common/resource.dart';
 
@@ -16,10 +17,11 @@ abstract class TUserStats extends IResourceData with BaseResourceDataMixin imple
   factory TUserStats({
     String id,
     DateTime lastPostTime,
-    int postsCount,
-    int likesCount,
-    int followingCount,
-    int followersCount,
+    @Default(0) int postsCount,
+    @Default(0) int likesCount,
+    @Default(0) int followingCount,
+    @Default(0) int followersCount,
+    PresenceState presenceState,
   }) = _TUserStats;
 
   factory TUserStats.fromJson(Map<String, dynamic> json) => _$TUserStatsFromJson(json);

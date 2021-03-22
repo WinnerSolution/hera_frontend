@@ -28,7 +28,7 @@ class HomePage extends StatelessWidget {
     ),
     Container(
       color: Colors.white,
-      child: Profile(),
+      child: Profile(AppState.find.user()),
     ),
   ];
 

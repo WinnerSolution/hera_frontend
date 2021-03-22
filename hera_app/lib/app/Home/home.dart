@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
+import 'package:hera_app/controllers/app_controller.dart';
 import 'package:hera_app/screens/Home/tabs/addpost/addposttab.dart';
 import 'package:hera_app/screens/Home/tabs/homepage.dart';
 import 'package:hera_app/screens/Home/tabs/notification.dart';
@@ -54,7 +55,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
           ),
           Container(
             color: Colors.white,
-            child: Profile(),
+            child: Profile(AppState.find.user()),
           ),
         ],
       ),
