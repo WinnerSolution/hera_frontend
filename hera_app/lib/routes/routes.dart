@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:get/get.dart';
-import 'package:hera_app/app.svg/Login/Login.page.dart';
+import 'package:hera_app/app/Login/Login.page.dart';
 import 'package:hera_app/controllers/app_controller.dart';
 import 'package:hera_app/app/Home/home.dart';
 
