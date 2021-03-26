@@ -24,7 +24,7 @@ class _FriendsStoryState extends State<FriendsStory> {
       body: Stack(
         children: <Widget>[
           StoryView(
-            [
+            storyItems: [
               // StoryItem.text(
               //   "I guess you'd love to see more of our food. That's great.",
               //   Colors.blue,
@@ -39,13 +39,15 @@ class _FriendsStoryState extends State<FriendsStory> {
               //     caption: "Still sampling",
               //     ),
               StoryItem.pageImage(
-                  NetworkImage("https://image.ibb.co/cU4WGx/Omotuo-Groundnut-Soup-braperucci-com-1.jpg"),
-                  imageFit: BoxFit.cover
-                  // caption: "Still sampling",
-                  ),
-              StoryItem.pageImage(AssetImage("assets/images/story.png"), imageFit: BoxFit.cover
-                  // caption: "Still sampling",
-                  ),
+                url: "https://image.ibb.co/cU4WGx/Omotuo-Groundnut-Soup-braperucci-com-1.jpg",
+                imageFit: BoxFit.cover,
+                // controller: null
+                // caption: "Still sampling",
+              ),
+              StoryItem.pageImage(
+                url: "assets/images/story.png", imageFit: BoxFit.cover,
+                // caption: "Still sampling",
+              ),
               // StoryItem.pageGif(
               //     "https://media.giphy.com/media/5GoVLqeAOo6PK/giphy.gif",
               //     caption: "Working with gifs",

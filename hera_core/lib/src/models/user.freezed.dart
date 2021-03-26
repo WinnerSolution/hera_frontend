@@ -27,6 +27,8 @@ class _$TUserTearOff {
       String phone,
       String bio,
       String status,
+      bool privateProfile = true,
+      bool notifications = true,
       ContactInfo contactInfo,
       CompanyInfo companyInfo}) {
     return _TUser(
@@ -39,6 +41,8 @@ class _$TUserTearOff {
       phone: phone,
       bio: bio,
       status: status,
+      privateProfile: privateProfile,
+      notifications: notifications,
       contactInfo: contactInfo,
       companyInfo: companyInfo,
     );
@@ -65,7 +69,9 @@ mixin _$TUser {
   String get email;
   String get phone;
   String get bio;
-  String get status; //
+  String get status; // Settings
+  bool get privateProfile;
+  bool get notifications; //
   ContactInfo get contactInfo;
   CompanyInfo get companyInfo;
 
@@ -88,6 +94,8 @@ abstract class $TUserCopyWith<$Res> {
       String phone,
       String bio,
       String status,
+      bool privateProfile,
+      bool notifications,
       ContactInfo contactInfo,
       CompanyInfo companyInfo});
 
@@ -115,6 +123,8 @@ class _$TUserCopyWithImpl<$Res> implements $TUserCopyWith<$Res> {
     Object phone = freezed,
     Object bio = freezed,
     Object status = freezed,
+    Object privateProfile = freezed,
+    Object notifications = freezed,
     Object contactInfo = freezed,
     Object companyInfo = freezed,
   }) {
@@ -131,6 +141,12 @@ class _$TUserCopyWithImpl<$Res> implements $TUserCopyWith<$Res> {
       phone: phone == freezed ? _value.phone : phone as String,
       bio: bio == freezed ? _value.bio : bio as String,
       status: status == freezed ? _value.status : status as String,
+      privateProfile: privateProfile == freezed
+          ? _value.privateProfile
+          : privateProfile as bool,
+      notifications: notifications == freezed
+          ? _value.notifications
+          : notifications as bool,
       contactInfo: contactInfo == freezed
           ? _value.contactInfo
           : contactInfo as ContactInfo,
@@ -186,6 +202,8 @@ abstract class _$TUserCopyWith<$Res> implements $TUserCopyWith<$Res> {
       String phone,
       String bio,
       String status,
+      bool privateProfile,
+      bool notifications,
       ContactInfo contactInfo,
       CompanyInfo companyInfo});
 
@@ -217,6 +235,8 @@ class __$TUserCopyWithImpl<$Res> extends _$TUserCopyWithImpl<$Res>
     Object phone = freezed,
     Object bio = freezed,
     Object status = freezed,
+    Object privateProfile = freezed,
+    Object notifications = freezed,
     Object contactInfo = freezed,
     Object companyInfo = freezed,
   }) {
@@ -233,6 +253,12 @@ class __$TUserCopyWithImpl<$Res> extends _$TUserCopyWithImpl<$Res>
       phone: phone == freezed ? _value.phone : phone as String,
       bio: bio == freezed ? _value.bio : bio as String,
       status: status == freezed ? _value.status : status as String,
+      privateProfile: privateProfile == freezed
+          ? _value.privateProfile
+          : privateProfile as bool,
+      notifications: notifications == freezed
+          ? _value.notifications
+          : notifications as bool,
       contactInfo: contactInfo == freezed
           ? _value.contactInfo
           : contactInfo as ContactInfo,
@@ -258,9 +284,13 @@ class _$_TUser extends _TUser with DiagnosticableTreeMixin {
       this.phone,
       this.bio,
       this.status,
+      this.privateProfile = true,
+      this.notifications = true,
       this.contactInfo,
       this.companyInfo})
-      : super._();
+      : assert(privateProfile != null),
+        assert(notifications != null),
+        super._();
 
   factory _$_TUser.fromJson(Map<String, dynamic> json) =>
       _$_$_TUserFromJson(json);
@@ -284,6 +314,12 @@ class _$_TUser extends _TUser with DiagnosticableTreeMixin {
   final String bio;
   @override
   final String status;
+  @JsonKey(defaultValue: true)
+  @override // Settings
+  final bool privateProfile;
+  @JsonKey(defaultValue: true)
+  @override
+  final bool notifications;
   @override //
   final ContactInfo contactInfo;
   @override
@@ -291,7 +327,7 @@ class _$_TUser extends _TUser with DiagnosticableTreeMixin {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'TUser(id: $id, fullname: $fullname, dateOfBirth: $dateOfBirth, gender: $gender, profileImage: $profileImage, email: $email, phone: $phone, bio: $bio, status: $status, contactInfo: $contactInfo, companyInfo: $companyInfo)';
+    return 'TUser(id: $id, fullname: $fullname, dateOfBirth: $dateOfBirth, gender: $gender, profileImage: $profileImage, email: $email, phone: $phone, bio: $bio, status: $status, privateProfile: $privateProfile, notifications: $notifications, contactInfo: $contactInfo, companyInfo: $companyInfo)';
   }
 
   @override
@@ -308,6 +344,8 @@ class _$_TUser extends _TUser with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('phone', phone))
       ..add(DiagnosticsProperty('bio', bio))
       ..add(DiagnosticsProperty('status', status))
+      ..add(DiagnosticsProperty('privateProfile', privateProfile))
+      ..add(DiagnosticsProperty('notifications', notifications))
       ..add(DiagnosticsProperty('contactInfo', contactInfo))
       ..add(DiagnosticsProperty('companyInfo', companyInfo));
   }
@@ -337,6 +375,12 @@ class _$_TUser extends _TUser with DiagnosticableTreeMixin {
                 const DeepCollectionEquality().equals(other.bio, bio)) &&
             (identical(other.status, status) ||
                 const DeepCollectionEquality().equals(other.status, status)) &&
+            (identical(other.privateProfile, privateProfile) ||
+                const DeepCollectionEquality()
+                    .equals(other.privateProfile, privateProfile)) &&
+            (identical(other.notifications, notifications) ||
+                const DeepCollectionEquality()
+                    .equals(other.notifications, notifications)) &&
             (identical(other.contactInfo, contactInfo) ||
                 const DeepCollectionEquality()
                     .equals(other.contactInfo, contactInfo)) &&
@@ -357,6 +401,8 @@ class _$_TUser extends _TUser with DiagnosticableTreeMixin {
       const DeepCollectionEquality().hash(phone) ^
       const DeepCollectionEquality().hash(bio) ^
       const DeepCollectionEquality().hash(status) ^
+      const DeepCollectionEquality().hash(privateProfile) ^
+      const DeepCollectionEquality().hash(notifications) ^
       const DeepCollectionEquality().hash(contactInfo) ^
       const DeepCollectionEquality().hash(companyInfo);
 
@@ -383,6 +429,8 @@ abstract class _TUser extends TUser {
       String phone,
       String bio,
       String status,
+      bool privateProfile,
+      bool notifications,
       ContactInfo contactInfo,
       CompanyInfo companyInfo}) = _$_TUser;
 
@@ -407,6 +455,10 @@ abstract class _TUser extends TUser {
   String get bio;
   @override
   String get status;
+  @override // Settings
+  bool get privateProfile;
+  @override
+  bool get notifications;
   @override //
   ContactInfo get contactInfo;
   @override

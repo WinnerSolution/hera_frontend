@@ -8,7 +8,8 @@ import 'package:hera_app/controllers/user_presence.dart';
 import 'package:hera_app/routes/routes.dart';
 import 'package:hera_core/hera_core.dart';
 import 'package:nested/nested.dart';
-import 'package:softi_common/services.dart';
+import 'package:softi_common/core.dart';
+import 'package:softi_common/widgets.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

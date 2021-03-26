@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
-import 'package:hera_app/controllers/app_controller.dart';
 import 'package:hera_app/themes/styles.dart';
 import 'package:hera_core/hera_core.dart';
+import 'package:softi_common/core.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import 'editprofile.controller.dart';
@@ -14,65 +14,69 @@ class EditProfile extends StatelessWidget {
   final TUser user;
   EditProfile(this.user);
 
-  ProfileFormController get con => Get.put(ProfileFormController(AppState.find.user()));
+  ProfileFormController get con => Get.put(ProfileFormController(user));
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        title: Text(
-          'Edit Profile',
-          style: textArialBoldsecondary(),
-        ),
-        centerTitle: true,
-        iconTheme: IconThemeData(color: secondary),
-        elevation: 0.3,
-        leading: InkWell(
-          onTap: () {
-            Navigator.of(context).pop();
-          },
-          child: Image.asset(
-            "assets/icons/backarrow.png",
-            scale: 3,
-            color: secondary,
-          ),
-        ),
-        actions: <Widget>[
-          InkWell(
-            onTap: () {
-              Navigator.of(context).pop();
-            },
-            child: Padding(
-              padding: const EdgeInsets.only(right: 20.0, top: 18),
-              child: Text(
-                'Save',
-                style: textArialBoldxsprimary(),
-              ).onInkTap(() => con.save()),
-            ),
-          )
-        ],
-      ),
-      body: ListView(
-        children: <Widget>[
-          // SizedBox(height:10),
-          buildEditimgCard(),
-          buildEditProfileCard(),
-        ],
-      ),
-    );
+    return LoadingStatusWidget(
+        controller: con,
+        errorWidget: () => Center(child: 'Error'.text.textStyle(textArialRegularsecondary()).make()),
+        loadingWidget: () => Center(child: CircularProgressIndicator()),
+        builder: () => Scaffold(
+              backgroundColor: Colors.white,
+              appBar: AppBar(
+                backgroundColor: Colors.white,
+                title: Text(
+                  'Edit Profile',
+                  style: textArialBoldsecondary(),
+                ),
+                centerTitle: true,
+                iconTheme: IconThemeData(color: secondary),
+                elevation: 0.3,
+                leading: InkWell(
+                  onTap: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Image.asset(
+                    "assets/icons/backarrow.png",
+                    scale: 3,
+                    color: secondary,
+                  ),
+                ),
+                actions: <Widget>[
+                  InkWell(
+                    onTap: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.only(right: 20.0, top: 18),
+                      child: Text(
+                        'Save',
+                        style: textArialBoldxsprimary(),
+                      ).onInkTap(() => con.save()),
+                    ),
+                  )
+                ],
+              ),
+              body: ListView(
+                children: <Widget>[
+                  SizedBox(height: 10),
+                  buildEditimgCard(),
+                  SizedBox(height: 25),
+                  buildEditProfileCard(),
+                ],
+              ),
+            ));
   }
 
   Widget buildEditimgCard() {
     return Container(
       width: Get.mediaQuery.size.width,
-      height: Get.mediaQuery.size.height * 0.37,
+      // height: Get.mediaQuery.size.height * 0.37,
       child: Column(
         // mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          // SizedBox(height: 25),
           Container(
             width: 140,
             height: 140,
@@ -112,6 +116,7 @@ class EditProfile extends StatelessWidget {
   Widget buildEditProfileCard() {
     return FormBuilder(
       key: con.formKey,
+      initialValue: con.initialValue,
       child: Container(
         padding: EdgeInsets.all(20),
         decoration: BoxDecoration(
@@ -135,7 +140,9 @@ class EditProfile extends StatelessWidget {
             buildplacenametextfield(),
             buildemailtext(),
             buildemailtextfield(),
-            buildAccounttext(),
+            // buildAccounttext(),
+            buildPreivacySwitch(),
+            buildNotificationSwitch(),
           ],
         ),
       ),
@@ -199,7 +206,7 @@ class EditProfile extends StatelessWidget {
         child: RichText(
           text: TextSpan(
             children: <TextSpan>[
-              TextSpan(text: "Place", style: textArialRegularsecondarysmwithop()),
+              TextSpan(text: "Status", style: textArialRegularsecondarysmwithop()),
             ],
           ),
         ),
@@ -213,11 +220,12 @@ class EditProfile extends StatelessWidget {
       child: Container(
         height: 50,
         decoration: BoxDecoration(color: Color(0xFFF6F9FD), borderRadius: BorderRadius.circular(10)),
-        child: TextFormField(
+        child: FormBuilderTextField(
+          name: 'status',
           style: textArialRegularsecondary(),
           keyboardType: TextInputType.emailAddress,
           decoration: InputDecoration(
-              hintText: "Place",
+              hintText: "Status",
               hintStyle: textArialRegularsecondary(),
               errorBorder: OutlineInputBorder(borderSide: BorderSide(width: 0, color: Color(0xFFF44242))),
               errorStyle: TextStyle(color: Color(0xFFF44242)),
@@ -261,11 +269,14 @@ class EditProfile extends StatelessWidget {
       child: Container(
         height: 50,
         decoration: BoxDecoration(color: Color(0xFFF6F9FD), borderRadius: BorderRadius.circular(10)),
-        child: TextFormField(
+        child: FormBuilderDateTimePicker(
+          name: 'dateOfBirth',
+          inputType: InputType.date,
+          //
+          // keyboardType: TextInputType.emailAddress,
           style: textArialRegularsecondary(),
-          keyboardType: TextInputType.emailAddress,
           decoration: InputDecoration(
-              hintText: "Email Id",
+              hintText: "Date of birth",
               hintStyle: textArialRegularsecondary(),
               errorBorder: OutlineInputBorder(borderSide: BorderSide(width: 0, color: Color(0xFFF44242))),
               errorStyle: TextStyle(color: Color(0xFFF44242)),
@@ -283,6 +294,48 @@ class EditProfile extends StatelessWidget {
               fillColor: Colors.white,
               focusColor: Colors.white),
         ),
+      ),
+    );
+  }
+
+  Widget buildNotificationSwitch() {
+    return FormBuilderSwitch(
+      name: 'notifications',
+      title: 'Notifications'.text.textStyle(textArialRegularsecondary()).make(),
+      subtitle: 'Receive notifications from account you are following'.text.make().pOnly(top: 8),
+      // initialValue: true,
+      decoration: InputDecoration(
+        hintText: "Notification",
+        hintStyle: textArialRegularsecondary(),
+        errorBorder: OutlineInputBorder(borderSide: BorderSide(width: 0, color: Color(0xFFF44242))),
+        errorStyle: TextStyle(color: Color(0xFFF44242)),
+        contentPadding: EdgeInsets.all(10),
+        border: InputBorder.none,
+        enabledBorder: InputBorder.none,
+        focusedBorder: InputBorder.none,
+        fillColor: Colors.white,
+        focusColor: Colors.white,
+      ),
+    );
+  }
+
+  Widget buildPreivacySwitch() {
+    return FormBuilderSwitch(
+      name: 'privateProfile',
+      title: 'Account Privacy'.text.textStyle(textArialRegularsecondary()).make(),
+      subtitle: 'When account is private , only your friends will be able to view your posts'.text.make().pOnly(top: 8),
+      // initialValue: true,
+      decoration: InputDecoration(
+        hintText: "Notification",
+        hintStyle: textArialRegularsecondary(),
+        errorBorder: OutlineInputBorder(borderSide: BorderSide(width: 0, color: Color(0xFFF44242))),
+        errorStyle: TextStyle(color: Color(0xFFF44242)),
+        contentPadding: EdgeInsets.all(10),
+        border: InputBorder.none,
+        enabledBorder: InputBorder.none,
+        focusedBorder: InputBorder.none,
+        fillColor: Colors.white,
+        focusColor: Colors.white,
       ),
     );
   }

@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hera_app/app/Home/tabs/profile.dart';
+import 'package:hera_app/app/Home/tabs/profile/profile.dart';
 import 'package:hera_app/themes/styles.dart';
-import 'package:hera_core/dep.dart';
-import 'package:hera_core/hera_core.dart';
 
 class Search extends StatefulWidget {
   @override
@@ -90,9 +88,8 @@ class _SearchState extends State<Search> {
         itemBuilder: (BuildContext context, int index) {
           return SingleChildScrollView(
               child: InkWell(
-            onTap: () async {
-              var _profile = await firestore.get<TUser>('MDjOnScHNBZxrg9UzHdInNzGps53').first;
-              Get.to(() => Profile(_profile, isTab: false));
+            onTap: () {
+              Get.to(() => Profile('MDjOnScHNBZxrg9UzHdInNzGps53', isTab: false));
             },
             child: Column(
               children: [

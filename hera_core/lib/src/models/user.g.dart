@@ -20,6 +20,8 @@ _$_TUser _$_$_TUserFromJson(Map<String, dynamic> json) {
     phone: json['phone'] as String,
     bio: json['bio'] as String,
     status: json['status'] as String,
+    privateProfile: json['privateProfile'] as bool ?? true,
+    notifications: json['notifications'] as bool ?? true,
     contactInfo: json['contactInfo'] == null
         ? null
         : ContactInfo.fromJson(json['contactInfo'] as Map<String, dynamic>),
@@ -41,6 +43,8 @@ Map<String, dynamic> _$_$_TUserToJson(_$_TUser instance) => <String, dynamic>{
       'phone': instance.phone,
       'bio': instance.bio,
       'status': instance.status,
+      'privateProfile': instance.privateProfile,
+      'notifications': instance.notifications,
       'contactInfo': instance.contactInfo?.toJson(),
       'companyInfo': instance.companyInfo?.toJson(),
     };

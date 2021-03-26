@@ -32,7 +32,7 @@ dependencies:
   cloud_functions:
   freezed_annotation:
   json_annotation:
-  phone_number:
+  # phone_number:
   nested:
   geocoding:
   dio:

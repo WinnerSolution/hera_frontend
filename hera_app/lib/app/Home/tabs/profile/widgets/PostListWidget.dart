@@ -1,22 +1,34 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hera_app/app.svg/Profile/widgets/ProductItemWidget.dart';
+import 'package:hera_app/app/Home/tabs/profile/widgets/PostItemWidget.dart';
 import 'package:hera_app/components/forms/ProductForm.dart';
 import 'package:hera_app/components/widgets/ItemListWidget.dart';
 import 'package:hera_core/hera_core.dart';
-
-import 'package:softi_common/services.dart';
 import 'package:softi_common/core.dart';
 import 'package:softi_common/resource.dart';
+import 'package:softi_common/services.dart';
 import 'package:softi_mediamanager/MediaManager/MediaManager.dart';
 import 'package:softi_mediamanager/index.dart';
 
-class ProductListController extends BaseController {
-  final String categoryId;
+class PostListController extends BaseController {
+  final String createdBy;
   final ResourceCollection<TProduct> collection;
 
-  ProductListController(this.categoryId) : collection = firestore.collection<TProduct>();
+  PostListController(this.createdBy) : collection = firestore.collection<TProduct>();
+
+  @override
+  void onReady() {
+    var filter = createdBy == null ? Filter() : Filter().$filter$eq('createdBy', createdBy);
+    collection.requestData(filter.build(), options: CollectionOptions());
+    super.onReady();
+  }
+
+  @override
+  void onClose() {
+    collection.dispose();
+    super.onClose();
+  }
 
   RxList<TProduct> get recordList => collection.data;
 
@@ -64,29 +76,16 @@ class ProductListController extends BaseController {
   //   firestore.save<TProduct>(record.copyWith(inStock: !record.inStock));
   // }
 
-  @override
-  void onReady() {
-    var filter = categoryId == null ? Filter() : Filter().$filter$eq('categoryId', categoryId);
-
-    collection.requestData(filter.build(), options: CollectionOptions());
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    collection..dispose();
-    super.onClose();
-  }
 }
 
-class ProductList extends StatelessWidget {
+class PostListWidget extends StatelessWidget {
   final String categoryId;
-  final ProductListController con;
+  final PostListController con;
 
-  ProductList(
+  PostListWidget(
     this.categoryId, {
     Key key,
-  })  : con = Get.put(ProductListController(categoryId), tag: categoryId),
+  })  : con = Get.put(PostListController(categoryId), tag: categoryId),
         super(key: key);
 
   @override
@@ -100,7 +99,7 @@ class ProductList extends StatelessWidget {
           itemCount: _list().length,
           itemBuilder: (index) {
             var record = _list()[index];
-            return ProductListItemWidget(
+            return PostItemWidget(
               product: record,
               onImageTap: () => con.openMediaManager(record),
               onTap: () => con.openProductForm(record),

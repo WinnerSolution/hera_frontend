@@ -6,13 +6,13 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
 import 'package:hera_app/components/extensions/string_extentions.dart';
 import 'package:hera_core/hera_core.dart';
-import 'package:softi_common/form.dart';
+import 'package:softi_form/form.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class ProductFormController extends ResourceFormController<TProduct> {
   var maxImageWidth = 640;
 
-  ProductFormController(TProduct user) : super(editingRecord: user, db: firestore);
+  ProductFormController(TProduct user) : super(record: user, db: firestore);
 
   @override
   Future<void> afterResourceSave(record) async {

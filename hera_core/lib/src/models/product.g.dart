@@ -17,6 +17,7 @@ _$_TProduct _$_$_TProductFromJson(Map<String, dynamic> json) {
         ?.toList(),
     shopUrl: json['shopUrl'] as String,
     price: json['price'] as num,
+    createdBy: json['createdBy'] as String,
   )..path = json['path'] as String;
 }
 
@@ -29,4 +30,5 @@ Map<String, dynamic> _$_$_TProductToJson(_$_TProduct instance) =>
       'images': instance.images?.map((e) => e?.toJson())?.toList(),
       'shopUrl': instance.shopUrl,
       'price': instance.price,
+      'createdBy': instance.createdBy,
     };

@@ -1,33 +1,44 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:get/get.dart';
-import 'package:hera_app/app/Home/tabs/profile.controller.dart';
-import 'package:hera_app/app/Pages/editprofile.dart';
+import 'package:getwidget/getwidget.dart';
+import 'package:hera_app/app/Home/tabs/profile/profile.controller.dart';
+import 'package:hera_app/app/Home/tabs/profile/widgets/PostListWidget.dart';
+import 'package:hera_app/app/Pages/editprofile/editprofile.dart';
 import 'package:hera_app/screens/OtherPages/chat/chat.dart';
 import 'package:hera_app/themes/styles.dart';
-import 'package:hera_core/hera_core.dart';
+import 'package:softi_common/core.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 class Profile extends StatelessWidget {
-  final TUser profile;
+  final String profileId;
   final bool isTab;
   // final ProfileController controller;
 
   Profile(
-    this.profile, {
+    this.profileId, {
     this.isTab = true,
     Key key,
   }) : super(key: key);
 
   ProfileController get con {
-    return Get.put<ProfileController>(ProfileController(profile), tag: profile.id);
+    return Get.put<ProfileController>(ProfileController(profileId), tag: profileId);
   }
 
   @override
   Widget build(BuildContext context) {
-    return Obx(
-      () => Scaffold(
+    return LoadingStatusWidget(
+      controller: con,
+      errorWidget: () => Center(child: 'Error'.text.textStyle(textArialRegularsecondary()).make()),
+      loadingWidget: () => Center(child: CircularProgressIndicator()),
+      builder: () => PlatformScaffold(
         backgroundColor: Colors.white,
-        appBar: AppBar(
+        appBar: PlatformAppBar(
+          title: Text(
+            'Profile',
+            style: textArialBoldsecondary(),
+          ),
           automaticallyImplyLeading: false,
           leading: (isTab)
               ? null
@@ -52,9 +63,9 @@ class Profile extends StatelessWidget {
           //       ),
           //     )
           // ],
-          iconTheme: IconThemeData(color: secondary),
           backgroundColor: Colors.white,
-          elevation: 0.3,
+          // iconTheme: IconThemeData(color: secondary),
+          // elevation: 0.3,
         ),
         body: ListView(
           children: <Widget>[
@@ -91,30 +102,24 @@ class Profile extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           // SizedBox(height: 20),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text(
-                'Profile',
-                style: textArialBoldsecondary(),
-              ),
-            ],
-          ),
+
           SizedBox(height: 25),
+
           Container(
-            width: 80,
-            height: 80,
+            width: 130,
+            height: 130,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(50),
-                image: DecorationImage(image: CachedNetworkImageProvider(con.profileImage), fit: BoxFit.cover)),
+                image: DecorationImage(image: CachedNetworkImageProvider(con.profileImage1), fit: BoxFit.cover)),
             child: Container(),
           ),
+          SizedBox(height: 10),
           Text(
-            con.profile?.fullname ?? '',
+            con.userProfile?.fullname ?? '',
             style: textArialBoldlgSecondary(),
           ),
           Text(
-            con.profile?.status ?? '',
+            con.userProfile?.status ?? '',
             style: textArialRegularsecondarydull(),
           ),
           SizedBox(height: 20),
@@ -179,7 +184,7 @@ class Profile extends StatelessWidget {
               // ignore: deprecated_member_use
               child: RaisedButton(
                 onPressed: () {
-                  Get.to(() => EditProfile(profile));
+                  Get.to(() => EditProfile(con.userProfile));
 
                   // Navigator.push(
                   //   Get.context,
@@ -197,24 +202,14 @@ class Profile extends StatelessWidget {
               ),
             ),
           if (con.isConnectedUser)
-            Container(
-              width: 335,
-              height: 44,
-              // ignore: deprecated_member_use
-              child: RaisedButton(
-                onPressed: () {
-                  con.logout();
-                },
-                color: Colors.transparent,
-                elevation: 0,
-                shape: RoundedRectangleBorder(
-                    borderRadius: new BorderRadius.circular(10.0), side: BorderSide(color: Colors.red)),
-                child: Text(
-                  'Edit Profile',
-                  style: textArialRegularlgsecondary(),
-                ),
-              ),
+            GFButton(
+              type: GFButtonType.transparent,
+              text: 'Sign Out from Hera',
+              color: GFColors.ALT,
+              onPressed: () => con.logout(),
             ),
+
+          // if (con.isConnectedUser)
           if (!con.isConnectedUser)
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -235,7 +230,7 @@ class Profile extends StatelessWidget {
                           color: Colors.white,
                         ),
                         Text(
-                          'Follow Back',
+                          'Follow',
                           style: textArialRegularlgwhite(),
                         )
                       ],
@@ -274,6 +269,11 @@ class Profile extends StatelessWidget {
   }
 
   Widget buildPhotoGrid() {
+    return Container(
+      height: 400,
+      child: PostListWidget(profileId),
+    );
+
     return Column(
       children: [
         Row(

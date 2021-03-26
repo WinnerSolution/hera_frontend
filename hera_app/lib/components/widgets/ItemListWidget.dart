@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:softi_common/services.dart';
+import 'package:softi_common/widgets.dart';
 
 class ItemListWidget extends StatelessWidget {
   final void Function(int, int) itemCreated;

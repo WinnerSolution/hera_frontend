@@ -18,7 +18,7 @@
 	<string>$(FLUTTER_BUILD_NAME)</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
-<key>CFBundleVersion</key>
+	<key>CFBundleVersion</key>
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
@@ -41,15 +41,12 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-
-	<!--  -->
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>$(REVERSED_CLIENT_ID)</string>
-				<!-- <string>com.googleusercontent.apps.81921250246-51q5ials11v3lvsohg46p2b3t84ejj2n</string> -->
 			</array>
 		</dict>
 	</array>
@@ -60,6 +57,7 @@
 	</dict>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Replace with your permission description.</string>
-	
+	<key>NSCameraUsageDescription</key>
+	<string>Privacy - Camera Usage Description</string>
 </dict>
 </plist>

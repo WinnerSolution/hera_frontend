@@ -27,6 +27,9 @@ dependencies:
   softi_mediamanager:
     path: ../../../packages/package_flutter_mediamanager
 
+  softi_form:
+    path: ../../../packages/package_flutter_form
+
   # softi_common:
   #   git:
   #     url: https://github.com/atoumbre/package_flutter_common.git
@@ -38,25 +41,16 @@ dependencies:
   #     ref: v0.1.2
 
   get: 
-  firebase_core: 
-  image_cropper:
-  flutter_platform_widgets: 1.0.1-nullsafety.0
-  flutter_form_builder: ^4.2.0
+  flutter_platform_widgets:
   velocity_x: 
   easy_debounce:
   cached_network_image:
-  material_design_icons_flutter: 
-  flutter_image_compress:
-  # image_picker: ">=0.6.7+14 <1.0.0"
-  # form_builder_image_picker:
   flutter_config: 
   flutter_staggered_grid_view: 
-  getwidget: ^1.2.4
-  flutter_svg: ^0.17.4
-  pin_entry_text_field: ^0.1.4
-  story_view: ^0.11.4
-  image_picker: ^0.6.7+17
-  
+  getwidget:
+  flutter_svg: 
+  pin_entry_text_field: 
+  story_view: 
   firebase_database:
 
 dev_dependencies:
@@ -69,7 +63,6 @@ dev_dependencies:
 dependency_overrides:
   intl: ^0.17.0
   extended_image: 1.5.0-dev
-  photo_manager: ^0.6.0
   date_range_picker:
     git:
       url: https://github.com/LempereurBenjamin/date_range_picker

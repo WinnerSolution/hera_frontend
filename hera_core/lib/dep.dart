@@ -58,7 +58,7 @@ Future<void> coreDependenciesSetup() async {
   Get.put<IMediaPicker>(MediaPicker());
 
   /// Cloud functions (Local module)
-  Get.put<IMediaPicker>(MediaPicker());
+  Get.put<ICameraService>(CameraService());
 
   /// Cloud functions (Local module)
   Get.put<IRemoteStorageService>(FirebaseStorageService());
@@ -69,4 +69,5 @@ final CloudFunctionsService functions = Get.find();
 final ResourceBase firestore = Get.find(tag: 'firestore');
 final ILoadingService loading = Get.find();
 final IMediaPicker mediaPicker = Get.find();
+final ICameraService cameraService = Get.find();
 final IRemoteStorageService cloudStorage = Get.find();

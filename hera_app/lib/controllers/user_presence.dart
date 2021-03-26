@@ -6,21 +6,23 @@ import 'package:get/get.dart';
 import 'package:nested/nested.dart';
 import 'package:softi_common/auth.dart';
 
+// enum UserPresenceState { offline, online, away }
+
 class UserPresence extends SuperController {
   StreamSubscription<Event> _sub;
   DatabaseReference _userStatusDatabaseRef;
 
-  var isOfflineForDatabase = {
+  var isOffline = {
     'state': 'offline',
     'lastChanged': ServerValue.timestamp,
   };
 
-  var isOnlineForDatabase = {
+  var isOnline = {
     'state': 'online',
     'lastChanged': ServerValue.timestamp,
   };
 
-  var isAwayForDatabase = {
+  var isAway = {
     'state': 'away',
     'lastChanged': ServerValue.timestamp,
   };
@@ -55,11 +57,11 @@ class UserPresence extends SuperController {
     setOnline();
   }
 
-  void setOnline() => _userStatusDatabaseRef.update(isOnlineForDatabase);
+  void setOnline() => _userStatusDatabaseRef?.update(isOnline);
 
-  void setOffline() => _userStatusDatabaseRef.update(isOfflineForDatabase);
+  void setOffline() => _userStatusDatabaseRef?.update(isOffline);
 
-  void setAway() => _userStatusDatabaseRef.update(isAwayForDatabase);
+  void setAway() => _userStatusDatabaseRef?.update(isAway);
 
   rtdbAndLocalFsPresence(AuthUser authUser) {
     _cancel();
@@ -80,7 +82,7 @@ class UserPresence extends SuperController {
       }
     });
 
-    _userStatusDatabaseRef.onDisconnect().update(isOfflineForDatabase).then((result) => null);
+    _userStatusDatabaseRef.onDisconnect().update(isOffline).then((result) => null);
   }
 }
 

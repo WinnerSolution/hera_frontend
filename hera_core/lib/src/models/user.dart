@@ -29,6 +29,10 @@ abstract class TUser extends IResourceData with BaseResourceDataMixin implements
     String bio,
     String status,
 
+    // Settings
+    @Default(true) bool privateProfile,
+    @Default(true) bool notifications,
+
     //
     ContactInfo contactInfo,
     CompanyInfo companyInfo,

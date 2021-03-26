@@ -7,7 +7,7 @@ import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:get/get.dart';
 import 'package:hera_app/components/extensions/string_extentions.dart';
 import 'package:hera_core/hera_core.dart';
-import 'package:softi_common/form.dart';
+import 'package:softi_form/form.dart';
 import 'package:softi_common/services.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -15,7 +15,7 @@ import 'package:velocity_x/velocity_x.dart';
 class ProfileFormController extends ResourceFormController<TUser> {
   var maxImageWidth = 640;
 
-  ProfileFormController(TUser user) : super(editingRecord: user, db: firestore);
+  ProfileFormController(TUser user) : super(record: user, db: firestore);
 
   @override
   Future<void> afterResourceSave(record) async {
