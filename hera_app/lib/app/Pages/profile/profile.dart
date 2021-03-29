@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
-import 'package:hera_app/app/Home/tabs/profile/profile.controller.dart';
-import 'package:hera_app/app/Home/tabs/profile/widgets/PostListWidget.dart';
-import 'package:hera_app/app/Pages/editprofile/editprofile.dart';
+import 'package:hera_app/app/Pages/ProfileForm/ProfileForm.dart';
+import 'package:hera_app/app/Pages/profile/profile.controller.dart';
+import 'package:hera_app/app/Pages/profile/widgets/PostItemWidget.dart';
+import 'package:hera_app/components/widgets/ItemSliverListWidget.dart';
 import 'package:hera_app/screens/OtherPages/chat/chat.dart';
 import 'package:hera_app/themes/styles.dart';
 import 'package:softi_common/core.dart';
@@ -30,51 +31,90 @@ class Profile extends StatelessWidget {
   Widget build(BuildContext context) {
     return LoadingStatusWidget(
       controller: con,
-      errorWidget: () => Center(child: 'Error'.text.textStyle(textArialRegularsecondary()).make()),
+      errorWidget: () => Center(
+        child: [
+          'Error'.text.textStyle(textArialRegularsecondary()).make(),
+          ElevatedButton(
+            onPressed: () => con.loadUserData(),
+            child: 'Retry'.text.make(),
+          )
+        ].column(),
+      ),
       loadingWidget: () => Center(child: CircularProgressIndicator()),
       builder: () => PlatformScaffold(
         backgroundColor: Colors.white,
-        appBar: PlatformAppBar(
-          title: Text(
-            'Profile',
-            style: textArialBoldsecondary(),
-          ),
-          automaticallyImplyLeading: false,
-          leading: (isTab)
-              ? null
-              : InkWell(
-                  onTap: () {
-                    Navigator.of(context).pop();
-                  },
-                  child: Image.asset(
-                    "assets/icons/backarrow.png",
-                    scale: 3,
-                    color: secondary,
-                  ),
-                ),
-          // actions: <Widget>[
-          //   if (isTab)
-          //     Padding(
-          //       padding: const EdgeInsets.only(right: 20.0),
-          //       child: Image.asset(
-          //         'assets/icons/menuicon.png',
-          //         width: 20,
-          //         height: 20,
-          //       ),
-          //     )
-          // ],
-          backgroundColor: Colors.white,
-          // iconTheme: IconThemeData(color: secondary),
-          // elevation: 0.3,
-        ),
-        body: ListView(
-          children: <Widget>[
-            buildProfileCard(),
-            SizedBox(height: 44),
-            buildPhotoGrid(),
+        // appBar:
+        body: CustomScrollView(
+          slivers: [
+            SliverAppBar(
+              pinned: true,
+              floating: true,
+              snap: true,
+              // expandedHeight: 500,
+              // flexibleSpace: FlexibleSpaceBar(title: ),
+              title: Text(
+                'Profile',
+                style: textArialBoldsecondary(),
+              ),
+              automaticallyImplyLeading: false,
+              leading: (isTab)
+                  ? null
+                  : InkWell(
+                      onTap: () {
+                        Navigator.of(context).pop();
+                      },
+                      child: Image.asset(
+                        "assets/icons/backarrow.png",
+                        scale: 3,
+                        color: secondary,
+                      ),
+                    ),
+              // actions: <Widget>[
+              //   if (isTab)
+              //     Padding(
+              //       padding: const EdgeInsets.only(right: 20.0),
+              //       child: Image.asset(
+              //         'assets/icons/menuicon.png',
+              //         width: 20,
+              //         height: 20,
+              //       ),
+              //     )
+              // ],
+              backgroundColor: Colors.white,
+              // iconTheme: IconThemeData(color: secondary),
+              // elevation: 0.3,
+            ),
+            SliverList(
+              delegate: SliverChildListDelegate(
+                <Widget>[
+                  buildProfileCard(),
+                  // SizedBox(height: 44),
+                  // buildPhotoGrid(),
+                ],
+              ),
+              // children:
+            ),
+            buildPostList(),
+            // PostListWidget(profileId),
           ],
         ),
       ),
+    );
+  }
+
+  Widget buildPostList() {
+    return ItemSliverListWidget(
+      itemCreated: con.handleListItemCreation,
+      itemCount: con.collection.data().length,
+      itemBuilder: (index) {
+        var record = con.collection.data()[index];
+        return PostItemWidget(
+          product: record,
+          onImageTap: () => null, //con.openMediaManager(record),
+          onTap: () => null, //con.openProductForm(record),
+          toggleInStock: (newValue) => null,
+        );
+      },
     );
   }
 
@@ -84,7 +124,7 @@ class Profile extends StatelessWidget {
       // height: Get.mediaQuery.size.height * 0.5,
       decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: new BorderRadius.only(
+          borderRadius: BorderRadius.only(
             bottomLeft: Radius.circular(20.0),
             bottomRight: Radius.circular(20.0),
           ),
@@ -194,7 +234,7 @@ class Profile extends StatelessWidget {
                 color: Colors.transparent,
                 elevation: 0,
                 shape: RoundedRectangleBorder(
-                    borderRadius: new BorderRadius.circular(10.0), side: BorderSide(color: secondary)),
+                    borderRadius: BorderRadius.circular(10.0), side: BorderSide(color: secondary)),
                 child: Text(
                   'Edit Profile',
                   style: textArialRegularlgsecondary(),
@@ -220,7 +260,7 @@ class Profile extends StatelessWidget {
                   child: RaisedButton(
                     onPressed: () {},
                     shape: RoundedRectangleBorder(
-                      borderRadius: new BorderRadius.circular(10.0),
+                      borderRadius: BorderRadius.circular(10.0),
                     ),
                     color: primary,
                     child: Row(
@@ -251,7 +291,7 @@ class Profile extends StatelessWidget {
                     color: Colors.transparent,
                     elevation: 0,
                     shape: RoundedRectangleBorder(
-                        borderRadius: new BorderRadius.circular(10.0), side: BorderSide(color: secondary)),
+                        borderRadius: BorderRadius.circular(10.0), side: BorderSide(color: secondary)),
                     child: Text(
                       'Message',
                       style: textArialRegularlgsecondary(),
@@ -265,122 +305,6 @@ class Profile extends StatelessWidget {
           )
         ],
       ),
-    );
-  }
-
-  Widget buildPhotoGrid() {
-    return Container(
-      height: 400,
-      child: PostListWidget(profileId),
-    );
-
-    return Column(
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Container(
-              //  margin: EdgeInsets.only(left:5,right: 5),
-              width: Get.mediaQuery.size.width * 0.475, height: 112,
-              decoration: BoxDecoration(
-                  color: Colors.grey,
-                  borderRadius: BorderRadius.circular(10),
-                  image: DecorationImage(image: AssetImage('assets/images/u3.png'), fit: BoxFit.cover)),
-            ),
-            Container(
-              //  margin: EdgeInsets.only(left:5,right: 5),
-              width: Get.mediaQuery.size.width * 0.475, height: 112,
-              decoration: BoxDecoration(
-                  color: Colors.grey,
-                  borderRadius: BorderRadius.circular(10),
-                  image: DecorationImage(image: AssetImage('assets/images/u5.png'), fit: BoxFit.cover)),
-            ),
-            // GridView.builder(
-            //   physics: ScrollPhysics(),
-            //   shrinkWrap: true,
-            //   scrollDirection: Axis.vertical,
-            //   itemCount: 5,
-            //   itemBuilder: (BuildContext context, int index) {
-            //     return SingleChildScrollView(
-            //         child: InkWell(
-            //       //               onTap: () {
-            //       //                  Navigator.push(
-            //       //   context,
-            //       //   MaterialPageRoute(builder: (context) => PostDetails()),
-            //       // );
-            //       //               },
-            //       child: Container(
-            //         //  margin: EdgeInsets.only(left:5,right: 5),
-            //         width: 171,
-            //         height: 112,
-            //         decoration: BoxDecoration(
-            //             color: Colors.grey,
-            //             borderRadius: BorderRadius.circular(10),
-            //             image: DecorationImage(
-            //                 image: AssetImage('assets/images/u3.png'),
-            //                 fit: BoxFit.cover)),
-            //       ),
-            //     ));
-            //   },
-            //   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            //       childAspectRatio: MediaQuery.of(context).size.width / 248,
-            //       crossAxisSpacing: 10,
-            //       mainAxisSpacing: 10,
-            //       crossAxisCount: 2),
-            // ),
-          ],
-        ),
-        SizedBox(height: 7),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Container(
-              //  margin: EdgeInsets.only(left:5,right: 5),
-              width: Get.mediaQuery.size.width * 0.475,
-              height: 112,
-              decoration: BoxDecoration(
-                  color: Colors.grey,
-                  borderRadius: BorderRadius.circular(10),
-                  image: DecorationImage(image: AssetImage('assets/images/u7.png'), fit: BoxFit.cover)),
-            ),
-            Container(
-              //  margin: EdgeInsets.only(left:5,right: 5),
-              width: Get.mediaQuery.size.width * 0.475,
-              height: 112,
-              decoration: BoxDecoration(
-                  color: Colors.grey,
-                  borderRadius: BorderRadius.circular(10),
-                  image: DecorationImage(image: AssetImage('assets/images/u6.png'), fit: BoxFit.cover)),
-            ),
-          ],
-        ),
-        SizedBox(height: 7),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Container(
-              //  margin: EdgeInsets.only(left:5,right: 5),
-              width: Get.mediaQuery.size.width * 0.475,
-              height: 112,
-              decoration: BoxDecoration(
-                  color: Colors.grey,
-                  borderRadius: BorderRadius.circular(10),
-                  image: DecorationImage(image: AssetImage('assets/images/u8.png'), fit: BoxFit.cover)),
-            ),
-            Container(
-              //  margin: EdgeInsets.only(left:5,right: 5),
-              width: Get.mediaQuery.size.width * 0.475,
-
-              height: 112,
-              decoration: BoxDecoration(
-                  color: Colors.grey,
-                  borderRadius: BorderRadius.circular(10),
-                  image: DecorationImage(image: AssetImage('assets/images/u9.png'), fit: BoxFit.cover)),
-            ),
-          ],
-        ),
-        SizedBox(height: 17),
-      ],
     );
   }
 }

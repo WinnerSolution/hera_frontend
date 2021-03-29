@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'product.dart';
+part of 'post.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_TProduct _$_$_TProductFromJson(Map<String, dynamic> json) {
-  return _$_TProduct(
+_$_TPost _$_$_TPostFromJson(Map<String, dynamic> json) {
+  return _$_TPost(
     id: json['id'] as String,
     title: json['title'] as String,
     description: json['description'] as String,
@@ -18,11 +18,14 @@ _$_TProduct _$_$_TProductFromJson(Map<String, dynamic> json) {
     shopUrl: json['shopUrl'] as String,
     price: json['price'] as num,
     createdBy: json['createdBy'] as String,
+    createdAt:
+        const CustomDateTimeConverter().fromJson(json['createdAt'] as DateTime),
+    updatedAt:
+        const CustomDateTimeConverter().fromJson(json['updatedAt'] as DateTime),
   )..path = json['path'] as String;
 }
 
-Map<String, dynamic> _$_$_TProductToJson(_$_TProduct instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$_$_TPostToJson(_$_TPost instance) => <String, dynamic>{
       'path': instance.path,
       'id': instance.id,
       'title': instance.title,
@@ -31,4 +34,6 @@ Map<String, dynamic> _$_$_TProductToJson(_$_TProduct instance) =>
       'shopUrl': instance.shopUrl,
       'price': instance.price,
       'createdBy': instance.createdBy,
+      'createdAt': const CustomDateTimeConverter().toJson(instance.createdAt),
+      'updatedAt': const CustomDateTimeConverter().toJson(instance.updatedAt),
     };

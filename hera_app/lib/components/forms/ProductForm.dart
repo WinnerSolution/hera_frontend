@@ -9,15 +9,15 @@ import 'package:hera_core/hera_core.dart';
 import 'package:softi_form/form.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-class ProductFormController extends ResourceFormController<TProduct> {
+class ProductFormController extends ResourceFormController<TPost> {
   var maxImageWidth = 640;
 
-  ProductFormController(TProduct user) : super(record: user, db: firestore);
+  ProductFormController(TPost user) : super(record: user, db: firestore);
 
   @override
   Future<void> afterResourceSave(record) async {
     await loading.showSuccess('Saved', duration: 200.milliseconds);
-    Get.back<TProduct>(result: record);
+    Get.back<TPost>(result: record);
   }
 
   @override
@@ -33,7 +33,7 @@ class ProductFormController extends ResourceFormController<TProduct> {
 }
 
 class ProductForm extends StatelessWidget {
-  final TProduct product;
+  final TPost product;
   ProductForm({this.product});
 
   ProductFormController get controller => Get.put<ProductFormController>(ProductFormController(product));

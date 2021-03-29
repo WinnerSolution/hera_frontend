@@ -3,8 +3,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hera_core/src/models/value_object/remote_image.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:hera_core/src/models/convertors/date.dart';
-import 'package:hera_core/src/models/value_object/company_info.dart';
-import 'package:hera_core/src/models/value_object/contact_info.dart';
 import 'package:softi_common/resource.dart';
 
 part 'user.freezed.dart';
@@ -28,14 +26,16 @@ abstract class TUser extends IResourceData with BaseResourceDataMixin implements
     String phone,
     String bio,
     String status,
+    // ContactInfo contactInfo,
+    // CompanyInfo companyInfo,
 
-    // Settings
+    //! Settings
     @Default(true) bool privateProfile,
     @Default(true) bool notifications,
 
-    //
-    ContactInfo contactInfo,
-    CompanyInfo companyInfo,
+    //! Timestamp
+    DateTime createdAt,
+    DateTime updatedAt,
   }) = _TUser;
 
   factory TUser.fromJson(Map<String, dynamic> json) => _$TUserFromJson(json);

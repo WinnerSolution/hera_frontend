@@ -22,12 +22,10 @@ _$_TUser _$_$_TUserFromJson(Map<String, dynamic> json) {
     status: json['status'] as String,
     privateProfile: json['privateProfile'] as bool ?? true,
     notifications: json['notifications'] as bool ?? true,
-    contactInfo: json['contactInfo'] == null
-        ? null
-        : ContactInfo.fromJson(json['contactInfo'] as Map<String, dynamic>),
-    companyInfo: json['companyInfo'] == null
-        ? null
-        : CompanyInfo.fromJson(json['companyInfo'] as Map<String, dynamic>),
+    createdAt:
+        const CustomDateTimeConverter().fromJson(json['createdAt'] as DateTime),
+    updatedAt:
+        const CustomDateTimeConverter().fromJson(json['updatedAt'] as DateTime),
   )..path = json['path'] as String;
 }
 
@@ -45,6 +43,6 @@ Map<String, dynamic> _$_$_TUserToJson(_$_TUser instance) => <String, dynamic>{
       'status': instance.status,
       'privateProfile': instance.privateProfile,
       'notifications': instance.notifications,
-      'contactInfo': instance.contactInfo?.toJson(),
-      'companyInfo': instance.companyInfo?.toJson(),
+      'createdAt': const CustomDateTimeConverter().toJson(instance.createdAt),
+      'updatedAt': const CustomDateTimeConverter().toJson(instance.updatedAt),
     };

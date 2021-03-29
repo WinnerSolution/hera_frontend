@@ -6,44 +6,29 @@ import 'package:softi_common/widgets.dart';
 class ItemListWidget extends StatelessWidget {
   final void Function(int, int) itemCreated;
   final int itemCount;
+  final int crossAxisCount;
   final Widget Function(int) itemBuilder;
 
   ItemListWidget({
     Key key,
-    this.itemCount,
-    this.itemCreated,
-    this.itemBuilder,
+    @required this.itemCount,
+    @required this.itemCreated,
+    @required this.itemBuilder,
+    this.crossAxisCount = 2,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    // return ListView.builder(
-    //   itemCount: itemCount,
-    //   itemBuilder: (BuildContext context, int index) {
-    //     return ListItemCreationAware(
-    //       itemCreated: () => itemCreated(index, itemCount),
-    //       child: itemBuilder(index),
-    //       // child: ObxValue<Rx<T>>(itemBuilder, recordList[index].obs),
-    //     );
-    //   },
-    // );
-
     return StaggeredGridView.countBuilder(
-      crossAxisCount: 2,
-
+      crossAxisCount: crossAxisCount,
       itemCount: itemCount,
       itemBuilder: (BuildContext context, int index) {
         return ListItemCreationAware(
           itemCreated: () => itemCreated(index, itemCount),
           child: itemBuilder(index),
-          // child: ObxValue<Rx<T>>(itemBuilder, recordList[index].obs),
         );
       },
       staggeredTileBuilder: (int index) => StaggeredTile.fit(1),
-
-      // staggeredTileBuilder: (int index) => new StaggeredTile.count(2, index.isEven ? 2 : 1),
-      // mainAxisSpacing: 4.0,
-      // crossAxisSpacing: 4.0,
     );
   }
 }

@@ -8,7 +8,7 @@ import 'package:hera_core/hera_core.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class PostForm extends StatelessWidget {
-  final TProduct post;
+  final TPost post;
   // final String createdBy;
   PostForm({
     Key key,

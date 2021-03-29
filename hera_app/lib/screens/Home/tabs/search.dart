@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hera_app/app/Home/tabs/profile/profile.dart';
+import 'package:hera_app/app/Pages/profile/profile.dart';
 import 'package:hera_app/themes/styles.dart';
 
 class Search extends StatefulWidget {

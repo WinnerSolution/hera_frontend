@@ -5,18 +5,18 @@ import 'package:hera_core/src/models/value_object/remote_image.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:softi_common/resource.dart';
 
-part 'product.freezed.dart';
-part 'product.g.dart';
+part 'post.freezed.dart';
+part 'post.g.dart';
 
 @freezed
-abstract class TProduct extends IResourceData with BaseResourceDataMixin implements _$TProduct {
-  TProduct._();
+abstract class TPost extends IResourceData with BaseResourceDataMixin implements _$TPost {
+  TPost._();
 
   @CustomDateTimeConverter()
   @JsonSerializable(explicitToJson: true)
-  factory TProduct({
-    String id,
+  factory TPost({
     //
+    String id,
     String title,
     String description,
     List<RemoteImage> images,
@@ -25,11 +25,15 @@ abstract class TProduct extends IResourceData with BaseResourceDataMixin impleme
 
     //
     String createdBy,
-  }) = _TProduct;
 
-  factory TProduct.fromJson(Map<String, dynamic> json) => _$TProductFromJson(json);
+    //
+    DateTime createdAt,
+    DateTime updatedAt,
+  }) = _TPost;
 
-  TProduct fromJson(Map<String, dynamic> doc) {
-    return TProduct.fromJson(doc);
+  factory TPost.fromJson(Map<String, dynamic> json) => _$TPostFromJson(json);
+
+  TPost fromJson(Map<String, dynamic> doc) {
+    return TPost.fromJson(doc);
   }
 }

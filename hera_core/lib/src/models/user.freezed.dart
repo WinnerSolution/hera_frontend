@@ -29,8 +29,8 @@ class _$TUserTearOff {
       String status,
       bool privateProfile = true,
       bool notifications = true,
-      ContactInfo contactInfo,
-      CompanyInfo companyInfo}) {
+      DateTime createdAt,
+      DateTime updatedAt}) {
     return _TUser(
       id: id,
       fullname: fullname,
@@ -43,8 +43,8 @@ class _$TUserTearOff {
       status: status,
       privateProfile: privateProfile,
       notifications: notifications,
-      contactInfo: contactInfo,
-      companyInfo: companyInfo,
+      createdAt: createdAt,
+      updatedAt: updatedAt,
     );
   }
 
@@ -69,11 +69,13 @@ mixin _$TUser {
   String get email;
   String get phone;
   String get bio;
-  String get status; // Settings
+  String get status; // ContactInfo contactInfo,
+// CompanyInfo companyInfo,
+//! Settings
   bool get privateProfile;
-  bool get notifications; //
-  ContactInfo get contactInfo;
-  CompanyInfo get companyInfo;
+  bool get notifications; //! Timestamp
+  DateTime get createdAt;
+  DateTime get updatedAt;
 
   Map<String, dynamic> toJson();
   @JsonKey(ignore: true)
@@ -96,12 +98,10 @@ abstract class $TUserCopyWith<$Res> {
       String status,
       bool privateProfile,
       bool notifications,
-      ContactInfo contactInfo,
-      CompanyInfo companyInfo});
+      DateTime createdAt,
+      DateTime updatedAt});
 
   $RemoteImageCopyWith<$Res> get profileImage;
-  $ContactInfoCopyWith<$Res> get contactInfo;
-  $CompanyInfoCopyWith<$Res> get companyInfo;
 }
 
 /// @nodoc
@@ -125,8 +125,8 @@ class _$TUserCopyWithImpl<$Res> implements $TUserCopyWith<$Res> {
     Object status = freezed,
     Object privateProfile = freezed,
     Object notifications = freezed,
-    Object contactInfo = freezed,
-    Object companyInfo = freezed,
+    Object createdAt = freezed,
+    Object updatedAt = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed ? _value.id : id as String,
@@ -147,12 +147,10 @@ class _$TUserCopyWithImpl<$Res> implements $TUserCopyWith<$Res> {
       notifications: notifications == freezed
           ? _value.notifications
           : notifications as bool,
-      contactInfo: contactInfo == freezed
-          ? _value.contactInfo
-          : contactInfo as ContactInfo,
-      companyInfo: companyInfo == freezed
-          ? _value.companyInfo
-          : companyInfo as CompanyInfo,
+      createdAt:
+          createdAt == freezed ? _value.createdAt : createdAt as DateTime,
+      updatedAt:
+          updatedAt == freezed ? _value.updatedAt : updatedAt as DateTime,
     ));
   }
 
@@ -163,26 +161,6 @@ class _$TUserCopyWithImpl<$Res> implements $TUserCopyWith<$Res> {
     }
     return $RemoteImageCopyWith<$Res>(_value.profileImage, (value) {
       return _then(_value.copyWith(profileImage: value));
-    });
-  }
-
-  @override
-  $ContactInfoCopyWith<$Res> get contactInfo {
-    if (_value.contactInfo == null) {
-      return null;
-    }
-    return $ContactInfoCopyWith<$Res>(_value.contactInfo, (value) {
-      return _then(_value.copyWith(contactInfo: value));
-    });
-  }
-
-  @override
-  $CompanyInfoCopyWith<$Res> get companyInfo {
-    if (_value.companyInfo == null) {
-      return null;
-    }
-    return $CompanyInfoCopyWith<$Res>(_value.companyInfo, (value) {
-      return _then(_value.copyWith(companyInfo: value));
     });
   }
 }
@@ -204,15 +182,11 @@ abstract class _$TUserCopyWith<$Res> implements $TUserCopyWith<$Res> {
       String status,
       bool privateProfile,
       bool notifications,
-      ContactInfo contactInfo,
-      CompanyInfo companyInfo});
+      DateTime createdAt,
+      DateTime updatedAt});
 
   @override
   $RemoteImageCopyWith<$Res> get profileImage;
-  @override
-  $ContactInfoCopyWith<$Res> get contactInfo;
-  @override
-  $CompanyInfoCopyWith<$Res> get companyInfo;
 }
 
 /// @nodoc
@@ -237,8 +211,8 @@ class __$TUserCopyWithImpl<$Res> extends _$TUserCopyWithImpl<$Res>
     Object status = freezed,
     Object privateProfile = freezed,
     Object notifications = freezed,
-    Object contactInfo = freezed,
-    Object companyInfo = freezed,
+    Object createdAt = freezed,
+    Object updatedAt = freezed,
   }) {
     return _then(_TUser(
       id: id == freezed ? _value.id : id as String,
@@ -259,12 +233,10 @@ class __$TUserCopyWithImpl<$Res> extends _$TUserCopyWithImpl<$Res>
       notifications: notifications == freezed
           ? _value.notifications
           : notifications as bool,
-      contactInfo: contactInfo == freezed
-          ? _value.contactInfo
-          : contactInfo as ContactInfo,
-      companyInfo: companyInfo == freezed
-          ? _value.companyInfo
-          : companyInfo as CompanyInfo,
+      createdAt:
+          createdAt == freezed ? _value.createdAt : createdAt as DateTime,
+      updatedAt:
+          updatedAt == freezed ? _value.updatedAt : updatedAt as DateTime,
     ));
   }
 }
@@ -286,8 +258,8 @@ class _$_TUser extends _TUser with DiagnosticableTreeMixin {
       this.status,
       this.privateProfile = true,
       this.notifications = true,
-      this.contactInfo,
-      this.companyInfo})
+      this.createdAt,
+      this.updatedAt})
       : assert(privateProfile != null),
         assert(notifications != null),
         super._();
@@ -315,19 +287,21 @@ class _$_TUser extends _TUser with DiagnosticableTreeMixin {
   @override
   final String status;
   @JsonKey(defaultValue: true)
-  @override // Settings
+  @override // ContactInfo contactInfo,
+// CompanyInfo companyInfo,
+//! Settings
   final bool privateProfile;
   @JsonKey(defaultValue: true)
   @override
   final bool notifications;
-  @override //
-  final ContactInfo contactInfo;
+  @override //! Timestamp
+  final DateTime createdAt;
   @override
-  final CompanyInfo companyInfo;
+  final DateTime updatedAt;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'TUser(id: $id, fullname: $fullname, dateOfBirth: $dateOfBirth, gender: $gender, profileImage: $profileImage, email: $email, phone: $phone, bio: $bio, status: $status, privateProfile: $privateProfile, notifications: $notifications, contactInfo: $contactInfo, companyInfo: $companyInfo)';
+    return 'TUser(id: $id, fullname: $fullname, dateOfBirth: $dateOfBirth, gender: $gender, profileImage: $profileImage, email: $email, phone: $phone, bio: $bio, status: $status, privateProfile: $privateProfile, notifications: $notifications, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -346,8 +320,8 @@ class _$_TUser extends _TUser with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('status', status))
       ..add(DiagnosticsProperty('privateProfile', privateProfile))
       ..add(DiagnosticsProperty('notifications', notifications))
-      ..add(DiagnosticsProperty('contactInfo', contactInfo))
-      ..add(DiagnosticsProperty('companyInfo', companyInfo));
+      ..add(DiagnosticsProperty('createdAt', createdAt))
+      ..add(DiagnosticsProperty('updatedAt', updatedAt));
   }
 
   @override
@@ -381,12 +355,12 @@ class _$_TUser extends _TUser with DiagnosticableTreeMixin {
             (identical(other.notifications, notifications) ||
                 const DeepCollectionEquality()
                     .equals(other.notifications, notifications)) &&
-            (identical(other.contactInfo, contactInfo) ||
+            (identical(other.createdAt, createdAt) ||
                 const DeepCollectionEquality()
-                    .equals(other.contactInfo, contactInfo)) &&
-            (identical(other.companyInfo, companyInfo) ||
+                    .equals(other.createdAt, createdAt)) &&
+            (identical(other.updatedAt, updatedAt) ||
                 const DeepCollectionEquality()
-                    .equals(other.companyInfo, companyInfo)));
+                    .equals(other.updatedAt, updatedAt)));
   }
 
   @override
@@ -403,8 +377,8 @@ class _$_TUser extends _TUser with DiagnosticableTreeMixin {
       const DeepCollectionEquality().hash(status) ^
       const DeepCollectionEquality().hash(privateProfile) ^
       const DeepCollectionEquality().hash(notifications) ^
-      const DeepCollectionEquality().hash(contactInfo) ^
-      const DeepCollectionEquality().hash(companyInfo);
+      const DeepCollectionEquality().hash(createdAt) ^
+      const DeepCollectionEquality().hash(updatedAt);
 
   @JsonKey(ignore: true)
   @override
@@ -431,8 +405,8 @@ abstract class _TUser extends TUser {
       String status,
       bool privateProfile,
       bool notifications,
-      ContactInfo contactInfo,
-      CompanyInfo companyInfo}) = _$_TUser;
+      DateTime createdAt,
+      DateTime updatedAt}) = _$_TUser;
 
   factory _TUser.fromJson(Map<String, dynamic> json) = _$_TUser.fromJson;
 
@@ -455,14 +429,16 @@ abstract class _TUser extends TUser {
   String get bio;
   @override
   String get status;
-  @override // Settings
+  @override // ContactInfo contactInfo,
+// CompanyInfo companyInfo,
+//! Settings
   bool get privateProfile;
   @override
   bool get notifications;
-  @override //
-  ContactInfo get contactInfo;
+  @override //! Timestamp
+  DateTime get createdAt;
   @override
-  CompanyInfo get companyInfo;
+  DateTime get updatedAt;
   @override
   @JsonKey(ignore: true)
   _$TUserCopyWith<_TUser> get copyWith;

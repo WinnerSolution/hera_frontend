@@ -8,7 +8,7 @@ import 'package:hera_core/hera_core.dart';
 import 'package:softi_common/core.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-import 'editprofile.controller.dart';
+import 'ProfileForm.controller.dart';
 
 class EditProfile extends StatelessWidget {
   final TUser user;

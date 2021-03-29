@@ -40,12 +40,12 @@ class _FriendsStoryState extends State<FriendsStory> {
               //     ),
               StoryItem.pageImage(
                 url: "https://image.ibb.co/cU4WGx/Omotuo-Groundnut-Soup-braperucci-com-1.jpg",
-                imageFit: BoxFit.cover,
+                imageFit: BoxFit.cover, controller: null,
                 // controller: null
                 // caption: "Still sampling",
               ),
               StoryItem.pageImage(
-                url: "assets/images/story.png", imageFit: BoxFit.cover,
+                url: "assets/images/story.png", imageFit: BoxFit.cover, controller: null,
                 // caption: "Still sampling",
               ),
               // StoryItem.pageGif(

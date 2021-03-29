@@ -10,6 +10,7 @@ import 'package:hera_core/hera_core.dart';
 import 'package:nested/nested.dart';
 import 'package:softi_common/core.dart';
 import 'package:softi_common/widgets.dart';
+import 'package:timeago/timeago.dart' as timeago;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,6 +20,9 @@ Future<void> main() async {
 
   ///
   await coreDependenciesSetup();
+
+  timeago.setLocaleMessages('fr', timeago.FrMessages());
+  timeago.setLocaleMessages('fr', timeago.FrShortMessages());
 
   ///
   runApp(CivilioApp());

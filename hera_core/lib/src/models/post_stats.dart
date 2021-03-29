@@ -5,32 +5,31 @@ import 'package:hera_core/src/models/value_object/presence_state.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:softi_common/resource.dart';
 
-part 'user_stats.freezed.dart';
-part 'user_stats.g.dart';
+part 'post_stats.freezed.dart';
+part 'post_stats.g.dart';
 
 @freezed
-abstract class TUserStats extends IResourceData with BaseResourceDataMixin implements _$TUserStats {
-  TUserStats._();
+abstract class TPostStats extends IResourceData with BaseResourceDataMixin implements _$TPostStats {
+  TPostStats._();
 
   @CustomDateTimeConverter()
   @JsonSerializable(explicitToJson: true)
-  factory TUserStats({
+  factory TPostStats({
     String id,
     DateTime lastPostTime,
-    @Default(0) int postsCount,
+    @Default(0) int shareCount,
     @Default(0) int likesCount,
-    @Default(0) int followingCount,
-    @Default(0) int followersCount,
+    @Default(0) int commentCount,
     PresenceState presenceState,
 
     //
     DateTime createdAt,
     DateTime updatedAt,
-  }) = _TUserStats;
+  }) = _TPostStats;
 
-  factory TUserStats.fromJson(Map<String, dynamic> json) => _$TUserStatsFromJson(json);
+  factory TPostStats.fromJson(Map<String, dynamic> json) => _$TPostStatsFromJson(json);
 
-  TUserStats fromJson(Map<String, dynamic> doc) {
-    return TUserStats.fromJson(doc);
+  TPostStats fromJson(Map<String, dynamic> doc) {
+    return TPostStats.fromJson(doc);
   }
 }

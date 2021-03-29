@@ -52,6 +52,7 @@ dependencies:
   pin_entry_text_field: 
   story_view: 
   firebase_database:
+  timeago:
 
 dev_dependencies:
   flutter_test:
