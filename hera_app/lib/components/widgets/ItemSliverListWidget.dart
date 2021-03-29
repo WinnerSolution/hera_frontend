@@ -5,6 +5,8 @@ import 'package:softi_common/widgets.dart';
 class ItemSliverListWidget extends StatelessWidget {
   final void Function(int, int) itemCreated;
   final int itemCount;
+  final int crossAxisCount;
+  final double childAspectRatio;
   final Widget Function(int) itemBuilder;
 
   ItemSliverListWidget({
@@ -12,6 +14,8 @@ class ItemSliverListWidget extends StatelessWidget {
     this.itemCount,
     this.itemCreated,
     this.itemBuilder,
+    this.crossAxisCount = 2,
+    this.childAspectRatio = 1.5,
   }) : super(key: key);
 
   @override
@@ -27,8 +31,8 @@ class ItemSliverListWidget extends StatelessWidget {
         childCount: itemCount,
       ),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        childAspectRatio: 1.3,
+        crossAxisCount: crossAxisCount,
+        childAspectRatio: childAspectRatio,
       ),
     );
   }

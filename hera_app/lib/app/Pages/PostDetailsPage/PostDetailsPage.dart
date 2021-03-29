@@ -1,9 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hera_app/app/Pages/CommentsPage/widgets/CommentWidget.dart';
 import 'package:hera_app/app/Pages/PostDetailsPage/PostDetailsPage.controller.dart';
-import 'package:hera_app/app/Pages/PostDetailsPage/widgets/CommentWidget.dart';
 import 'package:hera_app/components/widgets/ItemListWidget.dart';
+// import 'package:hera_app/controllers/user_snippet_controller.dart';
 import 'package:hera_app/screens/OtherPages/likes/likes.dart';
 import 'package:hera_app/themes/styles.dart';
 import 'package:hera_core/hera_core.dart';
@@ -558,6 +559,8 @@ class PostDetails extends StatelessWidget {
           crossAxisCount: 1,
           itemBuilder: (index) {
             return CommentWidget(comment: _commentsList[index]);
+
+            // return CommentWidget(comment: _commentsList[index]);
           },
         );
       },

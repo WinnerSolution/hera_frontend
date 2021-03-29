@@ -17,9 +17,9 @@ abstract class TPostStats extends IResourceData with BaseResourceDataMixin imple
   factory TPostStats({
     String id,
     DateTime lastPostTime,
-    @Default(0) int shareCount,
+    @Default(0) int sharesCount,
     @Default(0) int likesCount,
-    @Default(0) int commentCount,
+    @Default(0) int commentsCount,
     PresenceState presenceState,
 
     //
@@ -31,5 +31,9 @@ abstract class TPostStats extends IResourceData with BaseResourceDataMixin imple
 
   TPostStats fromJson(Map<String, dynamic> doc) {
     return TPostStats.fromJson(doc);
+  }
+
+  TPostStats incremetLikes(int i) {
+    return copyWith(likesCount: likesCount + i);
   }
 }

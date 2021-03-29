@@ -11,9 +11,9 @@ _$_TPostStats _$_$_TPostStatsFromJson(Map<String, dynamic> json) {
     id: json['id'] as String,
     lastPostTime: const CustomDateTimeConverter()
         .fromJson(json['lastPostTime'] as DateTime),
-    shareCount: json['shareCount'] as int ?? 0,
+    sharesCount: json['sharesCount'] as int ?? 0,
     likesCount: json['likesCount'] as int ?? 0,
-    commentCount: json['commentCount'] as int ?? 0,
+    commentsCount: json['commentsCount'] as int ?? 0,
     presenceState: json['presenceState'] == null
         ? null
         : PresenceState.fromJson(json['presenceState'] as Map<String, dynamic>),
@@ -30,9 +30,9 @@ Map<String, dynamic> _$_$_TPostStatsToJson(_$_TPostStats instance) =>
       'id': instance.id,
       'lastPostTime':
           const CustomDateTimeConverter().toJson(instance.lastPostTime),
-      'shareCount': instance.shareCount,
+      'sharesCount': instance.sharesCount,
       'likesCount': instance.likesCount,
-      'commentCount': instance.commentCount,
+      'commentsCount': instance.commentsCount,
       'presenceState': instance.presenceState?.toJson(),
       'createdAt': const CustomDateTimeConverter().toJson(instance.createdAt),
       'updatedAt': const CustomDateTimeConverter().toJson(instance.updatedAt),

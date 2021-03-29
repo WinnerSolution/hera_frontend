@@ -29,11 +29,6 @@ class ProfilePageController extends BaseController {
 
   @override
   void onReady() {
-    var filter = Filter() //
-        .$filter$eq('createdBy', profileId)
-        .$orderBy('updatedAt', desc: true);
-
-    collection.requestData(filter.build(), options: CollectionOptions());
     super.onReady();
   }
 
@@ -58,10 +53,10 @@ class ProfilePageController extends BaseController {
       'https://firebasestorage.googleapis.com/v0/b/softi-hera.appspot.com/o/dummy450x450.jpg?alt=media&token=10a37525-a4a5-4376-bd34-229b2d1a508c';
 
   loadUserData() async {
-    toggleLoading();
     controllerTaskHandler(
         task: () async {
-          print(loadingStatus);
+          toggleLoading();
+          await Future.delayed(3.seconds);
 
           _userProfile = isConnectedUser //
               ? AppState.find.user
@@ -72,6 +67,12 @@ class ProfilePageController extends BaseController {
               : (await firestore.get<TUserStats>(profileId).first).obs;
 
           // await Future.delayed(3.seconds);
+
+          var filter = Filter() //
+              .$filter$eq('createdBy', profileId)
+              .$orderBy('updatedAt', desc: true);
+
+          collection.requestData(filter.build(), options: CollectionOptions());
 
           toggleIdle();
 

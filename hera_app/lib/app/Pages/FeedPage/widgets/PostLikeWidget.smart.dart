@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hera_app/app/Pages/FeedPage/widgets/PostStatsWidget.smart.dart';
 import 'package:hera_app/controllers/app_controller.dart';
 import 'package:hera_core/hera_core.dart';
 import 'package:softi_common/core.dart';
@@ -18,6 +19,12 @@ class PostLikeWidgetController extends BaseController {
 
   toggleLike() {
     postLiked.toggle();
+
+    //
+    var _c = Get.find<PostStatsController>(tag: postId);
+    _c.postStats(_c.postStats().incremetLikes(postLiked() ? 1 : -1));
+
+    //
     firestore.save<TLike>(TLike(
       postId: postId,
       userId: userId,
