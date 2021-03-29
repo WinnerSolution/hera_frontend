@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:hera_app/app/Pages/FeedPage/FeedPage.dart';
+import 'package:hera_app/app/Pages/ProfilePage/ProfilePage.dart';
 import 'package:hera_app/app/Pages/addpost/postform.dart';
-import 'package:hera_app/app/Pages/profile/profile.dart';
 import 'package:hera_app/controllers/app_controller.dart';
 import 'package:hera_app/screens/Home/tabs/notification.dart';
 import 'package:hera_app/screens/Home/tabs/search.dart';
@@ -57,7 +57,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
           ),
           Container(
             color: Colors.white,
-            child: Profile(AppState.find.user().id),
+            child: ProfilePage(AppState.find.user().id),
           ),
         ],
       ),

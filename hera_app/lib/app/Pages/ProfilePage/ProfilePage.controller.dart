@@ -9,7 +9,7 @@ import 'package:softi_common/resource.dart';
 import 'package:softi_common/services.dart';
 import 'package:softi_mediamanager/index.dart';
 
-class ProfileController extends BaseController {
+class ProfilePageController extends BaseController {
   final String profileId;
 
   Rx<TUser> _userProfile = Rx<TUser>();
@@ -18,7 +18,7 @@ class ProfileController extends BaseController {
   final ResourceCollection<TPost> collection;
   final maxImageWidth = 640;
 
-  ProfileController(this.profileId) : collection = firestore.collection<TPost>();
+  ProfilePageController(this.profileId) : collection = firestore.collection<TPost>();
 
   @override
   onInit() {

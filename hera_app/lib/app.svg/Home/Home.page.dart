@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:get/get.dart';
 import 'package:hera_app/app.svg/Home/Home.page.controller.dart';
-import 'package:hera_app/app/Pages/profile/profile.dart';
-// import 'package:hera_app/app.svg/Profile/Profile.page.dart';
+import 'package:hera_app/app/Pages/ProfilePage/ProfilePage.dart';
 import 'package:hera_app/components/extensions/string_extentions.dart';
 import 'package:hera_app/controllers/app_controller.dart';
 import 'package:hera_app/screens/Home/tabs/notification.dart';
@@ -28,7 +27,7 @@ class HomePage extends StatelessWidget {
     ),
     Container(
       color: Colors.white,
-      child: Profile(AppState.find.user().id),
+      child: ProfilePage(AppState.find.user().id),
     ),
   ];
 

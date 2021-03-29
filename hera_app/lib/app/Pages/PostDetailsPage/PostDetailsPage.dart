@@ -1,8 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hera_app/app/Pages/postdetails/postdetails.controller.dart';
-import 'package:hera_app/app/Pages/postdetails/widgets/CommentWidget.dart';
+import 'package:hera_app/app/Pages/PostDetailsPage/PostDetailsPage.controller.dart';
+import 'package:hera_app/app/Pages/PostDetailsPage/widgets/CommentWidget.dart';
 import 'package:hera_app/components/widgets/ItemListWidget.dart';
 import 'package:hera_app/screens/OtherPages/likes/likes.dart';
 import 'package:hera_app/themes/styles.dart';
@@ -13,7 +13,7 @@ class PostDetails extends StatelessWidget {
 
   PostDetails(this.viewedPost);
 
-  PostDetailsController get con => Get.put(PostDetailsController(viewedPost));
+  PostDetailsPageController get con => Get.put(PostDetailsPageController(viewedPost));
 
   @override
   Widget build(BuildContext context) {

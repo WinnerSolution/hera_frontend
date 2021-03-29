@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hera_app/app/Pages/profile/profile.dart';
+import 'package:hera_app/app/Pages/ProfilePage/ProfilePage.dart';
 import 'package:hera_app/themes/styles.dart';
 
 class Search extends StatefulWidget {
@@ -89,7 +89,7 @@ class _SearchState extends State<Search> {
           return SingleChildScrollView(
               child: InkWell(
             onTap: () {
-              Get.to(() => Profile('MDjOnScHNBZxrg9UzHdInNzGps53', isTab: false));
+              Get.to(() => ProfilePage('MDjOnScHNBZxrg9UzHdInNzGps53', isTab: false));
             },
             child: Column(
               children: [

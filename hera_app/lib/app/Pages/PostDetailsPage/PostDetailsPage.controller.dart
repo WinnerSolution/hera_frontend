@@ -5,11 +5,11 @@ import 'package:hera_core/hera_core.dart';
 import 'package:softi_common/core.dart';
 import 'package:softi_common/resource.dart';
 
-class PostDetailsController extends BaseController {
+class PostDetailsPageController extends BaseController {
   final Rx<TPost> post;
   final ResourceCollection<TComment> commentCollection;
 
-  PostDetailsController(TPost viewedPost)
+  PostDetailsPageController(TPost viewedPost)
       : post = viewedPost.obs,
         commentCollection = firestore.collection<TComment>();
 

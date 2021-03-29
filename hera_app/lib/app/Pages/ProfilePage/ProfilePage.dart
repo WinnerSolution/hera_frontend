@@ -4,27 +4,27 @@ import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:hera_app/app/Pages/ProfileForm/ProfileForm.dart';
-import 'package:hera_app/app/Pages/profile/profile.controller.dart';
-import 'package:hera_app/app/Pages/profile/widgets/PostItemWidget.dart';
+import 'package:hera_app/app/Pages/ProfilePage/ProfilePage.controller.dart';
+import 'package:hera_app/app/Pages/ProfilePage/widgets/PostItemWidget.dart';
 import 'package:hera_app/components/widgets/ItemSliverListWidget.dart';
 import 'package:hera_app/screens/OtherPages/chat/chat.dart';
 import 'package:hera_app/themes/styles.dart';
 import 'package:softi_common/core.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-class Profile extends StatelessWidget {
+class ProfilePage extends StatelessWidget {
   final String profileId;
   final bool isTab;
   // final ProfileController controller;
 
-  Profile(
+  ProfilePage(
     this.profileId, {
     this.isTab = true,
     Key key,
   }) : super(key: key);
 
-  ProfileController get con {
-    return Get.put<ProfileController>(ProfileController(profileId), tag: profileId);
+  ProfilePageController get con {
+    return Get.put<ProfilePageController>(ProfilePageController(profileId), tag: profileId);
   }
 
   @override

@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hera_app/app/Pages/postdetails/postdetails.dart';
 import 'package:hera_app/screens/OtherPages/comments/comments.dart';
 import 'package:hera_app/screens/OtherPages/conversations/conversations.dart';
 import 'package:hera_app/screens/OtherPages/friendsstory/friendsstory.dart';
+import 'package:hera_app/screens/OtherPages/postdetails/postdetails.dart';
 import 'package:hera_app/screens/OtherPages/poststatus/poststatus.dart';
 import 'package:hera_app/themes/styles.dart';
-import 'package:hera_core/hera_core.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -293,7 +292,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
 
   Widget buildPostSection() {
     return InkWell(
-      onTap: () => Get.to(() => PostDetails(TPost())),
+      onTap: () => Get.to(() => PostDetails()),
       child: Container(
         // margin: EdgeInsets.only(left: 5, right: 5.0),
         width: MediaQuery.of(context).size.width,

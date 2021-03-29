@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hera_app/app/Pages/FeedPage/FeedPage.controller.dart';
 import 'package:hera_app/app/Pages/FeedPage/widgets/PostStatsWidget.smart.dart';
-import 'package:hera_app/app/Pages/postdetails/postdetails.dart';
-import 'package:hera_app/screens/OtherPages/poststatus/poststatus.dart';
+import 'package:hera_app/app/Pages/PostDetailsPage/PostDetailsPage.dart';
 import 'package:hera_app/themes/styles.dart';
 import 'package:hera_core/hera_core.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -72,7 +71,7 @@ class FeedPage extends StatelessWidget {
 
   Widget buildSearchField() {
     return InkWell(
-      onTap: () => Get.to(() => PostStatus()),
+      onTap: () => null, //Get.to(() => PostStatus()),
       child: Container(
         width: 335,
         height: 55,
