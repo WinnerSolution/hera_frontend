@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_config/flutter_config.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
-import 'package:hera_app/controllers/app_controller.dart';
-import 'package:hera_app/controllers/user_presence.dart';
+import 'package:hera_app/controllers/AppController.dart';
+import 'package:hera_app/controllers/UserPresenceController.dart';
 import 'package:hera_app/routes/routes.dart';
 import 'package:hera_core/hera_core.dart';
 import 'package:nested/nested.dart';
@@ -29,7 +29,7 @@ Future<void> main() async {
 }
 
 class CivilioApp extends StatelessWidget {
-  final AppState con = Get.put(AppState(), permanent: true);
+  final AppController con = Get.put(AppController(), permanent: true);
 
   @override
   Widget build(BuildContext context) {

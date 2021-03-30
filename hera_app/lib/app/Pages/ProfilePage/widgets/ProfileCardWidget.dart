@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:hera_app/app/Pages/ProfileForm/ProfileForm.dart';
-import 'package:hera_app/controllers/app_controller.dart';
+import 'package:hera_app/controllers/AppController.dart';
 import 'package:hera_app/screens/OtherPages/chat/chat.dart';
 import 'package:hera_app/themes/styles.dart';
 import 'package:hera_core/hera_core.dart';
@@ -153,7 +153,7 @@ class ProfileCardWidget extends StatelessWidget {
               type: GFButtonType.transparent,
               text: 'Sign Out from Hera',
               color: GFColors.ALT,
-              onPressed: () => AppState.find.logout(),
+              onPressed: () => AppController.find.logout(),
             ),
 
           // if (con.isConnectedUser)

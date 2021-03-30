@@ -1,7 +1,7 @@
-import 'package:hera_app/controllers/app_controller.dart';
+import 'package:hera_app/controllers/AppController.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:get/get.dart';
-import 'package:hera_core/dep.dart';
+import 'package:hera_core/hera_core.dart';
 import 'package:softi_common/auth.dart';
 import 'package:softi_common/core.dart';
 
@@ -78,7 +78,7 @@ class LoginController extends BaseController {
         // RESEND THE CODE IF CODESENT IS NOT NULL
         _result = await _sendCodeResult().resendCode();
       } else {
-        _result = await AppState.find.authApi.sendSignInWithPhoneCode(phoneNumber: _loginInput());
+        _result = await AppController.find.authApi.sendSignInWithPhoneCode(phoneNumber: _loginInput());
         print(_result);
       }
 
@@ -90,7 +90,7 @@ class LoginController extends BaseController {
 
       // ignore: unawaited_futures
       _sendCodeResult().authResult?.then((_authUser) {
-        AppState.find.isNewAuthUser(_authUser.isNew ?? false);
+        AppController.find.isNewAuthUser(_authUser.isNew ?? false);
       });
       // authNavigatorKey.currentState.pushNamed(LoginRoutes.verification);
       busy(false);
@@ -125,7 +125,7 @@ class LoginController extends BaseController {
     }
 
     try {
-      await AppState.find.authApi.sendSignInWithEmailLink(email: _loginInput());
+      await AppController.find.authApi.sendSignInWithEmailLink(email: _loginInput());
       _emailSentTo(_loginInput());
     } catch (e) {
       _emailSentTo('');

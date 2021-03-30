@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hera_app/controllers/user_snippet_controller.dart';
+import 'package:hera_app/app/SmartWidget/UserSnippetWidget.dart';
 import 'package:hera_core/hera_core.dart';
 import 'package:timeago/timeago.dart' as timeago;
 

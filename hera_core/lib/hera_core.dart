@@ -1,6 +1,6 @@
 library civilio_core;
 
-export 'package:hera_core/dep.dart';
+export 'package:hera_core/src/dep.dart';
 //! Models
 export 'package:hera_core/src/models/comment.dart';
 export 'package:hera_core/src/models/like.dart';

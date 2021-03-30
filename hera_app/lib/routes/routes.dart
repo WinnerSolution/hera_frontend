@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:get/get.dart';
-import 'package:hera_app/app/Login/Login.page.dart';
-import 'package:hera_app/controllers/app_controller.dart';
+import 'package:hera_app/app/Pages/Login/Login.page.dart';
+import 'package:hera_app/controllers/AppController.dart';
 import 'package:hera_app/app/Home/home.dart';
 
 class AuthMiddleware extends GetMiddleware {
   @override
   RouteSettings redirect(String route) {
-    if (AppState.find.user == null) return const RouteSettings(name: Routes.login);
+    if (AppController.find.user == null) return const RouteSettings(name: Routes.login);
     return null;
   }
 }

@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:hera_app/app.svg/Home/Home.page.controller.dart';
 import 'package:hera_app/app/Pages/ProfilePage/ProfilePage.dart';
 import 'package:hera_app/components/extensions/string_extentions.dart';
-import 'package:hera_app/controllers/app_controller.dart';
+import 'package:hera_app/controllers/AppController.dart';
 import 'package:hera_app/screens/Home/tabs/notification.dart';
 import 'package:hera_app/screens/Home/tabs/search.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -27,7 +27,7 @@ class HomePage extends StatelessWidget {
     ),
     Container(
       color: Colors.white,
-      child: ProfilePage(AppState.find.user().id),
+      child: ProfilePage(AppController.find.user().id),
     ),
   ];
 
@@ -69,7 +69,7 @@ class HomeTabView extends StatelessWidget {
         'Mairie du plateau'.headline3.make(),
         Card(
           child: FlutterLogo().p8().box.size(100, 100).make().onTap(() {
-            AppState.find.authApi.signOut();
+            AppController.find.authApi.signOut();
           }),
         )
       ],

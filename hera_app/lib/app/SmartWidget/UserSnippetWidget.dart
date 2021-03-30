@@ -1,25 +1,30 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hera_app/controllers/RecordController.dart';
+import 'package:hera_app/controllers/AppController.dart';
 import 'package:hera_app/themes/styles.dart';
 import 'package:hera_core/hera_core.dart';
-import 'package:softi_common/core.dart';
 
-class UserSnippetController extends BaseController {
-  final String userId;
-  final bool reactive;
-  UserSnippetController(this.userId, {this.reactive: true});
+class UserSnippetController extends RecordController<TUser> {
+  UserSnippetController(
+    String userId, {
+    reactive: true,
+    // ResourceBase firestore,
+  }) : super(
+          userId,
+          reactive: reactive,
+          resourceBase: firestore,
+        );
 
-  final Rx<TUser> user = TUser().obs;
+  Rx<TUser> get user => record;
 
-  void getUserSnippet(userId) {
-    user.bindStream(firestore.get<TUser>(userId, reactive: reactive));
-  }
-
-  @override
-  void onInit() {
-    getUserSnippet(userId);
-    super.onInit();
+  String getUserName() {
+    if (AppController.find.isConnectedUser(recordId)) {
+      return 'me';
+    } else {
+      return user()?.fullname ?? '';
+    }
   }
 }
 
@@ -69,7 +74,7 @@ class UserSnippetWidget extends StatelessWidget {
                         Container(
                           // width: Get.mediaQuery.size.width * 0.25,
                           child: Text(
-                            con.user()?.fullname ?? '',
+                            con.getUserName(),
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis,
                             style: textArialBoldSecondary(),

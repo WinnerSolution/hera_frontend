@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:get/get.dart';
-import 'package:hera_app/controllers/app_controller.dart';
+import 'package:hera_app/controllers/AppController.dart';
 import 'package:hera_core/hera_core.dart';
 import 'package:softi_form/form.dart';
 
@@ -17,8 +17,8 @@ class AddPostController extends ResourceFormController<TPost> {
     // this.createdBy,
   ) : super(record: post, db: firestore);
 
-  Rx<TUser> get user => AppState.find.user;
-  String get userProfileImageUrl => AppState.find.userProfileImageUrl;
+  Rx<TUser> get user => AppController.find.user;
+  String get userProfileImageUrl => AppController.find.userProfileImageUrl;
 
   // @override
   // Future<TProduct> beforeResourceSave(TProduct record) async {
@@ -64,7 +64,7 @@ class AddPostController extends ResourceFormController<TPost> {
               minHeight: maxImageWidth,
               minWidth: maxImageWidth,
             ),
-            title: 'users_picutures/' + AppState.find.user().id + '/posts/' + record.id,
+            title: 'users_picutures/' + AppController.find.user().id + '/posts/' + record.id,
           );
 
           if (result.result?.url != null) {

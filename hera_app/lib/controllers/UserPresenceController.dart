@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hera_app/controllers/AppController.dart';
+import 'package:hera_core/hera_core.dart';
 import 'package:nested/nested.dart';
 import 'package:softi_common/auth.dart';
 
@@ -57,11 +59,22 @@ class UserPresence extends SuperController {
     setOnline();
   }
 
-  void setOnline() => _userStatusDatabaseRef?.update(isOnline);
+  void _changeUserPresence(Map<String, dynamic> presence) {
+    if (AppController.find.userStats() != null) {
+      firestore.save<TUserStats>(AppController.find.userStats().copyWith(
+            presenceState: PresenceState(
+              lastChanged: presence['lastChanged'],
+              state: presence['state'],
+            ),
+          ));
+    }
+  }
 
-  void setOffline() => _userStatusDatabaseRef?.update(isOffline);
+  void setOnline() => _changeUserPresence(isOnline);
 
-  void setAway() => _userStatusDatabaseRef?.update(isAway);
+  void setOffline() => _changeUserPresence(isOffline);
+
+  void setAway() => _changeUserPresence(isAway);
 
   rtdbAndLocalFsPresence(AuthUser authUser) {
     _cancel();

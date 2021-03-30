@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:get/get.dart';
-import 'package:hera_app/controllers/app_controller.dart';
+import 'package:hera_app/controllers/AppController.dart';
 import 'package:hera_core/hera_core.dart';
 import 'package:softi_form/form.dart';
 import 'package:softi_mediamanager/index.dart';
@@ -12,8 +12,8 @@ class ProfileFormController extends ResourceFormController<TUser> {
 
   ProfileFormController(TUser profile) : super(record: profile, db: firestore);
 
-  Rx<TUser> get user => AppState.find.user;
-  String get userProfileImageUrl => AppState.find.userProfileImageUrl;
+  Rx<TUser> get user => AppController.find.user;
+  String get userProfileImageUrl => AppController.find.userProfileImageUrl;
 
   @override
   Future<void> afterResourceSave(record) async {
@@ -45,7 +45,7 @@ class ProfileFormController extends ResourceFormController<TUser> {
               minHeight: maxImageWidth,
               minWidth: maxImageWidth,
             ),
-            title: 'users_picutures/' + AppState.find.user().id + '/profile_image',
+            title: 'users_picutures/' + AppController.find.user().id + '/profile_image',
           );
 
           if (result.result?.url != null) {

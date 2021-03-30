@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:hera_app/components/forms/ProductForm.dart';
 import 'package:hera_app/components/forms/ProfileForm.dart';
-import 'package:hera_app/controllers/app_controller.dart';
+import 'package:hera_app/controllers/AppController.dart';
 import 'package:hera_core/hera_core.dart';
 import 'package:softi_common/auth.dart';
 import 'package:softi_common/core.dart';
@@ -38,13 +38,13 @@ class ProfilePageController extends BaseController {
     super.onClose();
   }
 
-  AuthUser get authUser => AppState.find.authUser();
+  AuthUser get authUser => AppController.find.authUser();
   TUser get userProfile => _userProfile();
   TUserStats get userStats => _userStats();
 
   bool get isConnectedUser {
-    bool _result = (AppState.find.user()?.id ?? '-1') == (profileId ?? '');
-    print((AppState.find.user()?.id ?? '-1') + '/' + (profileId ?? ''));
+    bool _result = (AppController.find.user()?.id ?? '-1') == (profileId ?? '');
+    print((AppController.find.user()?.id ?? '-1') + '/' + (profileId ?? ''));
     return _result;
   }
 
@@ -56,14 +56,13 @@ class ProfilePageController extends BaseController {
     controllerTaskHandler(
         task: () async {
           toggleLoading();
-          await Future.delayed(3.seconds);
 
           _userProfile = isConnectedUser //
-              ? AppState.find.user
+              ? AppController.find.user
               : (await firestore.get<TUser>(profileId).first).obs;
 
           _userStats = isConnectedUser //
-              ? AppState.find.userStats
+              ? AppController.find.userStats
               : (await firestore.get<TUserStats>(profileId).first).obs;
 
           // await Future.delayed(3.seconds);
@@ -127,9 +126,9 @@ class ProfilePageController extends BaseController {
     }
   }
 
-  void logout() => AppState.find.logout();
+  void logout() => AppController.find.logout();
 
-  void handleEditProfilePressed() => Get.to(() => ProfileForm(AppState.find.user()));
+  void handleEditProfilePressed() => Get.to(() => ProfileForm(AppController.find.user()));
 
   void handleAddProductPressed() => Get.to(() => ProductForm(product: TPost()));
 }

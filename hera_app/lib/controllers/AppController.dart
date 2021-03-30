@@ -1,20 +1,20 @@
 import 'dart:async';
 
 import 'package:get/get.dart';
-import 'package:hera_app/controllers/user_presence.dart';
+import 'package:hera_app/controllers/UserPresenceController.dart';
 import 'package:hera_app/routes/routes.dart';
 import 'package:hera_core/hera_core.dart';
 import 'package:softi_common/auth.dart';
 import 'package:softi_common/core.dart';
 
-class AppState extends BaseController //
+class AppController extends BaseController //
     with
         ThemeControllerMixin,
         LocaleControllerMixin,
         BindingControllerMixin,
         AuthControllerMixin {
   //
-  static AppState get find => Get.find<AppState>();
+  static AppController get find => Get.find<AppController>();
 
   final user = TUser().obs;
   final userStats = TUserStats().obs;
@@ -185,6 +185,12 @@ class AppState extends BaseController //
   void onClose() {
     _userSub.cancel();
     super.onClose();
+  }
+
+  bool isConnectedUser(userId) {
+    bool _result = (user()?.id ?? '-1') == (userId ?? '');
+    print((user()?.id ?? '-1') + '/' + (userId ?? ''));
+    return _result;
   }
 
   // utils

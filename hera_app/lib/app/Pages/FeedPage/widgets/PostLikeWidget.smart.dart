@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hera_app/app/Pages/FeedPage/widgets/PostStatsWidget.smart.dart';
-import 'package:hera_app/controllers/app_controller.dart';
+import 'package:hera_app/controllers/AppController.dart';
 import 'package:hera_core/hera_core.dart';
 import 'package:softi_common/core.dart';
 
@@ -15,7 +15,7 @@ class PostLikeWidgetController extends BaseController {
   final postLiked = false.obs;
   StreamSubscription _sub;
 
-  static String get userId => AppState.find.user().getId();
+  static String get userId => AppController.find.user().getId();
 
   toggleLike() {
     postLiked.toggle();

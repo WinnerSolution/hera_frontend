@@ -1,6 +1,6 @@
-import 'package:hera_app/app/Login/Login.controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hera_app/app/Pages/Login/Login.controller.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:hera_app/components/extensions/string_extentions.dart';
 

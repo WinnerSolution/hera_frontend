@@ -4,7 +4,7 @@ import 'package:getwidget/getwidget.dart';
 import 'package:hera_app/app/Pages/FeedPage/FeedPage.dart';
 import 'package:hera_app/app/Pages/ProfilePage/ProfilePage.dart';
 import 'package:hera_app/app/Pages/addpost/postform.dart';
-import 'package:hera_app/controllers/app_controller.dart';
+import 'package:hera_app/controllers/AppController.dart';
 import 'package:hera_app/screens/Home/tabs/notification.dart';
 import 'package:hera_app/screens/Home/tabs/search.dart';
 import 'package:hera_app/themes/styles.dart';
@@ -57,14 +57,14 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
           ),
           Container(
             color: Colors.white,
-            child: ProfilePage(AppState.find.user().id),
+            child: ProfilePage(AppController.find.user().id),
           ),
         ],
       ),
       floatingActionButton: FloatingActionButton(
         shape: StadiumBorder(),
         onPressed: () {
-          Get.to(() => PostForm(post: TPost(createdBy: AppState.find.user().getId())));
+          Get.to(() => PostForm(post: TPost(createdBy: AppController.find.user().getId())));
         },
         backgroundColor: Color(0xFF00BCD4),
         child: Image.asset(

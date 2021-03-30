@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hera_app/controllers/app_controller.dart';
+import 'package:hera_app/controllers/AppController.dart';
 import 'package:hera_core/hera_core.dart';
 import 'package:softi_common/core.dart';
 import 'package:softi_common/resource.dart';
@@ -52,7 +52,7 @@ class PostDetailsPageController extends BaseController {
             .save<TComment>(TComment(
           comment: lastCommentController.text,
           postId: post().getId(),
-          userId: AppState.find.user().id,
+          userId: AppController.find.user().id,
         ))
             .catchError((error, stackTrace) async {
           await loading.showToast('status');
