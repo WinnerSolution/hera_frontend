@@ -1,14 +1,12 @@
 import 'dart:async';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hera_app/controllers/AppController.dart';
-import 'package:hera_core/hera_core.dart';
 import 'package:nested/nested.dart';
 import 'package:softi_common/auth.dart';
-
-// enum UserPresenceState { offline, online, away }
 
 class UserPresence extends SuperController {
   StreamSubscription<Event> _sub;
@@ -24,9 +22,19 @@ class UserPresence extends SuperController {
     'lastChanged': ServerValue.timestamp,
   };
 
-  var isAway = {
+  var isOfflineFirestore = {
+    'state': 'offline',
+    'lastChanged': FieldValue.serverTimestamp(),
+  };
+
+  var isOnlineFirestore = {
+    'state': 'online',
+    'lastChanged': FieldValue.serverTimestamp(),
+  };
+
+  var isAwayFirestore = {
     'state': 'away',
-    'lastChanged': ServerValue.timestamp,
+    'lastChanged': FieldValue.serverTimestamp(),
   };
 
   void _cancel() {
@@ -60,21 +68,18 @@ class UserPresence extends SuperController {
   }
 
   void _changeUserPresence(Map<String, dynamic> presence) {
-    if (AppController.find.userStats() != null) {
-      firestore.save<TUserStats>(AppController.find.userStats().copyWith(
-            presenceState: PresenceState(
-              lastChanged: presence['lastChanged'],
-              state: presence['state'],
-            ),
-          ));
+    if (AppController.find.userStats()?.getId() != null) {
+      FirebaseFirestore.instance //
+          .doc('civi_users_stats/${AppController.find.userStats().getId()}')
+          .update({'presenceState': presence});
     }
   }
 
-  void setOnline() => _changeUserPresence(isOnline);
+  void setOnline() => _changeUserPresence(isOnlineFirestore);
 
-  void setOffline() => _changeUserPresence(isOffline);
+  void setOffline() => _changeUserPresence(isOfflineFirestore);
 
-  void setAway() => _changeUserPresence(isAway);
+  void setAway() => _changeUserPresence(isAwayFirestore);
 
   rtdbAndLocalFsPresence(AuthUser authUser) {
     _cancel();

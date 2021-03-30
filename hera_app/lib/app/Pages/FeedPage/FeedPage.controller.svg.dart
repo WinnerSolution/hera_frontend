@@ -3,7 +3,7 @@ import 'package:hera_core/hera_core.dart';
 import 'package:softi_common/core.dart';
 import 'package:softi_common/resource.dart';
 
-class FeedPageController extends BaseController with CollectionControllerMixin {
+class FeedPageController extends BaseController {
   final ResourceCollection<TPost> postCollection;
 
   FeedPageController() : postCollection = firestore.collection<TPost>();
