@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hera_app/app/Pages/FeedPage/widgets/PostStatsWidget.smart.dart';
+import 'package:hera_app/app/Tabs/FeedPage/widgets/PostStatsWidget.smart.dart';
 import 'package:hera_app/controllers/AppController.dart';
 import 'package:hera_core/hera_core.dart';
 import 'package:softi_common/core.dart';

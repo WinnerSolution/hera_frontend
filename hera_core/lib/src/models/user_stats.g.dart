@@ -9,10 +9,10 @@ part of 'user_stats.dart';
 _$_TUserStats _$_$_TUserStatsFromJson(Map<String, dynamic> json) {
   return _$_TUserStats(
     id: json['id'] as String,
-    lastPostTime: const CustomDateTimeConverter()
-        .fromJson(json['lastPostTime'] as DateTime),
-    postsCount: json['postsCount'] as int ?? 0,
+    commentsCount: json['commentsCount'] as int ?? 0,
     likesCount: json['likesCount'] as int ?? 0,
+    sharesCount: json['sharesCount'] as int ?? 0,
+    postsCount: json['postsCount'] as int ?? 0,
     followingCount: json['followingCount'] as int ?? 0,
     followersCount: json['followersCount'] as int ?? 0,
     presenceState: json['presenceState'] == null
@@ -29,10 +29,10 @@ Map<String, dynamic> _$_$_TUserStatsToJson(_$_TUserStats instance) =>
     <String, dynamic>{
       'path': instance.path,
       'id': instance.id,
-      'lastPostTime':
-          const CustomDateTimeConverter().toJson(instance.lastPostTime),
-      'postsCount': instance.postsCount,
+      'commentsCount': instance.commentsCount,
       'likesCount': instance.likesCount,
+      'sharesCount': instance.sharesCount,
+      'postsCount': instance.postsCount,
       'followingCount': instance.followingCount,
       'followersCount': instance.followersCount,
       'presenceState': instance.presenceState?.toJson(),

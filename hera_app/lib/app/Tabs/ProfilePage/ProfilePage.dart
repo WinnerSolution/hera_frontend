@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:get/get.dart';
-import 'package:hera_app/app/Pages/ProfilePage/ProfilePage.controller.dart';
-import 'package:hera_app/app/Pages/ProfilePage/widgets/PostItemWidget.dart';
-import 'package:hera_app/app/Pages/ProfilePage/widgets/ProfileCardWidget.dart';
+import 'package:hera_app/app/Tabs/ProfilePage/ProfilePage.controller.dart';
+import 'package:hera_app/app/Tabs/ProfilePage/widgets/PostItemWidget.dart';
+import 'package:hera_app/app/Tabs/ProfilePage/widgets/ProfileCardWidget.dart';
 import 'package:hera_app/components/widgets/ItemSliverListWidget.dart';
 import 'package:hera_app/themes/styles.dart';
 import 'package:softi_common/core.dart';
@@ -28,7 +28,7 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return RefreshIndicator(
       onRefresh: () {
-        return con.loadUserData();
+        return con.loadView();
       },
       child: LoadingStatusWidget(
         controller: con,
@@ -36,7 +36,7 @@ class ProfilePage extends StatelessWidget {
           child: [
             'Error'.text.textStyle(textArialRegularsecondary()).make(),
             ElevatedButton(
-              onPressed: () => con.loadUserData(),
+              onPressed: () => con.loadView(),
               child: 'Retry'.text.make(),
             )
           ].column(),
@@ -57,6 +57,8 @@ class ProfilePage extends StatelessWidget {
                     userProfile: con.userProfile,
                     userStats: con.userStats,
                     isConnectedUser: con.isConnectedUser,
+                    onPressed: con.handleOnPressedEditUser,
+                    onLogout: con.handleOnLogout,
                   ).paddingOnly(top: 60),
                   centerTitle: true,
                   stretchModes: [StretchMode.blurBackground, StretchMode.zoomBackground, StretchMode.fadeTitle],
@@ -87,9 +89,9 @@ class ProfilePage extends StatelessWidget {
                   var record = con.collection.data()[index];
                   return PostItemWidget(
                     product: record,
-                    onImageTap: () => null, //con.openMediaManager(record),
-                    onTap: () => null, //con.openProductForm(record),
-                    toggleInStock: (newValue) => null,
+                    onTap: () => con.handlePostOnTap(index), //con.openProductForm(record),
+                    // onImageTap: () => null, //con.openMediaManager(record),
+                    // toggleInStock: (newValue) => null,
                   );
                 },
               ),
@@ -100,13 +102,4 @@ class ProfilePage extends StatelessWidget {
       ),
     );
   }
-
-  // Widget buildPostList() {
-  //   return
-
-  // }
-
-  // Widget buildProfileCard() {
-  //   return ;
-  // }
 }

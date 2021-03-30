@@ -19,20 +19,16 @@ class _$TPostStatsTearOff {
 // ignore: unused_element
   _TPostStats call(
       {String id,
-      DateTime lastPostTime,
       int sharesCount = 0,
       int likesCount = 0,
       int commentsCount = 0,
-      PresenceState presenceState,
       DateTime createdAt,
       DateTime updatedAt}) {
     return _TPostStats(
       id: id,
-      lastPostTime: lastPostTime,
       sharesCount: sharesCount,
       likesCount: likesCount,
       commentsCount: commentsCount,
-      presenceState: presenceState,
       createdAt: createdAt,
       updatedAt: updatedAt,
     );
@@ -50,12 +46,10 @@ const $TPostStats = _$TPostStatsTearOff();
 
 /// @nodoc
 mixin _$TPostStats {
-  String get id;
-  DateTime get lastPostTime;
+  String get id; //
   int get sharesCount;
   int get likesCount;
-  int get commentsCount;
-  PresenceState get presenceState; //
+  int get commentsCount; //
   DateTime get createdAt;
   DateTime get updatedAt;
 
@@ -71,15 +65,11 @@ abstract class $TPostStatsCopyWith<$Res> {
       _$TPostStatsCopyWithImpl<$Res>;
   $Res call(
       {String id,
-      DateTime lastPostTime,
       int sharesCount,
       int likesCount,
       int commentsCount,
-      PresenceState presenceState,
       DateTime createdAt,
       DateTime updatedAt});
-
-  $PresenceStateCopyWith<$Res> get presenceState;
 }
 
 /// @nodoc
@@ -93,43 +83,25 @@ class _$TPostStatsCopyWithImpl<$Res> implements $TPostStatsCopyWith<$Res> {
   @override
   $Res call({
     Object id = freezed,
-    Object lastPostTime = freezed,
     Object sharesCount = freezed,
     Object likesCount = freezed,
     Object commentsCount = freezed,
-    Object presenceState = freezed,
     Object createdAt = freezed,
     Object updatedAt = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed ? _value.id : id as String,
-      lastPostTime: lastPostTime == freezed
-          ? _value.lastPostTime
-          : lastPostTime as DateTime,
       sharesCount:
           sharesCount == freezed ? _value.sharesCount : sharesCount as int,
       likesCount: likesCount == freezed ? _value.likesCount : likesCount as int,
       commentsCount: commentsCount == freezed
           ? _value.commentsCount
           : commentsCount as int,
-      presenceState: presenceState == freezed
-          ? _value.presenceState
-          : presenceState as PresenceState,
       createdAt:
           createdAt == freezed ? _value.createdAt : createdAt as DateTime,
       updatedAt:
           updatedAt == freezed ? _value.updatedAt : updatedAt as DateTime,
     ));
-  }
-
-  @override
-  $PresenceStateCopyWith<$Res> get presenceState {
-    if (_value.presenceState == null) {
-      return null;
-    }
-    return $PresenceStateCopyWith<$Res>(_value.presenceState, (value) {
-      return _then(_value.copyWith(presenceState: value));
-    });
   }
 }
 
@@ -141,16 +113,11 @@ abstract class _$TPostStatsCopyWith<$Res> implements $TPostStatsCopyWith<$Res> {
   @override
   $Res call(
       {String id,
-      DateTime lastPostTime,
       int sharesCount,
       int likesCount,
       int commentsCount,
-      PresenceState presenceState,
       DateTime createdAt,
       DateTime updatedAt});
-
-  @override
-  $PresenceStateCopyWith<$Res> get presenceState;
 }
 
 /// @nodoc
@@ -166,28 +133,20 @@ class __$TPostStatsCopyWithImpl<$Res> extends _$TPostStatsCopyWithImpl<$Res>
   @override
   $Res call({
     Object id = freezed,
-    Object lastPostTime = freezed,
     Object sharesCount = freezed,
     Object likesCount = freezed,
     Object commentsCount = freezed,
-    Object presenceState = freezed,
     Object createdAt = freezed,
     Object updatedAt = freezed,
   }) {
     return _then(_TPostStats(
       id: id == freezed ? _value.id : id as String,
-      lastPostTime: lastPostTime == freezed
-          ? _value.lastPostTime
-          : lastPostTime as DateTime,
       sharesCount:
           sharesCount == freezed ? _value.sharesCount : sharesCount as int,
       likesCount: likesCount == freezed ? _value.likesCount : likesCount as int,
       commentsCount: commentsCount == freezed
           ? _value.commentsCount
           : commentsCount as int,
-      presenceState: presenceState == freezed
-          ? _value.presenceState
-          : presenceState as PresenceState,
       createdAt:
           createdAt == freezed ? _value.createdAt : createdAt as DateTime,
       updatedAt:
@@ -203,11 +162,9 @@ class __$TPostStatsCopyWithImpl<$Res> extends _$TPostStatsCopyWithImpl<$Res>
 class _$_TPostStats extends _TPostStats with DiagnosticableTreeMixin {
   _$_TPostStats(
       {this.id,
-      this.lastPostTime,
       this.sharesCount = 0,
       this.likesCount = 0,
       this.commentsCount = 0,
-      this.presenceState,
       this.createdAt,
       this.updatedAt})
       : assert(sharesCount != null),
@@ -220,10 +177,8 @@ class _$_TPostStats extends _TPostStats with DiagnosticableTreeMixin {
 
   @override
   final String id;
-  @override
-  final DateTime lastPostTime;
   @JsonKey(defaultValue: 0)
-  @override
+  @override //
   final int sharesCount;
   @JsonKey(defaultValue: 0)
   @override
@@ -231,8 +186,6 @@ class _$_TPostStats extends _TPostStats with DiagnosticableTreeMixin {
   @JsonKey(defaultValue: 0)
   @override
   final int commentsCount;
-  @override
-  final PresenceState presenceState;
   @override //
   final DateTime createdAt;
   @override
@@ -240,7 +193,7 @@ class _$_TPostStats extends _TPostStats with DiagnosticableTreeMixin {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'TPostStats(id: $id, lastPostTime: $lastPostTime, sharesCount: $sharesCount, likesCount: $likesCount, commentsCount: $commentsCount, presenceState: $presenceState, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'TPostStats(id: $id, sharesCount: $sharesCount, likesCount: $likesCount, commentsCount: $commentsCount, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -249,11 +202,9 @@ class _$_TPostStats extends _TPostStats with DiagnosticableTreeMixin {
     properties
       ..add(DiagnosticsProperty('type', 'TPostStats'))
       ..add(DiagnosticsProperty('id', id))
-      ..add(DiagnosticsProperty('lastPostTime', lastPostTime))
       ..add(DiagnosticsProperty('sharesCount', sharesCount))
       ..add(DiagnosticsProperty('likesCount', likesCount))
       ..add(DiagnosticsProperty('commentsCount', commentsCount))
-      ..add(DiagnosticsProperty('presenceState', presenceState))
       ..add(DiagnosticsProperty('createdAt', createdAt))
       ..add(DiagnosticsProperty('updatedAt', updatedAt));
   }
@@ -264,9 +215,6 @@ class _$_TPostStats extends _TPostStats with DiagnosticableTreeMixin {
         (other is _TPostStats &&
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.lastPostTime, lastPostTime) ||
-                const DeepCollectionEquality()
-                    .equals(other.lastPostTime, lastPostTime)) &&
             (identical(other.sharesCount, sharesCount) ||
                 const DeepCollectionEquality()
                     .equals(other.sharesCount, sharesCount)) &&
@@ -276,9 +224,6 @@ class _$_TPostStats extends _TPostStats with DiagnosticableTreeMixin {
             (identical(other.commentsCount, commentsCount) ||
                 const DeepCollectionEquality()
                     .equals(other.commentsCount, commentsCount)) &&
-            (identical(other.presenceState, presenceState) ||
-                const DeepCollectionEquality()
-                    .equals(other.presenceState, presenceState)) &&
             (identical(other.createdAt, createdAt) ||
                 const DeepCollectionEquality()
                     .equals(other.createdAt, createdAt)) &&
@@ -291,11 +236,9 @@ class _$_TPostStats extends _TPostStats with DiagnosticableTreeMixin {
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(lastPostTime) ^
       const DeepCollectionEquality().hash(sharesCount) ^
       const DeepCollectionEquality().hash(likesCount) ^
       const DeepCollectionEquality().hash(commentsCount) ^
-      const DeepCollectionEquality().hash(presenceState) ^
       const DeepCollectionEquality().hash(createdAt) ^
       const DeepCollectionEquality().hash(updatedAt);
 
@@ -314,11 +257,9 @@ abstract class _TPostStats extends TPostStats {
   _TPostStats._() : super._();
   factory _TPostStats(
       {String id,
-      DateTime lastPostTime,
       int sharesCount,
       int likesCount,
       int commentsCount,
-      PresenceState presenceState,
       DateTime createdAt,
       DateTime updatedAt}) = _$_TPostStats;
 
@@ -327,16 +268,12 @@ abstract class _TPostStats extends TPostStats {
 
   @override
   String get id;
-  @override
-  DateTime get lastPostTime;
-  @override
+  @override //
   int get sharesCount;
   @override
   int get likesCount;
   @override
   int get commentsCount;
-  @override
-  PresenceState get presenceState;
   @override //
   DateTime get createdAt;
   @override

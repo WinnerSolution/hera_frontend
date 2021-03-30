@@ -1,10 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hera_app/app/Tabs/ProfilePage/ProfilePage.dart';
 import 'package:hera_app/controllers/AppController.dart';
 import 'package:hera_app/themes/styles.dart';
 import 'package:hera_core/hera_core.dart';
 import 'package:softi_common/resource.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 class UserSnippetController extends RecordController<TUser> {
   UserSnippetController(
@@ -26,10 +28,13 @@ class UserSnippetController extends RecordController<TUser> {
       return user()?.fullname ?? '';
     }
   }
+
+  //! handlers
+  handleProfileImageOnClic() => Get.to(() => ProfilePage(record().getId()));
 }
 
-class UserSnippetWidget extends StatelessWidget {
-  const UserSnippetWidget(
+class UserSnippetSmartWidget extends StatelessWidget {
+  const UserSnippetSmartWidget(
     this.userId, {
     this.rightText,
     this.bottomText,
@@ -45,10 +50,11 @@ class UserSnippetWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var child = Obx(() => Container(
-          margin: EdgeInsets.only(left: 20, right: 15, bottom: 15),
-          padding: EdgeInsets.only(bottom: 15),
-          decoration: BoxDecoration(border: Border(bottom: BorderSide(color: Colors.black.withOpacity(0.04)))),
+          margin: EdgeInsets.only(left: 20, right: 15, bottom: 12, top: 12),
+          // padding: EdgeInsets.only(bottom: 15),
+          // decoration: BoxDecoration(border: Border(bottom: BorderSide(color: Colors.black.withOpacity(0.04)))),
           child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(
                 height: 40,
@@ -62,17 +68,18 @@ class UserSnippetWidget extends StatelessWidget {
                     fit: BoxFit.cover,
                   ),
                 ),
-              ),
-              SizedBox(width: 8),
+              ).onInkTap(con.handleProfileImageOnClic),
+              SizedBox(width: 16),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
                         Container(
-                          // width: Get.mediaQuery.size.width * 0.25,
                           child: Text(
                             con.getUserName(),
                             maxLines: 2,
@@ -83,19 +90,18 @@ class UserSnippetWidget extends StatelessWidget {
 
                         //! rightSlot
                         Container(
-                          // width: 170,
                           child: Text(
-                            rightText,
+                            rightText ?? '',
                             style: textArialRegularsecondarysmwithop(),
                           ),
                         ),
                       ],
                     ),
                     SizedBox(height: 3),
+                    //! bottomSlot
                     Container(
-                      width: Get.mediaQuery.size.width * 0.8,
                       child: Text(
-                        bottomText,
+                        bottomText ?? '',
                         style: textArialRegularcSecondary(),
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,

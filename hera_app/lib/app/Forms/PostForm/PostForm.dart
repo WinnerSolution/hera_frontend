@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
-import 'package:hera_app/app/Pages/addpost/postform.controller.dart';
+import 'package:hera_app/app/Forms/PostForm/PostForm.controller.dart';
 import 'package:hera_app/themes/styles.dart';
 import 'package:hera_core/hera_core.dart';
 import 'package:velocity_x/velocity_x.dart';

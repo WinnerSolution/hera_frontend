@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
-import 'package:hera_app/app/Pages/FeedPage/FeedPage.dart';
-import 'package:hera_app/app/Pages/ProfilePage/ProfilePage.dart';
-import 'package:hera_app/app/Pages/addpost/postform.dart';
+import 'package:hera_app/app/Forms/PostForm/PostForm.dart';
+import 'package:hera_app/app/Tabs/FeedPage/FeedPage.dart';
+import 'package:hera_app/app/Tabs/ProfilePage/ProfilePage.dart';
 import 'package:hera_app/controllers/AppController.dart';
 import 'package:hera_app/screens/Home/tabs/notification.dart';
 import 'package:hera_app/screens/Home/tabs/search.dart';

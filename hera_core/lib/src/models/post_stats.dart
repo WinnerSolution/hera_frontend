@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hera_core/src/models/convertors/date.dart';
-import 'package:hera_core/src/models/value_object/presence_state.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:softi_common/resource.dart';
 
@@ -16,11 +15,11 @@ abstract class TPostStats extends IResourceData with BaseResourceDataMixin imple
   @JsonSerializable(explicitToJson: true)
   factory TPostStats({
     String id,
-    DateTime lastPostTime,
+
+    //
     @Default(0) int sharesCount,
     @Default(0) int likesCount,
     @Default(0) int commentsCount,
-    PresenceState presenceState,
 
     //
     DateTime createdAt,
@@ -35,5 +34,13 @@ abstract class TPostStats extends IResourceData with BaseResourceDataMixin imple
 
   TPostStats incremetLikes(int i) {
     return copyWith(likesCount: likesCount + i);
+  }
+
+  TPostStats incremeComments(int i) {
+    return copyWith(commentsCount: commentsCount + i);
+  }
+
+  TPostStats incremetShares(int i) {
+    return copyWith(sharesCount: sharesCount + i);
   }
 }

@@ -19,9 +19,10 @@ class _$TUserStatsTearOff {
 // ignore: unused_element
   _TUserStats call(
       {String id,
-      DateTime lastPostTime,
-      int postsCount = 0,
+      int commentsCount = 0,
       int likesCount = 0,
+      int sharesCount = 0,
+      int postsCount = 0,
       int followingCount = 0,
       int followersCount = 0,
       PresenceState presenceState,
@@ -29,9 +30,10 @@ class _$TUserStatsTearOff {
       DateTime updatedAt}) {
     return _TUserStats(
       id: id,
-      lastPostTime: lastPostTime,
-      postsCount: postsCount,
+      commentsCount: commentsCount,
       likesCount: likesCount,
+      sharesCount: sharesCount,
+      postsCount: postsCount,
       followingCount: followingCount,
       followersCount: followersCount,
       presenceState: presenceState,
@@ -52,10 +54,11 @@ const $TUserStats = _$TUserStatsTearOff();
 
 /// @nodoc
 mixin _$TUserStats {
-  String get id;
-  DateTime get lastPostTime;
-  int get postsCount;
+  String get id; //
+  int get commentsCount;
   int get likesCount;
+  int get sharesCount; //
+  int get postsCount;
   int get followingCount;
   int get followersCount;
   PresenceState get presenceState; //
@@ -74,9 +77,10 @@ abstract class $TUserStatsCopyWith<$Res> {
       _$TUserStatsCopyWithImpl<$Res>;
   $Res call(
       {String id,
-      DateTime lastPostTime,
-      int postsCount,
+      int commentsCount,
       int likesCount,
+      int sharesCount,
+      int postsCount,
       int followingCount,
       int followersCount,
       PresenceState presenceState,
@@ -97,9 +101,10 @@ class _$TUserStatsCopyWithImpl<$Res> implements $TUserStatsCopyWith<$Res> {
   @override
   $Res call({
     Object id = freezed,
-    Object lastPostTime = freezed,
-    Object postsCount = freezed,
+    Object commentsCount = freezed,
     Object likesCount = freezed,
+    Object sharesCount = freezed,
+    Object postsCount = freezed,
     Object followingCount = freezed,
     Object followersCount = freezed,
     Object presenceState = freezed,
@@ -108,11 +113,13 @@ class _$TUserStatsCopyWithImpl<$Res> implements $TUserStatsCopyWith<$Res> {
   }) {
     return _then(_value.copyWith(
       id: id == freezed ? _value.id : id as String,
-      lastPostTime: lastPostTime == freezed
-          ? _value.lastPostTime
-          : lastPostTime as DateTime,
-      postsCount: postsCount == freezed ? _value.postsCount : postsCount as int,
+      commentsCount: commentsCount == freezed
+          ? _value.commentsCount
+          : commentsCount as int,
       likesCount: likesCount == freezed ? _value.likesCount : likesCount as int,
+      sharesCount:
+          sharesCount == freezed ? _value.sharesCount : sharesCount as int,
+      postsCount: postsCount == freezed ? _value.postsCount : postsCount as int,
       followingCount: followingCount == freezed
           ? _value.followingCount
           : followingCount as int,
@@ -148,9 +155,10 @@ abstract class _$TUserStatsCopyWith<$Res> implements $TUserStatsCopyWith<$Res> {
   @override
   $Res call(
       {String id,
-      DateTime lastPostTime,
-      int postsCount,
+      int commentsCount,
       int likesCount,
+      int sharesCount,
+      int postsCount,
       int followingCount,
       int followersCount,
       PresenceState presenceState,
@@ -174,9 +182,10 @@ class __$TUserStatsCopyWithImpl<$Res> extends _$TUserStatsCopyWithImpl<$Res>
   @override
   $Res call({
     Object id = freezed,
-    Object lastPostTime = freezed,
-    Object postsCount = freezed,
+    Object commentsCount = freezed,
     Object likesCount = freezed,
+    Object sharesCount = freezed,
+    Object postsCount = freezed,
     Object followingCount = freezed,
     Object followersCount = freezed,
     Object presenceState = freezed,
@@ -185,11 +194,13 @@ class __$TUserStatsCopyWithImpl<$Res> extends _$TUserStatsCopyWithImpl<$Res>
   }) {
     return _then(_TUserStats(
       id: id == freezed ? _value.id : id as String,
-      lastPostTime: lastPostTime == freezed
-          ? _value.lastPostTime
-          : lastPostTime as DateTime,
-      postsCount: postsCount == freezed ? _value.postsCount : postsCount as int,
+      commentsCount: commentsCount == freezed
+          ? _value.commentsCount
+          : commentsCount as int,
       likesCount: likesCount == freezed ? _value.likesCount : likesCount as int,
+      sharesCount:
+          sharesCount == freezed ? _value.sharesCount : sharesCount as int,
+      postsCount: postsCount == freezed ? _value.postsCount : postsCount as int,
       followingCount: followingCount == freezed
           ? _value.followingCount
           : followingCount as int,
@@ -214,16 +225,19 @@ class __$TUserStatsCopyWithImpl<$Res> extends _$TUserStatsCopyWithImpl<$Res>
 class _$_TUserStats extends _TUserStats with DiagnosticableTreeMixin {
   _$_TUserStats(
       {this.id,
-      this.lastPostTime,
-      this.postsCount = 0,
+      this.commentsCount = 0,
       this.likesCount = 0,
+      this.sharesCount = 0,
+      this.postsCount = 0,
       this.followingCount = 0,
       this.followersCount = 0,
       this.presenceState,
       this.createdAt,
       this.updatedAt})
-      : assert(postsCount != null),
+      : assert(commentsCount != null),
         assert(likesCount != null),
+        assert(sharesCount != null),
+        assert(postsCount != null),
         assert(followingCount != null),
         assert(followersCount != null),
         super._();
@@ -233,14 +247,18 @@ class _$_TUserStats extends _TUserStats with DiagnosticableTreeMixin {
 
   @override
   final String id;
-  @override
-  final DateTime lastPostTime;
   @JsonKey(defaultValue: 0)
-  @override
-  final int postsCount;
+  @override //
+  final int commentsCount;
   @JsonKey(defaultValue: 0)
   @override
   final int likesCount;
+  @JsonKey(defaultValue: 0)
+  @override
+  final int sharesCount;
+  @JsonKey(defaultValue: 0)
+  @override //
+  final int postsCount;
   @JsonKey(defaultValue: 0)
   @override
   final int followingCount;
@@ -256,7 +274,7 @@ class _$_TUserStats extends _TUserStats with DiagnosticableTreeMixin {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'TUserStats(id: $id, lastPostTime: $lastPostTime, postsCount: $postsCount, likesCount: $likesCount, followingCount: $followingCount, followersCount: $followersCount, presenceState: $presenceState, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'TUserStats(id: $id, commentsCount: $commentsCount, likesCount: $likesCount, sharesCount: $sharesCount, postsCount: $postsCount, followingCount: $followingCount, followersCount: $followersCount, presenceState: $presenceState, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -265,9 +283,10 @@ class _$_TUserStats extends _TUserStats with DiagnosticableTreeMixin {
     properties
       ..add(DiagnosticsProperty('type', 'TUserStats'))
       ..add(DiagnosticsProperty('id', id))
-      ..add(DiagnosticsProperty('lastPostTime', lastPostTime))
-      ..add(DiagnosticsProperty('postsCount', postsCount))
+      ..add(DiagnosticsProperty('commentsCount', commentsCount))
       ..add(DiagnosticsProperty('likesCount', likesCount))
+      ..add(DiagnosticsProperty('sharesCount', sharesCount))
+      ..add(DiagnosticsProperty('postsCount', postsCount))
       ..add(DiagnosticsProperty('followingCount', followingCount))
       ..add(DiagnosticsProperty('followersCount', followersCount))
       ..add(DiagnosticsProperty('presenceState', presenceState))
@@ -281,15 +300,18 @@ class _$_TUserStats extends _TUserStats with DiagnosticableTreeMixin {
         (other is _TUserStats &&
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.lastPostTime, lastPostTime) ||
+            (identical(other.commentsCount, commentsCount) ||
                 const DeepCollectionEquality()
-                    .equals(other.lastPostTime, lastPostTime)) &&
-            (identical(other.postsCount, postsCount) ||
-                const DeepCollectionEquality()
-                    .equals(other.postsCount, postsCount)) &&
+                    .equals(other.commentsCount, commentsCount)) &&
             (identical(other.likesCount, likesCount) ||
                 const DeepCollectionEquality()
                     .equals(other.likesCount, likesCount)) &&
+            (identical(other.sharesCount, sharesCount) ||
+                const DeepCollectionEquality()
+                    .equals(other.sharesCount, sharesCount)) &&
+            (identical(other.postsCount, postsCount) ||
+                const DeepCollectionEquality()
+                    .equals(other.postsCount, postsCount)) &&
             (identical(other.followingCount, followingCount) ||
                 const DeepCollectionEquality()
                     .equals(other.followingCount, followingCount)) &&
@@ -311,9 +333,10 @@ class _$_TUserStats extends _TUserStats with DiagnosticableTreeMixin {
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(lastPostTime) ^
-      const DeepCollectionEquality().hash(postsCount) ^
+      const DeepCollectionEquality().hash(commentsCount) ^
       const DeepCollectionEquality().hash(likesCount) ^
+      const DeepCollectionEquality().hash(sharesCount) ^
+      const DeepCollectionEquality().hash(postsCount) ^
       const DeepCollectionEquality().hash(followingCount) ^
       const DeepCollectionEquality().hash(followersCount) ^
       const DeepCollectionEquality().hash(presenceState) ^
@@ -335,9 +358,10 @@ abstract class _TUserStats extends TUserStats {
   _TUserStats._() : super._();
   factory _TUserStats(
       {String id,
-      DateTime lastPostTime,
-      int postsCount,
+      int commentsCount,
       int likesCount,
+      int sharesCount,
+      int postsCount,
       int followingCount,
       int followersCount,
       PresenceState presenceState,
@@ -349,12 +373,14 @@ abstract class _TUserStats extends TUserStats {
 
   @override
   String get id;
-  @override
-  DateTime get lastPostTime;
-  @override
-  int get postsCount;
+  @override //
+  int get commentsCount;
   @override
   int get likesCount;
+  @override
+  int get sharesCount;
+  @override //
+  int get postsCount;
   @override
   int get followingCount;
   @override

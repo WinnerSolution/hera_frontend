@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:get/get.dart';
 import 'package:hera_app/app.svg/Home/Home.page.controller.dart';
-import 'package:hera_app/app/Pages/ProfilePage/ProfilePage.dart';
+import 'package:hera_app/app/Tabs/ProfilePage/ProfilePage.dart';
 import 'package:hera_app/components/extensions/string_extentions.dart';
 import 'package:hera_app/controllers/AppController.dart';
 import 'package:hera_app/screens/Home/tabs/notification.dart';

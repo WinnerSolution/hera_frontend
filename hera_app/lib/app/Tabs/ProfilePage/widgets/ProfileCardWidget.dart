@@ -2,9 +2,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
-import 'package:hera_app/app/Pages/ProfileForm/ProfileForm.dart';
-import 'package:hera_app/controllers/AppController.dart';
-import 'package:hera_app/screens/OtherPages/chat/chat.dart';
 import 'package:hera_app/themes/styles.dart';
 import 'package:hera_core/hera_core.dart';
 
@@ -12,12 +9,16 @@ class ProfileCardWidget extends StatelessWidget {
   final TUser userProfile;
   final TUserStats userStats;
   final bool isConnectedUser;
+  final VoidCallback onPressed;
+  final VoidCallback onLogout;
 
   const ProfileCardWidget({
     Key key,
     @required this.userProfile,
     @required this.userStats,
     @required this.isConnectedUser,
+    @required this.onPressed,
+    @required this.onLogout,
   }) : super(key: key);
 
   String get profileImage1 =>
@@ -130,14 +131,7 @@ class ProfileCardWidget extends StatelessWidget {
               height: 44,
               // ignore: deprecated_member_use
               child: RaisedButton(
-                onPressed: () {
-                  Get.to(() => EditProfile(userProfile));
-
-                  // Navigator.push(
-                  //   Get.context,
-                  //   MaterialPageRoute(builder: (context) => EditProfile()),
-                  // );
-                },
+                onPressed: onPressed,
                 color: Colors.transparent,
                 elevation: 0,
                 shape: RoundedRectangleBorder(
@@ -153,7 +147,7 @@ class ProfileCardWidget extends StatelessWidget {
               type: GFButtonType.transparent,
               text: 'Sign Out from Hera',
               color: GFColors.ALT,
-              onPressed: () => AppController.find.logout(),
+              onPressed: onLogout,
             ),
 
           // if (con.isConnectedUser)
@@ -185,26 +179,26 @@ class ProfileCardWidget extends StatelessWidget {
                     padding: EdgeInsets.only(left: 20, right: 20),
                   ),
                 ),
-                Container(
-                  height: 40,
-                  // ignore: deprecated_member_use
-                  child: RaisedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        Get.context,
-                        MaterialPageRoute(builder: (context) => Chat()),
-                      );
-                    },
-                    color: Colors.transparent,
-                    elevation: 0,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0), side: BorderSide(color: secondary)),
-                    child: Text(
-                      'Message',
-                      style: textArialRegularlgsecondary(),
-                    ),
-                  ),
-                ),
+                // Container(
+                //   height: 40,
+                //   // ignore: deprecated_member_use
+                //   child: RaisedButton(
+                //     onPressed: () {
+                //       Navigator.push(
+                //         Get.context,
+                //         MaterialPageRoute(builder: (context) => Chat()),
+                //       );
+                //     },
+                //     color: Colors.transparent,
+                //     elevation: 0,
+                //     shape: RoundedRectangleBorder(
+                //         borderRadius: BorderRadius.circular(10.0), side: BorderSide(color: secondary)),
+                //     child: Text(
+                //       'Message',
+                //       style: textArialRegularlgsecondary(),
+                //     ),
+                //   ),
+                // ),
               ],
             ),
           SizedBox(

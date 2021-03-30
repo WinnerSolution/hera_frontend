@@ -16,9 +16,14 @@ abstract class TUserStats extends IResourceData with BaseResourceDataMixin imple
   @JsonSerializable(explicitToJson: true)
   factory TUserStats({
     String id,
-    DateTime lastPostTime,
-    @Default(0) int postsCount,
+
+    //
+    @Default(0) int commentsCount,
     @Default(0) int likesCount,
+    @Default(0) int sharesCount,
+
+    //
+    @Default(0) int postsCount,
     @Default(0) int followingCount,
     @Default(0) int followersCount,
     PresenceState presenceState,

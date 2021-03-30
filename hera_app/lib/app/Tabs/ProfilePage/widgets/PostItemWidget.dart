@@ -1,7 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:hera_app/app/Pages/PostDetailsPage/PostDetailsPage.dart';
 import 'package:hera_core/hera_core.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -11,16 +9,16 @@ var defaultImage =
 class PostItemWidget extends StatelessWidget {
   final TPost product;
 
-  final void Function(bool) toggleInStock;
+  // final void Function(bool) toggleInStock;
   final VoidCallback onTap;
-  final VoidCallback onImageTap;
+  // final VoidCallback onImageTap;
 
-  PostItemWidget({
+  const PostItemWidget({
     Key key,
     this.product,
-    this.toggleInStock,
+    // this.toggleInStock,
     this.onTap,
-    this.onImageTap,
+    // this.onImageTap,
   }) : super(key: key);
 
   @override
@@ -43,7 +41,7 @@ class PostItemWidget extends StatelessWidget {
                 fit: BoxFit.cover)),
       ).p4(),
     ).onInkTap(
-      () => Get.to(() => PostDetails(product)),
+      onTap,
     );
 
     // return Padding(
