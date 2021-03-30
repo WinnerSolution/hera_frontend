@@ -155,41 +155,29 @@ class AppController extends BaseController //
 
   @override
   void onInit() {
-    print('AppController INIT');
-    super.onInit();
-
-    // Main controller init
-    // initAuth();
     getThemeMode();
     getLanguage();
-  }
 
-  // void checkEmailLogin() {
-  //   var url = window.location.href;
-  //   window.console.log(url);
-  // }
+    super.onInit();
+  }
 
   @override
   void onReady() {
-    print('AppController READY');
-
-    //
-    // checkEmailLogin();
-
     _iniReactiveRouting();
     _initDataBinding();
+
     super.onReady();
   }
 
   @override
   void onClose() {
     _userSub.cancel();
+
     super.onClose();
   }
 
   bool isConnectedUser(userId) {
     bool _result = (user()?.id ?? '-1') == (userId ?? '');
-    print((user()?.id ?? '-1') + '/' + (userId ?? ''));
     return _result;
   }
 

@@ -53,12 +53,6 @@ class PostDetails extends StatelessWidget {
             boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.11), blurRadius: 0)]),
         child: TextFormField(
           controller: con.lastCommentController,
-          // initialValue: con.lastComment(),
-          // onChanged: (value) {
-          //   print(value);
-          //   return con.lastComment(value);
-          // },
-          // keyboardType: TextInputType.emailAddress,
           decoration: InputDecoration(
               hintText: "Your comment here.....",
               hintStyle: textArialRegularsecondarysmwithop(),

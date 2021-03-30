@@ -22,12 +22,6 @@ class ProductFormController extends ResourceFormController<TPost> {
 
   @override
   onInit() {
-    busy.listen((isBusy) {
-      if (isBusy)
-        loading.showStatus();
-      else
-        loading.dismiss();
-    });
     super.onInit();
   }
 }
@@ -59,15 +53,7 @@ class ProductForm extends StatelessWidget {
                     24.heightBox,
                     'Base infos'.headline4.make(),
                     16.heightBox,
-                    // FormBuilderImagePicker(
-                    //   name: 'photos',
-                    //   decoration: const InputDecoration(labelText: 'Pick Photos'),
-                    //   maxImages: 2,
-                    //   valueTransformer: (imageList) async {
-                    //     print(imageList);
-                    //     return imageList;
-                    //   },
-                    // ),
+
                     FormBuilderTextField(
                       name: 'title',
                       decoration: InputDecoration(

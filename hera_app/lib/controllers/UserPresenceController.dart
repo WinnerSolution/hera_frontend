@@ -44,28 +44,16 @@ class UserPresence extends SuperController {
   }
 
   @override
-  void onDetached() {
-    print('onDetached');
-    setOffline();
-  }
+  void onDetached() => setOffline();
 
   @override
-  void onInactive() {
-    print('onInactive');
-    setAway();
-  }
+  void onInactive() => setAway();
 
   @override
-  void onPaused() {
-    print('onPaused');
-    setAway();
-  }
+  void onPaused() => setAway();
 
   @override
-  void onResumed() {
-    print('onResumed');
-    setOnline();
-  }
+  void onResumed() => setOnline();
 
   void _changeUserPresence(Map<String, dynamic> presence) {
     if (AppController.find.userStats()?.getId() != null) {
@@ -89,8 +77,6 @@ class UserPresence extends SuperController {
     _userStatusDatabaseRef = FirebaseDatabase.instance
         .reference() //
         .child('status/' + authUser.uid);
-
-    print(_userStatusDatabaseRef.onValue.first);
 
     _sub = FirebaseDatabase.instance.reference().child('.info/connected').onValue.listen((Event event) async {
       if (event.snapshot.value == false) {

@@ -54,10 +54,6 @@ class AddPostController extends ResourceFormController<TPost> {
     if (selectedImage == null) return;
     await controllerTaskHandler(
         task: () async {
-          //
-          // if (selectedImage == null) throw '';
-          print("I changed the file to: ${selectedImage().path}");
-          // busy(true);
           var result = await cloudStorage.uploadMedia(
             imageToUpload: await FlutterImageCompress.compressWithFile(
               selectedImage().absolute.path,

@@ -37,7 +37,7 @@ class ProfileFormController extends ResourceFormController<TUser> {
           //
           final file = await mediaPicker.singleImageSelect(source: await selectPickerSource(), crop: true);
           if (file == null) throw '';
-          print("I changed the file to: ${file.path}");
+
           // busy(true);
           var result = await cloudStorage.uploadMedia(
             imageToUpload: await FlutterImageCompress.compressWithFile(

@@ -38,8 +38,6 @@ class PostDetailsPageController extends BaseController {
   }
 
   void handleListItemCreation(int index, int length) {
-    // when the item is created we request more data when we reached the end of current page
-    // print('index $index created');
     if (commentCollection.data.length == (index + 1) && commentCollection.hasMoreData()) {
       commentCollection.requestMoreData();
     }

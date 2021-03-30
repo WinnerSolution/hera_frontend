@@ -1,7 +1,6 @@
-import 'package:hera_app/controllers/AppController.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:get/get.dart';
-import 'package:hera_core/hera_core.dart';
+import 'package:hera_app/controllers/AppController.dart';
 import 'package:softi_common/auth.dart';
 import 'package:softi_common/core.dart';
 
@@ -65,21 +64,19 @@ class LoginController extends BaseController {
   }
 
   Future<void> sendPhoneVerificationCode() async {
-    busy(true);
+    toggleLoading();
 
     if (_loginInputType() != LoginInputType.phone) {
-      busy(false);
+      toggleIdle();
       return;
     }
 
     SendCodeResult _result;
     try {
       if (_sendCodeResult().phoneNumber != null) {
-        // RESEND THE CODE IF CODESENT IS NOT NULL
         _result = await _sendCodeResult().resendCode();
       } else {
         _result = await AppController.find.authApi.sendSignInWithPhoneCode(phoneNumber: _loginInput());
-        print(_result);
       }
 
       if (_result == null) {
@@ -93,18 +90,18 @@ class LoginController extends BaseController {
         AppController.find.isNewAuthUser(_authUser.isNew ?? false);
       });
       // authNavigatorKey.currentState.pushNamed(LoginRoutes.verification);
-      busy(false);
+      toggleIdle();
 
       // await Get.to(VerificationPage());
     } catch (e) {
       _validPhoneVerificationCode(false);
-      busy(false);
+      toggleIdle();
       rethrow;
     }
   }
 
   Future<void> verifyPhoneNumber(String code) async {
-    busy(true);
+    toggleLoading();
 
     try {
       await _sendCodeResult().codeVerification(code);
@@ -112,15 +109,15 @@ class LoginController extends BaseController {
       _validPhoneVerificationCode(false);
       rethrow;
     } finally {
-      busy(false);
+      toggleIdle();
     }
   }
 
   Future<void> sendEmailLynk() async {
-    busy(true);
+    toggleLoading();
 
     if (_loginInputType() != LoginInputType.email) {
-      busy(false);
+      toggleIdle();
       return;
     }
 
@@ -131,7 +128,7 @@ class LoginController extends BaseController {
       _emailSentTo('');
       rethrow;
     } finally {
-      busy(false);
+      toggleIdle();
     }
   }
 
@@ -148,13 +145,13 @@ class LoginController extends BaseController {
 
   @override
   void onInit() {
-    busy.listen((busy) {
-      if (busy) {
-        loading.showStatus();
-      } else {
-        loading.dismiss();
-      }
-    });
+    // busy.listen((busy) {
+    //   if (busy) {
+    //     loading.showStatus();
+    //   } else {
+    //     loading.dismiss();
+    //   }
+    // });
     super.onInit();
   }
 

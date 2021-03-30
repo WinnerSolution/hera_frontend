@@ -336,7 +336,6 @@ class _SignUpState extends State<SignUp> {
                         groupValue: selectedRadio,
                         activeColor: secondary,
                         onChanged: (val) {
-                          print("Radio $val");
                           setSelectedRadio(val);
                         },
                       ),
@@ -361,7 +360,6 @@ class _SignUpState extends State<SignUp> {
                       groupValue: selectedRadio,
                       activeColor: secondary,
                       onChanged: (val) {
-                        print("Radio $val");
                         setSelectedRadio(val);
                       },
                     ),
@@ -385,7 +383,6 @@ class _SignUpState extends State<SignUp> {
                       groupValue: selectedRadio,
                       activeColor: secondary,
                       onChanged: (val) {
-                        print("Radio $val");
                         setSelectedRadio(val);
                       },
                     ),

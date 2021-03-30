@@ -116,7 +116,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             scrollDirection: Axis.horizontal,
             itemCount: 1,
             itemBuilder: (BuildContext context, int index) {
-              // print(categoryList.length);
               return SingleChildScrollView(
                   child: InkWell(
                       onTap: () {},

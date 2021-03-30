@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:hera_app/controllers/AppController.dart';
 import 'package:hera_app/themes/styles.dart';
 import 'package:hera_core/hera_core.dart';
+import 'package:softi_common/resource.dart';
 
 class UserSnippetController extends RecordController<TUser> {
   UserSnippetController(

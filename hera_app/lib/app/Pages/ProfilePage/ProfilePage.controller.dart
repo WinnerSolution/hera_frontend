@@ -42,11 +42,7 @@ class ProfilePageController extends BaseController {
   TUser get userProfile => _userProfile();
   TUserStats get userStats => _userStats();
 
-  bool get isConnectedUser {
-    bool _result = (AppController.find.user()?.id ?? '-1') == (profileId ?? '');
-    print((AppController.find.user()?.id ?? '-1') + '/' + (profileId ?? ''));
-    return _result;
-  }
+  bool get isConnectedUser => AppController.find.isConnectedUser(profileId);
 
   String get profileImage1 =>
       _userProfile()?.profileImage?.url ??
@@ -109,8 +105,6 @@ class ProfilePageController extends BaseController {
 
     var _result = _library?.map((e) => RemoteImage.fromNetworAsset(e))?.toList();
 
-    print(_result.toString());
-
     if (record.images != _result && _result != null) {
       await firestore.save<TPost>(record.copyWith(images: _result));
     }
@@ -119,8 +113,6 @@ class ProfilePageController extends BaseController {
   //! Handlers
 
   void handleListItemCreation(int index, int length) {
-    // when the item is created we request more data when we reached the end of current page
-    // print('index $index created');
     if (collection.data.length == (index + 1) && collection.hasMoreData()) {
       collection.requestMoreData();
     }
