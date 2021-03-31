@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hera_app/screens/OtherPages/comments/comments.dart';
-import 'package:hera_app/screens/OtherPages/conversations/conversations.dart';
-import 'package:hera_app/screens/OtherPages/friendsstory/friendsstory.dart';
-import 'package:hera_app/screens/OtherPages/postdetails/postdetails.dart';
-import 'package:hera_app/screens/OtherPages/poststatus/poststatus.dart';
+import 'package:hera_app/temp/screens/OtherPages/comments/comments.dart';
+import 'package:hera_app/temp/screens/OtherPages/conversations/conversations.dart';
+import 'package:hera_app/temp/screens/OtherPages/friendsstory/friendsstory.dart';
+import 'package:hera_app/temp/screens/OtherPages/postdetails/postdetails.dart';
+import 'package:hera_app/temp/screens/OtherPages/poststatus/poststatus.dart';
 import 'package:hera_app/themes/styles.dart';
 
 class HomePage extends StatefulWidget {

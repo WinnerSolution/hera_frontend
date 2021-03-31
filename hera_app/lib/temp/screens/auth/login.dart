@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
-import 'package:hera_app/app/Home/home.dart';
-import 'package:hera_app/screens/auth/login.dart';
+import 'package:hera_app/temp/screens/auth/forgotpassword.dart';
+import 'package:hera_app/temp/screens/auth/signup.dart';
 import 'package:hera_app/themes/styles.dart';
 
-class SignUp extends StatefulWidget {
+class Login extends StatefulWidget {
   @override
-  _SignUpState createState() => _SignUpState();
+  _LoginState createState() => _LoginState();
 }
 
-class _SignUpState extends State<SignUp> {
+class _LoginState extends State<Login> {
   final GlobalKey<FormState> _formKeyForLogin = GlobalKey<FormState>();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   int selectedRadio;
+  bool monVal = false;
 
   @override
   void initState() {
@@ -32,6 +33,7 @@ class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: primary,
       key: _scaffoldKey,
       body: SingleChildScrollView(
         child: Column(
@@ -52,30 +54,26 @@ class _SignUpState extends State<SignUp> {
           brightness: Brightness.dark,
         ),
         child: Container(
+          color: Colors.white,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              SizedBox(height: 100),
+              SizedBox(height: 130),
               buildwelcometext(),
-              SizedBox(height: 30),
+              SizedBox(height: 90),
               Container(
-                  padding: const EdgeInsets.all(17.0),
+                  padding: EdgeInsets.only(left: 17, right: 17),
                   color: primary,
                   width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height,
                   child: Column(
                     children: <Widget>[
-                      buildUserNameText(),
-                      buildUserNameTextField(),
                       buildEmailText(),
                       buildEmailTextField(),
                       buildPasswordText(),
                       buildPasswordTextField(),
-                      buildConfirmPasswordText(),
-                      buildConfirmPasswordTextField(),
-                      buildGenderSection(),
-                      buildSignupButton(),
+                      buildRememberpwd(),
+                      buildLoginButton(),
                       buildLoginLink(),
                     ],
                   ))
@@ -98,59 +96,10 @@ class _SignUpState extends State<SignUp> {
           ),
           SizedBox(height: 15),
           Text(
-            'Welcome!',
+            'Welcome back!',
             style: textArialBoldsecondarylg(),
           )
         ],
-      ),
-    );
-  }
-
-  Widget buildUserNameText() {
-    return Padding(
-      padding: const EdgeInsets.only(top: 10.0),
-      child: GFTypography(
-        showDivider: false,
-        child: RichText(
-          text: TextSpan(
-            children: <TextSpan>[
-              TextSpan(text: "UserName", style: textArialRegularWhite()),
-              TextSpan(
-                text: ' *',
-                style: TextStyle(color: Color(0xFFFFFFFF)),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget buildUserNameTextField() {
-    return Padding(
-      padding: const EdgeInsets.only(top: 5.0, bottom: 10.0),
-      child: Container(
-        height: 50,
-        decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(10)),
-        child: TextFormField(
-          initialValue: "user",
-          style: textArialRegularsecondary(),
-          keyboardType: TextInputType.emailAddress,
-          decoration: InputDecoration(
-              errorBorder: OutlineInputBorder(borderSide: BorderSide(width: 0, color: Color(0xFFF44242))),
-              errorStyle: TextStyle(color: Color(0xFFF44242)),
-              contentPadding: EdgeInsets.all(10),
-              // enabledBorder: const OutlineInputBorder(
-              //   borderSide: const BorderSide(color: Colors.grey, width: 0.0),
-              // ),
-
-              // focusedBorder: OutlineInputBorder(
-              //   // borderSide: BorderSide(color: primary),
-              // ),
-              border: InputBorder.none,
-              fillColor: Colors.white,
-              focusColor: Colors.white),
-        ),
       ),
     );
   }
@@ -256,147 +205,48 @@ class _SignUpState extends State<SignUp> {
     );
   }
 
-  Widget buildConfirmPasswordText() {
-    return Padding(
-      padding: const EdgeInsets.only(top: 12.0),
-      child: GFTypography(
-        showDivider: false,
-        child: RichText(
-          text: TextSpan(
-            children: <TextSpan>[
-              TextSpan(text: "Confirm Password", style: textArialRegularWhite()),
-              TextSpan(
-                text: ' *',
-                style: TextStyle(color: Color(0xFFFFFFFF)),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget buildConfirmPasswordTextField() {
-    return Padding(
-      padding: const EdgeInsets.only(top: 5.0, bottom: 10.0),
-      child: Container(
-        height: 50,
-        decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(10)),
-        child: TextFormField(
-          initialValue: "12345",
-          style: textArialRegularsecondary(),
-          keyboardType: TextInputType.emailAddress,
-          decoration: InputDecoration(
-              errorBorder: OutlineInputBorder(borderSide: BorderSide(width: 0, color: Color(0xFFF44242))),
-              errorStyle: TextStyle(color: Color(0xFFF44242)),
-              contentPadding: EdgeInsets.all(10),
-              // enabledBorder: const OutlineInputBorder(
-              //   borderSide: const BorderSide(color: Colors.grey, width: 0.0),
-              // ),
-
-              // focusedBorder: OutlineInputBorder(
-              //   // borderSide: BorderSide(color: primary),
-              // ),
-              border: InputBorder.none,
-              fillColor: Colors.white,
-              focusColor: Colors.white),
-          obscureText: true,
-        ),
-      ),
-    );
-  }
-
-  Widget buildGenderSection() {
-    return Container(
-      width: MediaQuery.of(context).size.width,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.only(bottom: 2.0),
-            child: Text(
-              'Gender:',
-              style: textArialBoldWhite(),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 11.0),
-            child: Column(
+  Widget buildRememberpwd() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: <Widget>[
+        Column(
+          children: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
-                Row(
-                  children: <Widget>[
-                    Text(
-                      ' Male',
-                      style: textArialRegularlgWhite(),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(0.0),
-                      child: Radio(
-                        value: 1,
-                        groupValue: selectedRadio,
-                        activeColor: secondary,
-                        onChanged: (val) {
-                          setSelectedRadio(val);
-                        },
-                      ),
-                    ),
-                  ],
+                Checkbox(
+                  value: monVal,
+                  activeColor: secondary,
+                  onChanged: (bool value) {
+                    setState(() {
+                      monVal = value;
+                    });
+                  },
                 ),
+                Text(
+                  'Remember me',
+                  style: textArialRegularlgWhitee(),
+                )
               ],
-            ),
-          ),
-          Column(
-            children: <Widget>[
-              Row(
-                children: <Widget>[
-                  Text(
-                    'Female',
-                    style: textArialRegularlgWhite(),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(0.0),
-                    child: Radio(
-                      value: 2,
-                      groupValue: selectedRadio,
-                      activeColor: secondary,
-                      onChanged: (val) {
-                        setSelectedRadio(val);
-                      },
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-          Column(
-            children: <Widget>[
-              Row(
-                children: <Widget>[
-                  Text(
-                    'Other',
-                    style: textArialRegularlgWhite(),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(0.0),
-                    child: Radio(
-                      value: 3,
-                      groupValue: selectedRadio,
-                      activeColor: secondary,
-                      onChanged: (val) {
-                        setSelectedRadio(val);
-                      },
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ],
-      ),
+            )
+          ],
+        ),
+        InkWell(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ForgotPassword()),
+              );
+            },
+            child: Text(
+              'Forgot password?',
+              style: textArialRegularlgWhitee(),
+            )),
+      ],
     );
   }
 
-  Widget buildSignupButton() {
+  Widget buildLoginButton() {
     return Container(
       height: 55,
       margin: EdgeInsets.only(top: 30, bottom: 20),
@@ -408,18 +258,15 @@ class _SignUpState extends State<SignUp> {
         shape: RoundedRectangleBorder(
           borderRadius: new BorderRadius.circular(10.0),
         ),
+        // size: GFSize.LARGE,
         color: secondary,
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => Home()),
-          );
-        },
+        // blockButton: true,
+        onPressed: () {},
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              "Create Account",
+              "Login",
               style: textArialBoldlgwhite(),
             ),
           ],
@@ -433,15 +280,80 @@ class _SignUpState extends State<SignUp> {
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => Login()),
+          MaterialPageRoute(builder: (context) => SignUp()),
         );
       },
       child: Padding(
           padding: const EdgeInsets.only(bottom: 10.0),
           child: Text(
-            'Already have an account?',
+            "Don't have an account?",
             style: textArialBoldWhite(),
           )),
+    );
+  }
+
+  Widget buildcontinuetext() {
+    return Text(
+      'OR',
+      textAlign: TextAlign.center,
+      // style: textBarlowRegularBlack(),
+    );
+  }
+
+  Widget buildsignuplink() {
+    return InkWell(
+      onTap: () {
+        // Navigator.push(
+        //   context,
+        //   MaterialPageRoute(builder: (context) => Signup()),
+        // );
+      },
+      // child: Padding(
+      //   padding: const EdgeInsets.only(bottom: 20.0),
+      //   child: RichText(
+      //     text: TextSpan(
+      //       children: <TextSpan>[
+      //         TextSpan(text: "Register?", style: textbarlowRegularaPrimary()),
+      //         TextSpan(
+      //           text: '',
+      //           style: TextStyle(color: primary),
+      //         ),
+      //       ],
+      //     ),
+      //   ),
+      // ),
+    );
+  }
+
+  Widget buildsocialbuttons() {
+    return Row(
+      children: <Widget>[
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.only(top: 10.0, left: 0.0, right: 0.0),
+            child: GFButton(
+              size: GFSize.LARGE,
+              icon: Icon(
+                IconData(
+                  0xe906,
+                  fontFamily: 'icomoon',
+                ),
+                color: Colors.white,
+              ),
+              buttonBoxShadow: true,
+              color: Color(0xFF3B5998),
+              onPressed: () {},
+              child: Text(
+                "Log in with Facebook",
+                // style: textBarlowRegularrWhite(),
+              ),
+            ),
+          ),
+        ),
+        SizedBox(
+          height: 10,
+        ),
+      ],
     );
   }
 

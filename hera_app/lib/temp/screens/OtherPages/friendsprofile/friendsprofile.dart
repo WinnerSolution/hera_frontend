@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hera_app/screens/OtherPages/chat/chat.dart';
+import 'package:hera_app/temp/screens/OtherPages/chat/chat.dart';
 import 'package:hera_app/themes/styles.dart';
 
 class FriendsProfile1 extends StatefulWidget {

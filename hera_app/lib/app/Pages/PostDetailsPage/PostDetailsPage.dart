@@ -3,9 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hera_app/app/Pages/CommentsPage/widgets/CommentWidget.dart';
 import 'package:hera_app/app/Pages/PostDetailsPage/PostDetailsPage.controller.dart';
+import 'package:hera_app/app/likes.dart';
 import 'package:hera_app/components/widgets/ItemListWidget.dart';
-// import 'package:hera_app/controllers/user_snippet_controller.dart';
-import 'package:hera_app/screens/OtherPages/likes/likes.dart';
 import 'package:hera_app/themes/styles.dart';
 import 'package:hera_core/hera_core.dart';
 

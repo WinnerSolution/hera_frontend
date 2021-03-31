@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
-import 'package:hera_app/screens/auth/resetpassword.dart';
+import 'package:hera_app/temp/screens/auth/resetpassword.dart';
 import 'package:hera_app/themes/styles.dart';
 
 class ForgotPassword extends StatefulWidget {

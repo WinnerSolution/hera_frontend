@@ -10,7 +10,7 @@ import 'package:softi_common/resource.dart';
 import 'package:timeago/timeago.dart' as timeago;
 import 'package:velocity_x/velocity_x.dart';
 
-class PostStatsController extends RecordController<TPostStats> {
+class PostStatsController extends RecordController<TPostStats> with TimerControllerMixin {
   final TPost post;
   PostStatsController(this.post) : super(post.getId(), firestore);
 

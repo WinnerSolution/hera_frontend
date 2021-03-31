@@ -98,5 +98,6 @@ flutter:
 analyzer:
   exclude:
     - "**/ecommerce/*"
+    - "**/temp/*"
     - "**/*.g.dart"
     - "**/*.freezed.dart"

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
-import 'package:hera_app/screens/OtherPages/chat/chat.dart';
-import 'package:hera_app/screens/Home/tabs/search.dart';
+import 'package:hera_app/temp/screens/OtherPages/chat/chat.dart';
+import 'package:hera_app/temp/screens/Home/tabs/search.dart';
 import 'package:hera_app/themes/styles.dart';
 
 class Conversations extends StatefulWidget {

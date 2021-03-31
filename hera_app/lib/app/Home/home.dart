@@ -4,9 +4,9 @@ import 'package:getwidget/getwidget.dart';
 import 'package:hera_app/app/Forms/PostForm/PostForm.dart';
 import 'package:hera_app/app/Tabs/FeedPage/FeedPage.dart';
 import 'package:hera_app/app/Tabs/ProfilePage/ProfilePage.dart';
+import 'package:hera_app/app/notification.dart';
+import 'package:hera_app/app/search.dart';
 import 'package:hera_app/controllers/AppController.dart';
-import 'package:hera_app/screens/Home/tabs/notification.dart';
-import 'package:hera_app/screens/Home/tabs/search.dart';
 import 'package:hera_app/themes/styles.dart';
 import 'package:hera_core/hera_core.dart';
 
