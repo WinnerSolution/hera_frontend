@@ -11,6 +11,9 @@ class FeedPage extends BaseView<FeedPageController> {
   init() => FeedPageController();
 
   @override
+  String get tag => null;
+
+  @override
   Widget builder(controller) {
     return Scaffold(
       backgroundColor: Colors.white,

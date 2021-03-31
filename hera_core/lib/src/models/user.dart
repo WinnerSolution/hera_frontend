@@ -15,7 +15,10 @@ abstract class TUser extends IResourceData with BaseResourceDataMixin implements
   @CustomDateTimeConverter()
   @JsonSerializable(explicitToJson: true)
   factory TUser({
-    String id,
+    // String id,
+    // String path,
+
+    //
     String fullname,
     DateTime dateOfBirth,
     int gender,

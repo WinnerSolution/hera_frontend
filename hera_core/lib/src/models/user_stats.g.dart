@@ -8,7 +8,6 @@ part of 'user_stats.dart';
 
 _$_TUserStats _$_$_TUserStatsFromJson(Map<String, dynamic> json) {
   return _$_TUserStats(
-    id: json['id'] as String,
     commentsCount: json['commentsCount'] as int ?? 0,
     likesCount: json['likesCount'] as int ?? 0,
     sharesCount: json['sharesCount'] as int ?? 0,
@@ -22,13 +21,15 @@ _$_TUserStats _$_$_TUserStatsFromJson(Map<String, dynamic> json) {
         const CustomDateTimeConverter().fromJson(json['createdAt'] as DateTime),
     updatedAt:
         const CustomDateTimeConverter().fromJson(json['updatedAt'] as DateTime),
-  )..path = json['path'] as String;
+  )
+    ..id = json['id'] as String
+    ..path = json['path'] as String;
 }
 
 Map<String, dynamic> _$_$_TUserStatsToJson(_$_TUserStats instance) =>
     <String, dynamic>{
-      'path': instance.path,
       'id': instance.id,
+      'path': instance.path,
       'commentsCount': instance.commentsCount,
       'likesCount': instance.likesCount,
       'sharesCount': instance.sharesCount,

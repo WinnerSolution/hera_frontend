@@ -14,7 +14,8 @@ abstract class TPostStats extends IResourceData with BaseResourceDataMixin imple
   @CustomDateTimeConverter()
   @JsonSerializable(explicitToJson: true)
   factory TPostStats({
-    String id,
+    // String id,
+    // String path,
 
     //
     @Default(0) int sharesCount,
@@ -33,14 +34,20 @@ abstract class TPostStats extends IResourceData with BaseResourceDataMixin imple
   }
 
   TPostStats incremetLikes(int i) {
-    return copyWith(likesCount: likesCount + i);
+    return copyWith(likesCount: likesCount + i)
+      ..setId(id)
+      ..setPath(path);
   }
 
   TPostStats incremeComments(int i) {
-    return copyWith(commentsCount: commentsCount + i);
+    return copyWith(commentsCount: commentsCount + i)
+      ..setId(id)
+      ..setPath(path);
   }
 
   TPostStats incremetShares(int i) {
-    return copyWith(sharesCount: sharesCount + i);
+    return copyWith(sharesCount: sharesCount + i)
+      ..setId(id)
+      ..setPath(path);
   }
 }

@@ -14,6 +14,10 @@ abstract class TLike extends IResourceData with BaseResourceDataMixin implements
   @CustomDateTimeConverter()
   @JsonSerializable(explicitToJson: true)
   factory TLike({
+    // String id,
+    // String path,
+
+    //
     String postId,
     String userId,
     String commentId,

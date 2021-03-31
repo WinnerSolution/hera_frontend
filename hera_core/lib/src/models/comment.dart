@@ -14,7 +14,10 @@ abstract class TComment extends IResourceData with BaseResourceDataMixin impleme
   @CustomDateTimeConverter()
   @JsonSerializable(explicitToJson: true)
   factory TComment({
-    String id,
+    // String id,
+    // String path,
+
+    //
     String comment,
     String userId,
     String postId,

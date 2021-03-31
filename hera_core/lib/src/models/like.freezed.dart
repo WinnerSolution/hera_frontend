@@ -48,6 +48,9 @@ const $TLike = _$TLikeTearOff();
 
 /// @nodoc
 mixin _$TLike {
+// String id,
+// String path,
+//
   String get postId;
   String get userId;
   String get commentId;
@@ -178,7 +181,9 @@ class _$_TLike extends _TLike with DiagnosticableTreeMixin {
   factory _$_TLike.fromJson(Map<String, dynamic> json) =>
       _$_$_TLikeFromJson(json);
 
-  @override
+  @override // String id,
+// String path,
+//
   final String postId;
   @override
   final String userId;
@@ -272,7 +277,9 @@ abstract class _TLike extends TLike {
 
   factory _TLike.fromJson(Map<String, dynamic> json) = _$_TLike.fromJson;
 
-  @override
+  @override // String id,
+// String path,
+//
   String get postId;
   @override
   String get userId;

@@ -18,8 +18,7 @@ class _$TUserStatsTearOff {
 
 // ignore: unused_element
   _TUserStats call(
-      {String id,
-      int commentsCount = 0,
+      {int commentsCount = 0,
       int likesCount = 0,
       int sharesCount = 0,
       int postsCount = 0,
@@ -29,7 +28,6 @@ class _$TUserStatsTearOff {
       DateTime createdAt,
       DateTime updatedAt}) {
     return _TUserStats(
-      id: id,
       commentsCount: commentsCount,
       likesCount: likesCount,
       sharesCount: sharesCount,
@@ -54,7 +52,9 @@ const $TUserStats = _$TUserStatsTearOff();
 
 /// @nodoc
 mixin _$TUserStats {
-  String get id; //
+// String id,
+// String path,
+//
   int get commentsCount;
   int get likesCount;
   int get sharesCount; //
@@ -76,8 +76,7 @@ abstract class $TUserStatsCopyWith<$Res> {
           TUserStats value, $Res Function(TUserStats) then) =
       _$TUserStatsCopyWithImpl<$Res>;
   $Res call(
-      {String id,
-      int commentsCount,
+      {int commentsCount,
       int likesCount,
       int sharesCount,
       int postsCount,
@@ -100,7 +99,6 @@ class _$TUserStatsCopyWithImpl<$Res> implements $TUserStatsCopyWith<$Res> {
 
   @override
   $Res call({
-    Object id = freezed,
     Object commentsCount = freezed,
     Object likesCount = freezed,
     Object sharesCount = freezed,
@@ -112,7 +110,6 @@ class _$TUserStatsCopyWithImpl<$Res> implements $TUserStatsCopyWith<$Res> {
     Object updatedAt = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed ? _value.id : id as String,
       commentsCount: commentsCount == freezed
           ? _value.commentsCount
           : commentsCount as int,
@@ -154,8 +151,7 @@ abstract class _$TUserStatsCopyWith<$Res> implements $TUserStatsCopyWith<$Res> {
       __$TUserStatsCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String id,
-      int commentsCount,
+      {int commentsCount,
       int likesCount,
       int sharesCount,
       int postsCount,
@@ -181,7 +177,6 @@ class __$TUserStatsCopyWithImpl<$Res> extends _$TUserStatsCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object id = freezed,
     Object commentsCount = freezed,
     Object likesCount = freezed,
     Object sharesCount = freezed,
@@ -193,7 +188,6 @@ class __$TUserStatsCopyWithImpl<$Res> extends _$TUserStatsCopyWithImpl<$Res>
     Object updatedAt = freezed,
   }) {
     return _then(_TUserStats(
-      id: id == freezed ? _value.id : id as String,
       commentsCount: commentsCount == freezed
           ? _value.commentsCount
           : commentsCount as int,
@@ -224,8 +218,7 @@ class __$TUserStatsCopyWithImpl<$Res> extends _$TUserStatsCopyWithImpl<$Res>
 /// @nodoc
 class _$_TUserStats extends _TUserStats with DiagnosticableTreeMixin {
   _$_TUserStats(
-      {this.id,
-      this.commentsCount = 0,
+      {this.commentsCount = 0,
       this.likesCount = 0,
       this.sharesCount = 0,
       this.postsCount = 0,
@@ -245,10 +238,10 @@ class _$_TUserStats extends _TUserStats with DiagnosticableTreeMixin {
   factory _$_TUserStats.fromJson(Map<String, dynamic> json) =>
       _$_$_TUserStatsFromJson(json);
 
-  @override
-  final String id;
   @JsonKey(defaultValue: 0)
-  @override //
+  @override // String id,
+// String path,
+//
   final int commentsCount;
   @JsonKey(defaultValue: 0)
   @override
@@ -274,7 +267,7 @@ class _$_TUserStats extends _TUserStats with DiagnosticableTreeMixin {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'TUserStats(id: $id, commentsCount: $commentsCount, likesCount: $likesCount, sharesCount: $sharesCount, postsCount: $postsCount, followingCount: $followingCount, followersCount: $followersCount, presenceState: $presenceState, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'TUserStats(commentsCount: $commentsCount, likesCount: $likesCount, sharesCount: $sharesCount, postsCount: $postsCount, followingCount: $followingCount, followersCount: $followersCount, presenceState: $presenceState, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -282,7 +275,6 @@ class _$_TUserStats extends _TUserStats with DiagnosticableTreeMixin {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'TUserStats'))
-      ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('commentsCount', commentsCount))
       ..add(DiagnosticsProperty('likesCount', likesCount))
       ..add(DiagnosticsProperty('sharesCount', sharesCount))
@@ -298,8 +290,6 @@ class _$_TUserStats extends _TUserStats with DiagnosticableTreeMixin {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _TUserStats &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.commentsCount, commentsCount) ||
                 const DeepCollectionEquality()
                     .equals(other.commentsCount, commentsCount)) &&
@@ -332,7 +322,6 @@ class _$_TUserStats extends _TUserStats with DiagnosticableTreeMixin {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(commentsCount) ^
       const DeepCollectionEquality().hash(likesCount) ^
       const DeepCollectionEquality().hash(sharesCount) ^
@@ -357,8 +346,7 @@ class _$_TUserStats extends _TUserStats with DiagnosticableTreeMixin {
 abstract class _TUserStats extends TUserStats {
   _TUserStats._() : super._();
   factory _TUserStats(
-      {String id,
-      int commentsCount,
+      {int commentsCount,
       int likesCount,
       int sharesCount,
       int postsCount,
@@ -371,9 +359,9 @@ abstract class _TUserStats extends TUserStats {
   factory _TUserStats.fromJson(Map<String, dynamic> json) =
       _$_TUserStats.fromJson;
 
-  @override
-  String get id;
-  @override //
+  @override // String id,
+// String path,
+//
   int get commentsCount;
   @override
   int get likesCount;

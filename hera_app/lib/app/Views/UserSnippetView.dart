@@ -12,12 +12,7 @@ class UserSnippetController extends RecordController<TUser> {
   UserSnippetController(
     String userId, {
     reactive: true,
-    // ResourceBase firestore,
-  }) : super(
-          userId,
-          reactive: reactive,
-          resourceBase: firestore,
-        );
+  }) : super(userId, firestore, reactive: reactive);
 
   Rx<TUser> get user => record;
 
@@ -33,8 +28,8 @@ class UserSnippetController extends RecordController<TUser> {
   handleProfileImageOnClic() => Get.to(() => ProfilePage(record().getId()));
 }
 
-class UserSnippetSmartWidget extends StatelessWidget {
-  const UserSnippetSmartWidget(
+class UserSnippetView extends StatelessWidget {
+  const UserSnippetView(
     this.userId, {
     this.rightText,
     this.bottomText,

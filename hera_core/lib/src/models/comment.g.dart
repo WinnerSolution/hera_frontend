@@ -8,7 +8,6 @@ part of 'comment.dart';
 
 _$_TComment _$_$_TCommentFromJson(Map<String, dynamic> json) {
   return _$_TComment(
-    id: json['id'] as String,
     comment: json['comment'] as String,
     userId: json['userId'] as String,
     postId: json['postId'] as String,
@@ -17,13 +16,15 @@ _$_TComment _$_$_TCommentFromJson(Map<String, dynamic> json) {
         const CustomDateTimeConverter().fromJson(json['createdAt'] as DateTime),
     updatedAt:
         const CustomDateTimeConverter().fromJson(json['updatedAt'] as DateTime),
-  )..path = json['path'] as String;
+  )
+    ..id = json['id'] as String
+    ..path = json['path'] as String;
 }
 
 Map<String, dynamic> _$_$_TCommentToJson(_$_TComment instance) =>
     <String, dynamic>{
-      'path': instance.path,
       'id': instance.id,
+      'path': instance.path,
       'comment': instance.comment,
       'userId': instance.userId,
       'postId': instance.postId,

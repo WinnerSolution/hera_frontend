@@ -15,8 +15,10 @@ abstract class TPost extends IResourceData with BaseResourceDataMixin implements
   @CustomDateTimeConverter()
   @JsonSerializable(explicitToJson: true)
   factory TPost({
+    // String id,
+    // String path,
+
     //
-    String id,
     String title,
     String description,
     List<RemoteImage> images,

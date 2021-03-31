@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hera_app/app/Tabs/FeedPage/widgets/PostStatsWidget.smart.dart';
+import 'package:hera_app/app/Tabs/FeedPage/widgets/PostStats.view.dart';
 import 'package:hera_app/app/Pages/PostDetailsPage/PostDetailsPage.dart';
 import 'package:hera_core/hera_core.dart';
 import 'package:velocity_x/velocity_x.dart';

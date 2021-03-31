@@ -86,7 +86,9 @@ class ProfilePageController extends CollectionController<TPost> {
     var _result = _library?.map((e) => RemoteImage.fromNetworAsset(e))?.toList();
 
     if (record.images != _result && _result != null) {
-      await firestore.save<TPost>(record.copyWith(images: _result));
+      await firestore.save<TPost>(record.copyWith(images: _result)
+        ..setId(record.id)
+        ..setPath(record.path));
     }
   }
 

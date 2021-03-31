@@ -42,8 +42,9 @@ class CommentListController extends CollectionController<TComment> {
 
 class CommentListView extends BaseView<CommentListController> {
   final TPost post;
+  final String tag;
 
-  CommentListView(this.post);
+  CommentListView(this.post, {this.tag});
 
   @override
   init() => CommentListController(post.getId());

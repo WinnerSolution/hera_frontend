@@ -18,8 +18,7 @@ class _$TUserTearOff {
 
 // ignore: unused_element
   _TUser call(
-      {String id,
-      String fullname,
+      {String fullname,
       DateTime dateOfBirth,
       int gender,
       RemoteImage profileImage,
@@ -32,7 +31,6 @@ class _$TUserTearOff {
       DateTime createdAt,
       DateTime updatedAt}) {
     return _TUser(
-      id: id,
       fullname: fullname,
       dateOfBirth: dateOfBirth,
       gender: gender,
@@ -60,7 +58,9 @@ const $TUser = _$TUserTearOff();
 
 /// @nodoc
 mixin _$TUser {
-  String get id;
+// String id,
+// String path,
+//
   String get fullname;
   DateTime get dateOfBirth;
   int get gender;
@@ -87,8 +87,7 @@ abstract class $TUserCopyWith<$Res> {
   factory $TUserCopyWith(TUser value, $Res Function(TUser) then) =
       _$TUserCopyWithImpl<$Res>;
   $Res call(
-      {String id,
-      String fullname,
+      {String fullname,
       DateTime dateOfBirth,
       int gender,
       RemoteImage profileImage,
@@ -114,7 +113,6 @@ class _$TUserCopyWithImpl<$Res> implements $TUserCopyWith<$Res> {
 
   @override
   $Res call({
-    Object id = freezed,
     Object fullname = freezed,
     Object dateOfBirth = freezed,
     Object gender = freezed,
@@ -129,7 +127,6 @@ class _$TUserCopyWithImpl<$Res> implements $TUserCopyWith<$Res> {
     Object updatedAt = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed ? _value.id : id as String,
       fullname: fullname == freezed ? _value.fullname : fullname as String,
       dateOfBirth:
           dateOfBirth == freezed ? _value.dateOfBirth : dateOfBirth as DateTime,
@@ -171,8 +168,7 @@ abstract class _$TUserCopyWith<$Res> implements $TUserCopyWith<$Res> {
       __$TUserCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String id,
-      String fullname,
+      {String fullname,
       DateTime dateOfBirth,
       int gender,
       RemoteImage profileImage,
@@ -200,7 +196,6 @@ class __$TUserCopyWithImpl<$Res> extends _$TUserCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object id = freezed,
     Object fullname = freezed,
     Object dateOfBirth = freezed,
     Object gender = freezed,
@@ -215,7 +210,6 @@ class __$TUserCopyWithImpl<$Res> extends _$TUserCopyWithImpl<$Res>
     Object updatedAt = freezed,
   }) {
     return _then(_TUser(
-      id: id == freezed ? _value.id : id as String,
       fullname: fullname == freezed ? _value.fullname : fullname as String,
       dateOfBirth:
           dateOfBirth == freezed ? _value.dateOfBirth : dateOfBirth as DateTime,
@@ -247,8 +241,7 @@ class __$TUserCopyWithImpl<$Res> extends _$TUserCopyWithImpl<$Res>
 /// @nodoc
 class _$_TUser extends _TUser with DiagnosticableTreeMixin {
   _$_TUser(
-      {this.id,
-      this.fullname,
+      {this.fullname,
       this.dateOfBirth,
       this.gender,
       this.profileImage,
@@ -267,9 +260,9 @@ class _$_TUser extends _TUser with DiagnosticableTreeMixin {
   factory _$_TUser.fromJson(Map<String, dynamic> json) =>
       _$_$_TUserFromJson(json);
 
-  @override
-  final String id;
-  @override
+  @override // String id,
+// String path,
+//
   final String fullname;
   @override
   final DateTime dateOfBirth;
@@ -301,7 +294,7 @@ class _$_TUser extends _TUser with DiagnosticableTreeMixin {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'TUser(id: $id, fullname: $fullname, dateOfBirth: $dateOfBirth, gender: $gender, profileImage: $profileImage, email: $email, phone: $phone, bio: $bio, status: $status, privateProfile: $privateProfile, notifications: $notifications, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'TUser(fullname: $fullname, dateOfBirth: $dateOfBirth, gender: $gender, profileImage: $profileImage, email: $email, phone: $phone, bio: $bio, status: $status, privateProfile: $privateProfile, notifications: $notifications, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -309,7 +302,6 @@ class _$_TUser extends _TUser with DiagnosticableTreeMixin {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'TUser'))
-      ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('fullname', fullname))
       ..add(DiagnosticsProperty('dateOfBirth', dateOfBirth))
       ..add(DiagnosticsProperty('gender', gender))
@@ -328,8 +320,6 @@ class _$_TUser extends _TUser with DiagnosticableTreeMixin {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _TUser &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.fullname, fullname) ||
                 const DeepCollectionEquality()
                     .equals(other.fullname, fullname)) &&
@@ -366,7 +356,6 @@ class _$_TUser extends _TUser with DiagnosticableTreeMixin {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(fullname) ^
       const DeepCollectionEquality().hash(dateOfBirth) ^
       const DeepCollectionEquality().hash(gender) ^
@@ -394,8 +383,7 @@ class _$_TUser extends _TUser with DiagnosticableTreeMixin {
 abstract class _TUser extends TUser {
   _TUser._() : super._();
   factory _TUser(
-      {String id,
-      String fullname,
+      {String fullname,
       DateTime dateOfBirth,
       int gender,
       RemoteImage profileImage,
@@ -410,9 +398,9 @@ abstract class _TUser extends TUser {
 
   factory _TUser.fromJson(Map<String, dynamic> json) = _$_TUser.fromJson;
 
-  @override
-  String get id;
-  @override
+  @override // String id,
+// String path,
+//
   String get fullname;
   @override
   DateTime get dateOfBirth;

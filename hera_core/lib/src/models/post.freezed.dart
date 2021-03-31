@@ -18,8 +18,7 @@ class _$TPostTearOff {
 
 // ignore: unused_element
   _TPost call(
-      {String id,
-      String title,
+      {String title,
       String description,
       List<RemoteImage> images,
       String shopUrl,
@@ -28,7 +27,6 @@ class _$TPostTearOff {
       DateTime createdAt,
       DateTime updatedAt}) {
     return _TPost(
-      id: id,
       title: title,
       description: description,
       images: images,
@@ -52,8 +50,9 @@ const $TPost = _$TPostTearOff();
 
 /// @nodoc
 mixin _$TPost {
+// String id,
+// String path,
 //
-  String get id;
   String get title;
   String get description;
   List<RemoteImage> get images;
@@ -73,8 +72,7 @@ abstract class $TPostCopyWith<$Res> {
   factory $TPostCopyWith(TPost value, $Res Function(TPost) then) =
       _$TPostCopyWithImpl<$Res>;
   $Res call(
-      {String id,
-      String title,
+      {String title,
       String description,
       List<RemoteImage> images,
       String shopUrl,
@@ -94,7 +92,6 @@ class _$TPostCopyWithImpl<$Res> implements $TPostCopyWith<$Res> {
 
   @override
   $Res call({
-    Object id = freezed,
     Object title = freezed,
     Object description = freezed,
     Object images = freezed,
@@ -105,7 +102,6 @@ class _$TPostCopyWithImpl<$Res> implements $TPostCopyWith<$Res> {
     Object updatedAt = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed ? _value.id : id as String,
       title: title == freezed ? _value.title : title as String,
       description:
           description == freezed ? _value.description : description as String,
@@ -127,8 +123,7 @@ abstract class _$TPostCopyWith<$Res> implements $TPostCopyWith<$Res> {
       __$TPostCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String id,
-      String title,
+      {String title,
       String description,
       List<RemoteImage> images,
       String shopUrl,
@@ -149,7 +144,6 @@ class __$TPostCopyWithImpl<$Res> extends _$TPostCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object id = freezed,
     Object title = freezed,
     Object description = freezed,
     Object images = freezed,
@@ -160,7 +154,6 @@ class __$TPostCopyWithImpl<$Res> extends _$TPostCopyWithImpl<$Res>
     Object updatedAt = freezed,
   }) {
     return _then(_TPost(
-      id: id == freezed ? _value.id : id as String,
       title: title == freezed ? _value.title : title as String,
       description:
           description == freezed ? _value.description : description as String,
@@ -182,8 +175,7 @@ class __$TPostCopyWithImpl<$Res> extends _$TPostCopyWithImpl<$Res>
 /// @nodoc
 class _$_TPost extends _TPost with DiagnosticableTreeMixin {
   _$_TPost(
-      {this.id,
-      this.title,
+      {this.title,
       this.description,
       this.images,
       this.shopUrl,
@@ -196,9 +188,9 @@ class _$_TPost extends _TPost with DiagnosticableTreeMixin {
   factory _$_TPost.fromJson(Map<String, dynamic> json) =>
       _$_$_TPostFromJson(json);
 
-  @override //
-  final String id;
-  @override
+  @override // String id,
+// String path,
+//
   final String title;
   @override
   final String description;
@@ -217,7 +209,7 @@ class _$_TPost extends _TPost with DiagnosticableTreeMixin {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'TPost(id: $id, title: $title, description: $description, images: $images, shopUrl: $shopUrl, price: $price, createdBy: $createdBy, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'TPost(title: $title, description: $description, images: $images, shopUrl: $shopUrl, price: $price, createdBy: $createdBy, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -225,7 +217,6 @@ class _$_TPost extends _TPost with DiagnosticableTreeMixin {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'TPost'))
-      ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('title', title))
       ..add(DiagnosticsProperty('description', description))
       ..add(DiagnosticsProperty('images', images))
@@ -240,8 +231,6 @@ class _$_TPost extends _TPost with DiagnosticableTreeMixin {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _TPost &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.title, title) ||
                 const DeepCollectionEquality().equals(other.title, title)) &&
             (identical(other.description, description) ||
@@ -268,7 +257,6 @@ class _$_TPost extends _TPost with DiagnosticableTreeMixin {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(title) ^
       const DeepCollectionEquality().hash(description) ^
       const DeepCollectionEquality().hash(images) ^
@@ -292,8 +280,7 @@ class _$_TPost extends _TPost with DiagnosticableTreeMixin {
 abstract class _TPost extends TPost {
   _TPost._() : super._();
   factory _TPost(
-      {String id,
-      String title,
+      {String title,
       String description,
       List<RemoteImage> images,
       String shopUrl,
@@ -304,9 +291,9 @@ abstract class _TPost extends TPost {
 
   factory _TPost.fromJson(Map<String, dynamic> json) = _$_TPost.fromJson;
 
-  @override //
-  String get id;
-  @override
+  @override // String id,
+// String path,
+//
   String get title;
   @override
   String get description;

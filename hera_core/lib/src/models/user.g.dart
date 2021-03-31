@@ -8,7 +8,6 @@ part of 'user.dart';
 
 _$_TUser _$_$_TUserFromJson(Map<String, dynamic> json) {
   return _$_TUser(
-    id: json['id'] as String,
     fullname: json['fullname'] as String,
     dateOfBirth: const CustomDateTimeConverter()
         .fromJson(json['dateOfBirth'] as DateTime),
@@ -26,12 +25,14 @@ _$_TUser _$_$_TUserFromJson(Map<String, dynamic> json) {
         const CustomDateTimeConverter().fromJson(json['createdAt'] as DateTime),
     updatedAt:
         const CustomDateTimeConverter().fromJson(json['updatedAt'] as DateTime),
-  )..path = json['path'] as String;
+  )
+    ..id = json['id'] as String
+    ..path = json['path'] as String;
 }
 
 Map<String, dynamic> _$_$_TUserToJson(_$_TUser instance) => <String, dynamic>{
-      'path': instance.path,
       'id': instance.id,
+      'path': instance.path,
       'fullname': instance.fullname,
       'dateOfBirth':
           const CustomDateTimeConverter().toJson(instance.dateOfBirth),

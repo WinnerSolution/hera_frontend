@@ -43,10 +43,9 @@ class AppController extends BaseController //
         } else {
           isNewUser(true);
           firestore.save<TUser>(TUser(
-            id: _authUser.uid,
             email: _authUser.email,
             phone: _authUser.phoneNumber,
-          ));
+          )..setId(_authUser.uid));
         }
       },
       // masterHandler: (_authUser) {
@@ -67,12 +66,11 @@ class AppController extends BaseController //
         } else {
           // isNewUser(true);
           firestore.save<TUserStats>(TUserStats(
-            id: _user.id,
             followersCount: 0,
             followingCount: 0,
             likesCount: 0,
             postsCount: 0,
-          ));
+          )..setId(_user.id));
         }
       },
       // masterHandler: (_authUser) {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hera_app/app/Views/UserSnippetViewdart';
+import 'package:hera_app/app/Views/UserSnippetView.dart';
 import 'package:hera_core/hera_core.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
@@ -13,7 +13,7 @@ class CommentWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return UserSnippetSmartWidget(
+    return UserSnippetView(
       comment.userId,
       rightText: comment.updatedAt != null ? timeago.format(comment.updatedAt, locale: 'en') : '',
       bottomText: comment.comment,

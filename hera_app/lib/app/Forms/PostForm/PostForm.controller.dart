@@ -20,11 +20,6 @@ class AddPostController extends ResourceFormController<TPost> {
   Rx<TUser> get user => AppController.find.user;
   String get userProfileImageUrl => AppController.find.userProfileImageUrl;
 
-  // @override
-  // Future<TProduct> beforeResourceSave(TProduct record) async {
-  //   return record; //.copyWith(createdBy: createdBy);
-  // }
-
   @override
   Future<void> afterResourceSave(record) async {
     await uploadProfileImage(record);
@@ -63,10 +58,14 @@ class AddPostController extends ResourceFormController<TPost> {
             title: 'users_picutures/' + AppController.find.user().id + '/posts/' + record.id,
           );
 
+          var newRecord = record.copyWith(
+            images: [RemoteImage.fromNetworAsset(result.result)],
+          )
+            ..setId(record.id)
+            ..setPath(record.path);
+
           if (result.result?.url != null) {
-            await firestore.save<TPost>(record.copyWith(
-              images: [RemoteImage.fromNetworAsset(result.result)],
-            ));
+            await firestore.save<TPost>(newRecord);
           }
           // busy(false);
           return 'Saved';

@@ -18,14 +18,12 @@ class _$TPostStatsTearOff {
 
 // ignore: unused_element
   _TPostStats call(
-      {String id,
-      int sharesCount = 0,
+      {int sharesCount = 0,
       int likesCount = 0,
       int commentsCount = 0,
       DateTime createdAt,
       DateTime updatedAt}) {
     return _TPostStats(
-      id: id,
       sharesCount: sharesCount,
       likesCount: likesCount,
       commentsCount: commentsCount,
@@ -46,7 +44,9 @@ const $TPostStats = _$TPostStatsTearOff();
 
 /// @nodoc
 mixin _$TPostStats {
-  String get id; //
+// String id,
+// String path,
+//
   int get sharesCount;
   int get likesCount;
   int get commentsCount; //
@@ -64,8 +64,7 @@ abstract class $TPostStatsCopyWith<$Res> {
           TPostStats value, $Res Function(TPostStats) then) =
       _$TPostStatsCopyWithImpl<$Res>;
   $Res call(
-      {String id,
-      int sharesCount,
+      {int sharesCount,
       int likesCount,
       int commentsCount,
       DateTime createdAt,
@@ -82,7 +81,6 @@ class _$TPostStatsCopyWithImpl<$Res> implements $TPostStatsCopyWith<$Res> {
 
   @override
   $Res call({
-    Object id = freezed,
     Object sharesCount = freezed,
     Object likesCount = freezed,
     Object commentsCount = freezed,
@@ -90,7 +88,6 @@ class _$TPostStatsCopyWithImpl<$Res> implements $TPostStatsCopyWith<$Res> {
     Object updatedAt = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed ? _value.id : id as String,
       sharesCount:
           sharesCount == freezed ? _value.sharesCount : sharesCount as int,
       likesCount: likesCount == freezed ? _value.likesCount : likesCount as int,
@@ -112,8 +109,7 @@ abstract class _$TPostStatsCopyWith<$Res> implements $TPostStatsCopyWith<$Res> {
       __$TPostStatsCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String id,
-      int sharesCount,
+      {int sharesCount,
       int likesCount,
       int commentsCount,
       DateTime createdAt,
@@ -132,7 +128,6 @@ class __$TPostStatsCopyWithImpl<$Res> extends _$TPostStatsCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object id = freezed,
     Object sharesCount = freezed,
     Object likesCount = freezed,
     Object commentsCount = freezed,
@@ -140,7 +135,6 @@ class __$TPostStatsCopyWithImpl<$Res> extends _$TPostStatsCopyWithImpl<$Res>
     Object updatedAt = freezed,
   }) {
     return _then(_TPostStats(
-      id: id == freezed ? _value.id : id as String,
       sharesCount:
           sharesCount == freezed ? _value.sharesCount : sharesCount as int,
       likesCount: likesCount == freezed ? _value.likesCount : likesCount as int,
@@ -161,8 +155,7 @@ class __$TPostStatsCopyWithImpl<$Res> extends _$TPostStatsCopyWithImpl<$Res>
 /// @nodoc
 class _$_TPostStats extends _TPostStats with DiagnosticableTreeMixin {
   _$_TPostStats(
-      {this.id,
-      this.sharesCount = 0,
+      {this.sharesCount = 0,
       this.likesCount = 0,
       this.commentsCount = 0,
       this.createdAt,
@@ -175,10 +168,10 @@ class _$_TPostStats extends _TPostStats with DiagnosticableTreeMixin {
   factory _$_TPostStats.fromJson(Map<String, dynamic> json) =>
       _$_$_TPostStatsFromJson(json);
 
-  @override
-  final String id;
   @JsonKey(defaultValue: 0)
-  @override //
+  @override // String id,
+// String path,
+//
   final int sharesCount;
   @JsonKey(defaultValue: 0)
   @override
@@ -193,7 +186,7 @@ class _$_TPostStats extends _TPostStats with DiagnosticableTreeMixin {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'TPostStats(id: $id, sharesCount: $sharesCount, likesCount: $likesCount, commentsCount: $commentsCount, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'TPostStats(sharesCount: $sharesCount, likesCount: $likesCount, commentsCount: $commentsCount, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -201,7 +194,6 @@ class _$_TPostStats extends _TPostStats with DiagnosticableTreeMixin {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'TPostStats'))
-      ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('sharesCount', sharesCount))
       ..add(DiagnosticsProperty('likesCount', likesCount))
       ..add(DiagnosticsProperty('commentsCount', commentsCount))
@@ -213,8 +205,6 @@ class _$_TPostStats extends _TPostStats with DiagnosticableTreeMixin {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _TPostStats &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.sharesCount, sharesCount) ||
                 const DeepCollectionEquality()
                     .equals(other.sharesCount, sharesCount)) &&
@@ -235,7 +225,6 @@ class _$_TPostStats extends _TPostStats with DiagnosticableTreeMixin {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(sharesCount) ^
       const DeepCollectionEquality().hash(likesCount) ^
       const DeepCollectionEquality().hash(commentsCount) ^
@@ -256,8 +245,7 @@ class _$_TPostStats extends _TPostStats with DiagnosticableTreeMixin {
 abstract class _TPostStats extends TPostStats {
   _TPostStats._() : super._();
   factory _TPostStats(
-      {String id,
-      int sharesCount,
+      {int sharesCount,
       int likesCount,
       int commentsCount,
       DateTime createdAt,
@@ -266,9 +254,9 @@ abstract class _TPostStats extends TPostStats {
   factory _TPostStats.fromJson(Map<String, dynamic> json) =
       _$_TPostStats.fromJson;
 
-  @override
-  String get id;
-  @override //
+  @override // String id,
+// String path,
+//
   int get sharesCount;
   @override
   int get likesCount;

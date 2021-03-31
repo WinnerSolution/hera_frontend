@@ -8,7 +8,6 @@ part of 'post.dart';
 
 _$_TPost _$_$_TPostFromJson(Map<String, dynamic> json) {
   return _$_TPost(
-    id: json['id'] as String,
     title: json['title'] as String,
     description: json['description'] as String,
     images: (json['images'] as List)
@@ -22,12 +21,14 @@ _$_TPost _$_$_TPostFromJson(Map<String, dynamic> json) {
         const CustomDateTimeConverter().fromJson(json['createdAt'] as DateTime),
     updatedAt:
         const CustomDateTimeConverter().fromJson(json['updatedAt'] as DateTime),
-  )..path = json['path'] as String;
+  )
+    ..id = json['id'] as String
+    ..path = json['path'] as String;
 }
 
 Map<String, dynamic> _$_$_TPostToJson(_$_TPost instance) => <String, dynamic>{
-      'path': instance.path,
       'id': instance.id,
+      'path': instance.path,
       'title': instance.title,
       'description': instance.description,
       'images': instance.images?.map((e) => e?.toJson())?.toList(),

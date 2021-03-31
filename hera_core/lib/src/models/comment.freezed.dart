@@ -18,15 +18,13 @@ class _$TCommentTearOff {
 
 // ignore: unused_element
   _TComment call(
-      {String id,
-      String comment,
+      {String comment,
       String userId,
       String postId,
       String parentId,
       DateTime createdAt,
       DateTime updatedAt}) {
     return _TComment(
-      id: id,
       comment: comment,
       userId: userId,
       postId: postId,
@@ -48,7 +46,9 @@ const $TComment = _$TCommentTearOff();
 
 /// @nodoc
 mixin _$TComment {
-  String get id;
+// String id,
+// String path,
+//
   String get comment;
   String get userId;
   String get postId;
@@ -66,8 +66,7 @@ abstract class $TCommentCopyWith<$Res> {
   factory $TCommentCopyWith(TComment value, $Res Function(TComment) then) =
       _$TCommentCopyWithImpl<$Res>;
   $Res call(
-      {String id,
-      String comment,
+      {String comment,
       String userId,
       String postId,
       String parentId,
@@ -85,7 +84,6 @@ class _$TCommentCopyWithImpl<$Res> implements $TCommentCopyWith<$Res> {
 
   @override
   $Res call({
-    Object id = freezed,
     Object comment = freezed,
     Object userId = freezed,
     Object postId = freezed,
@@ -94,7 +92,6 @@ class _$TCommentCopyWithImpl<$Res> implements $TCommentCopyWith<$Res> {
     Object updatedAt = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed ? _value.id : id as String,
       comment: comment == freezed ? _value.comment : comment as String,
       userId: userId == freezed ? _value.userId : userId as String,
       postId: postId == freezed ? _value.postId : postId as String,
@@ -113,8 +110,7 @@ abstract class _$TCommentCopyWith<$Res> implements $TCommentCopyWith<$Res> {
       __$TCommentCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String id,
-      String comment,
+      {String comment,
       String userId,
       String postId,
       String parentId,
@@ -133,7 +129,6 @@ class __$TCommentCopyWithImpl<$Res> extends _$TCommentCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object id = freezed,
     Object comment = freezed,
     Object userId = freezed,
     Object postId = freezed,
@@ -142,7 +137,6 @@ class __$TCommentCopyWithImpl<$Res> extends _$TCommentCopyWithImpl<$Res>
     Object updatedAt = freezed,
   }) {
     return _then(_TComment(
-      id: id == freezed ? _value.id : id as String,
       comment: comment == freezed ? _value.comment : comment as String,
       userId: userId == freezed ? _value.userId : userId as String,
       postId: postId == freezed ? _value.postId : postId as String,
@@ -161,8 +155,7 @@ class __$TCommentCopyWithImpl<$Res> extends _$TCommentCopyWithImpl<$Res>
 /// @nodoc
 class _$_TComment extends _TComment with DiagnosticableTreeMixin {
   _$_TComment(
-      {this.id,
-      this.comment,
+      {this.comment,
       this.userId,
       this.postId,
       this.parentId,
@@ -173,9 +166,9 @@ class _$_TComment extends _TComment with DiagnosticableTreeMixin {
   factory _$_TComment.fromJson(Map<String, dynamic> json) =>
       _$_$_TCommentFromJson(json);
 
-  @override
-  final String id;
-  @override
+  @override // String id,
+// String path,
+//
   final String comment;
   @override
   final String userId;
@@ -190,7 +183,7 @@ class _$_TComment extends _TComment with DiagnosticableTreeMixin {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'TComment(id: $id, comment: $comment, userId: $userId, postId: $postId, parentId: $parentId, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'TComment(comment: $comment, userId: $userId, postId: $postId, parentId: $parentId, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -198,7 +191,6 @@ class _$_TComment extends _TComment with DiagnosticableTreeMixin {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'TComment'))
-      ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('comment', comment))
       ..add(DiagnosticsProperty('userId', userId))
       ..add(DiagnosticsProperty('postId', postId))
@@ -211,8 +203,6 @@ class _$_TComment extends _TComment with DiagnosticableTreeMixin {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _TComment &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.comment, comment) ||
                 const DeepCollectionEquality()
                     .equals(other.comment, comment)) &&
@@ -234,7 +224,6 @@ class _$_TComment extends _TComment with DiagnosticableTreeMixin {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(comment) ^
       const DeepCollectionEquality().hash(userId) ^
       const DeepCollectionEquality().hash(postId) ^
@@ -256,8 +245,7 @@ class _$_TComment extends _TComment with DiagnosticableTreeMixin {
 abstract class _TComment extends TComment {
   _TComment._() : super._();
   factory _TComment(
-      {String id,
-      String comment,
+      {String comment,
       String userId,
       String postId,
       String parentId,
@@ -266,9 +254,9 @@ abstract class _TComment extends TComment {
 
   factory _TComment.fromJson(Map<String, dynamic> json) = _$_TComment.fromJson;
 
-  @override
-  String get id;
-  @override
+  @override // String id,
+// String path,
+//
   String get comment;
   @override
   String get userId;

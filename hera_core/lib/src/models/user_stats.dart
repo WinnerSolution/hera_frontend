@@ -15,7 +15,8 @@ abstract class TUserStats extends IResourceData with BaseResourceDataMixin imple
   @CustomDateTimeConverter()
   @JsonSerializable(explicitToJson: true)
   factory TUserStats({
-    String id,
+    // String id,
+    // String path,
 
     //
     @Default(0) int commentsCount,
