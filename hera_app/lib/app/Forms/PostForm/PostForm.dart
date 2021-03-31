@@ -18,6 +18,7 @@ class PostForm extends StatelessWidget {
 
   AddPostController get con => Get.put(AddPostController(post));
 
+  @override
   Widget build(BuildContext context) {
     return Obx(
       () => Scaffold(
@@ -32,7 +33,7 @@ class PostForm extends StatelessWidget {
               Get.back();
             },
             child: Image.asset(
-              "assets/icons/backarrow.png",
+              'assets/icons/backarrow.png',
               scale: 3,
               color: secondary,
             ),
@@ -65,7 +66,7 @@ class PostForm extends StatelessWidget {
           // ignore: deprecated_member_use
           child: RaisedButton(
             shape: RoundedRectangleBorder(
-              borderRadius: new BorderRadius.circular(10.0),
+              borderRadius: BorderRadius.circular(10.0),
             ),
             // size: GFSize.LARGE,
             color: primary,
@@ -77,7 +78,7 @@ class PostForm extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Text(
-                  "Post",
+                  'Post',
                   style: textArialBoldlgwhite(),
                 ),
               ],

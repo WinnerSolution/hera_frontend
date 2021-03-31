@@ -69,7 +69,7 @@ class UserPresence extends SuperController {
 
   void setAway() => _changeUserPresence(isAwayFirestore);
 
-  rtdbAndLocalFsPresence(AuthUser authUser) {
+  void rtdbAndLocalFsPresence(AuthUser authUser) {
     _cancel();
 
     if (authUser == null) return;

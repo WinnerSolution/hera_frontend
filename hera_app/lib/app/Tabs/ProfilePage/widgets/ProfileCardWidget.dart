@@ -164,6 +164,7 @@ class ProfileCardWidget extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10.0),
                     ),
                     color: primary,
+                    padding: EdgeInsets.only(left: 20, right: 20),
                     child: Row(
                       children: <Widget>[
                         Image.asset(
@@ -176,7 +177,6 @@ class ProfileCardWidget extends StatelessWidget {
                         )
                       ],
                     ),
-                    padding: EdgeInsets.only(left: 20, right: 20),
                   ),
                 ),
                 // Container(

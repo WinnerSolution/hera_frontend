@@ -77,7 +77,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
       bottomNavigationBar: Container(
         height: 83,
         decoration: BoxDecoration(boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.29), blurRadius: 1)]),
-        child: new BottomAppBar(
+        child: BottomAppBar(
           shape: CircularNotchedRectangle(),
           child: GFTabBar(
             // initialIndex: currentIndex,

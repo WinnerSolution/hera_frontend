@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hera_app/controllers/AppController.dart';
 import 'package:hera_core/hera_core.dart';
+import 'package:pedantic/pedantic.dart';
 import 'package:softi_common/core.dart';
 import 'package:softi_common/resource.dart';
 
@@ -32,7 +33,7 @@ class PostDetailsPageController extends BaseController {
   }
 
   @override
-  onClose() {
+  void onClose() {
     lastCommentController.dispose();
     commentCollection.dispose();
   }
@@ -44,9 +45,9 @@ class PostDetailsPageController extends BaseController {
   }
 
   Future<void> postComment() async {
-    controllerTaskHandler(
+    await controllerTaskHandler(
       task: () async {
-        firestore
+        unawaited(firestore
             .save<TComment>(TComment(
           comment: lastCommentController.text,
           postId: post().getId(),
@@ -54,7 +55,7 @@ class PostDetailsPageController extends BaseController {
         ))
             .catchError((error, stackTrace) async {
           await loading.showToast('status');
-        });
+        }));
 
         lastCommentController.clear();
         return 'Posted !';

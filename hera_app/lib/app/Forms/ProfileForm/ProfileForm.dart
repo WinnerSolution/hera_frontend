@@ -38,7 +38,7 @@ class EditProfile extends StatelessWidget {
                     Navigator.of(context).pop();
                   },
                   child: Image.asset(
-                    "assets/icons/backarrow.png",
+                    'assets/icons/backarrow.png',
                     scale: 3,
                     color: secondary,
                   ),
@@ -100,8 +100,8 @@ class EditProfile extends StatelessWidget {
               onPressed: () => con.changeProfileImage(),
               color: Colors.transparent,
               elevation: 0,
-              shape: RoundedRectangleBorder(
-                  borderRadius: new BorderRadius.circular(10.0), side: BorderSide(color: secondary)),
+              shape:
+                  RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0), side: BorderSide(color: secondary)),
               child: Text(
                 'Change Profile Picture',
                 style: textArialRegularlgsecondary(),
@@ -121,7 +121,7 @@ class EditProfile extends StatelessWidget {
         padding: EdgeInsets.all(20),
         decoration: BoxDecoration(
             color: Colors.white,
-            borderRadius: new BorderRadius.only(
+            borderRadius: BorderRadius.only(
               topLeft: Radius.circular(40.0),
               topRight: Radius.circular(40.0),
             ),
@@ -157,7 +157,7 @@ class EditProfile extends StatelessWidget {
         child: RichText(
           text: TextSpan(
             children: <TextSpan>[
-              TextSpan(text: "Profile Name", style: textArialRegularsecondarysmwithop()),
+              TextSpan(text: 'Profile Name', style: textArialRegularsecondarysmwithop()),
             ],
           ),
         ),
@@ -176,7 +176,7 @@ class EditProfile extends StatelessWidget {
           style: textArialRegularsecondary(),
           keyboardType: TextInputType.emailAddress,
           decoration: InputDecoration(
-              hintText: "Name",
+              hintText: 'Name',
               hintStyle: textArialRegularsecondary(),
               errorBorder: OutlineInputBorder(borderSide: BorderSide(width: 0, color: Color(0xFFF44242))),
               errorStyle: TextStyle(color: Color(0xFFF44242)),
@@ -206,7 +206,7 @@ class EditProfile extends StatelessWidget {
         child: RichText(
           text: TextSpan(
             children: <TextSpan>[
-              TextSpan(text: "Status", style: textArialRegularsecondarysmwithop()),
+              TextSpan(text: 'Status', style: textArialRegularsecondarysmwithop()),
             ],
           ),
         ),
@@ -225,7 +225,7 @@ class EditProfile extends StatelessWidget {
           style: textArialRegularsecondary(),
           keyboardType: TextInputType.emailAddress,
           decoration: InputDecoration(
-              hintText: "Status",
+              hintText: 'Status',
               hintStyle: textArialRegularsecondary(),
               errorBorder: OutlineInputBorder(borderSide: BorderSide(width: 0, color: Color(0xFFF44242))),
               errorStyle: TextStyle(color: Color(0xFFF44242)),
@@ -255,7 +255,7 @@ class EditProfile extends StatelessWidget {
         child: RichText(
           text: TextSpan(
             children: <TextSpan>[
-              TextSpan(text: "Email Id", style: textArialRegularsecondarysmwithop()),
+              TextSpan(text: 'Email Id', style: textArialRegularsecondarysmwithop()),
             ],
           ),
         ),
@@ -276,7 +276,7 @@ class EditProfile extends StatelessWidget {
           // keyboardType: TextInputType.emailAddress,
           style: textArialRegularsecondary(),
           decoration: InputDecoration(
-              hintText: "Date of birth",
+              hintText: 'Date of birth',
               hintStyle: textArialRegularsecondary(),
               errorBorder: OutlineInputBorder(borderSide: BorderSide(width: 0, color: Color(0xFFF44242))),
               errorStyle: TextStyle(color: Color(0xFFF44242)),
@@ -305,7 +305,7 @@ class EditProfile extends StatelessWidget {
       subtitle: 'Receive notifications from account you are following'.text.make().pOnly(top: 8),
       // initialValue: true,
       decoration: InputDecoration(
-        hintText: "Notification",
+        hintText: 'Notification',
         hintStyle: textArialRegularsecondary(),
         errorBorder: OutlineInputBorder(borderSide: BorderSide(width: 0, color: Color(0xFFF44242))),
         errorStyle: TextStyle(color: Color(0xFFF44242)),
@@ -326,7 +326,7 @@ class EditProfile extends StatelessWidget {
       subtitle: 'When account is private , only your friends will be able to view your posts'.text.make().pOnly(top: 8),
       // initialValue: true,
       decoration: InputDecoration(
-        hintText: "Notification",
+        hintText: 'Notification',
         hintStyle: textArialRegularsecondary(),
         errorBorder: OutlineInputBorder(borderSide: BorderSide(width: 0, color: Color(0xFFF44242))),
         errorStyle: TextStyle(color: Color(0xFFF44242)),

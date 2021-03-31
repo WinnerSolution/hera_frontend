@@ -21,7 +21,7 @@ class ProductFormController extends ResourceFormController<TPost> {
   }
 
   @override
-  onInit() {
+  void onInit() {
     super.onInit();
   }
 }

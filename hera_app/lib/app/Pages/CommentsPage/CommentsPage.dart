@@ -16,7 +16,7 @@ class CommentsPage extends BaseView<CommentsPageControler> {
   CommentsPage(this.post);
 
   @override
-  init() => CommentsPageControler();
+  CommentsPageControler init() => CommentsPageControler();
 
   @override
   String get tag => null;
@@ -37,7 +37,7 @@ class CommentsPage extends BaseView<CommentsPageControler> {
         leading: InkWell(
           onTap: () => Get.back(),
           child: Image.asset(
-            "assets/icons/backarrow.png",
+            'assets/icons/backarrow.png',
             scale: 3,
             color: secondary,
           ),

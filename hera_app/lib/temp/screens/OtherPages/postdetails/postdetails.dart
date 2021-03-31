@@ -14,8 +14,8 @@ class _PostDetailsState extends State<PostDetails> {
   bool fav2 = false;
   bool fav3 = false;
   List list = [
-    "Flutter",
-    "React",
+    'Flutter',
+    'React',
   ];
   @override
   Widget build(BuildContext context) {
@@ -53,11 +53,11 @@ class _PostDetailsState extends State<PostDetails> {
             borderRadius: BorderRadius.circular(15),
             boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.11), blurRadius: 0)]),
         child: TextFormField(
-          // initialValue: "Your Comment .....",
+          // initialValue: 'Your Comment .....',
           // style: textArialRegularsecondarysmwithop(),
           keyboardType: TextInputType.emailAddress,
           decoration: InputDecoration(
-              hintText: "Your comment here.....",
+              hintText: 'Your comment here.....',
               hintStyle: textArialRegularsecondarysmwithop(),
               // suffixIcon: Text('Post',style: textArialRegularsecondarysmwithop(),),
               // ignore: deprecated_member_use
@@ -91,7 +91,7 @@ class _PostDetailsState extends State<PostDetails> {
               image: DecorationImage(
             image: AssetImage('assets/images/user.png'),
             fit: BoxFit.cover,
-            colorFilter: new ColorFilter.mode(Colors.black.withOpacity(0.2), BlendMode.darken),
+            colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.2), BlendMode.darken),
           )),
         ),
         Positioned(
@@ -104,7 +104,7 @@ class _PostDetailsState extends State<PostDetails> {
                     MaterialPageRoute(builder: (context) => Home()),
                   );
                 },
-                child: Image.asset("assets/icons/backarrow.png", scale: 3, color: Colors.white))),
+                child: Image.asset('assets/icons/backarrow.png', scale: 3, color: Colors.white))),
         Positioned(
             bottom: 0,
             child: Container(
@@ -196,12 +196,12 @@ class _PostDetailsState extends State<PostDetails> {
             decoration: BoxDecoration(
                 color: Colors.white,
                 boxShadow: [
-                  new BoxShadow(
+                  BoxShadow(
                     color: Colors.black12,
                     blurRadius: 1.0,
                   ),
                 ],
-                borderRadius: new BorderRadius.only(
+                borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(40.0),
                   topRight: Radius.circular(40.0),
                 )),
@@ -225,7 +225,7 @@ class _PostDetailsState extends State<PostDetails> {
                         style: textArialRegularsecondarysmwithop(),
                         keyboardType: TextInputType.emailAddress,
                         decoration: InputDecoration(
-                            hintText: "Enter Message",
+                            hintText: 'Enter Message',
                             hintStyle: textArialRegularsecondarysmwithop(),
                             errorBorder: OutlineInputBorder(borderSide: BorderSide(width: 0, color: Color(0xFFF44242))),
                             errorStyle: TextStyle(color: Color(0xFFF44242)),
@@ -263,7 +263,7 @@ class _PostDetailsState extends State<PostDetails> {
                     //  ]
                   ),
                   child: TextFormField(
-                    initialValue: "Search",
+                    initialValue: 'Search',
                     style: textArialRegularsecondarysmwithop(),
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(

@@ -53,7 +53,7 @@ class PostDetails extends StatelessWidget {
         child: TextFormField(
           controller: con.lastCommentController,
           decoration: InputDecoration(
-              hintText: "Your comment here.....",
+              hintText: 'Your comment here.....',
               hintStyle: textArialRegularsecondarysmwithop(),
               // suffixIcon: Text('Post',style: textArialRegularsecondarysmwithop(),),
               // ignore: deprecated_member_use
@@ -87,7 +87,7 @@ class PostDetails extends StatelessWidget {
               image: DecorationImage(
             image: CachedNetworkImageProvider(con.post().images[0].url),
             fit: BoxFit.cover,
-            colorFilter: new ColorFilter.mode(Colors.black.withOpacity(0.2), BlendMode.darken),
+            colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.2), BlendMode.darken),
           )),
         ),
         Positioned(
@@ -95,7 +95,7 @@ class PostDetails extends StatelessWidget {
             left: 25,
             child: InkWell(
                 onTap: () => Get.back(),
-                child: Image.asset("assets/icons/backarrow.png", scale: 3, color: Colors.white))),
+                child: Image.asset('assets/icons/backarrow.png', scale: 3, color: Colors.white))),
         Positioned(
             bottom: 0,
             child: Container(
@@ -189,12 +189,12 @@ class PostDetails extends StatelessWidget {
             decoration: BoxDecoration(
                 color: Colors.white,
                 boxShadow: [
-                  new BoxShadow(
+                  BoxShadow(
                     color: Colors.black12,
                     blurRadius: 1.0,
                   ),
                 ],
-                borderRadius: new BorderRadius.only(
+                borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(40.0),
                   topRight: Radius.circular(40.0),
                 )),
@@ -218,7 +218,7 @@ class PostDetails extends StatelessWidget {
                         style: textArialRegularsecondarysmwithop(),
                         keyboardType: TextInputType.emailAddress,
                         decoration: InputDecoration(
-                            hintText: "Enter Message",
+                            hintText: 'Enter Message',
                             hintStyle: textArialRegularsecondarysmwithop(),
                             errorBorder: OutlineInputBorder(borderSide: BorderSide(width: 0, color: Color(0xFFF44242))),
                             errorStyle: TextStyle(color: Color(0xFFF44242)),
@@ -256,7 +256,7 @@ class PostDetails extends StatelessWidget {
                     //  ]
                   ),
                   child: TextFormField(
-                    initialValue: "Search",
+                    initialValue: 'Search',
                     style: textArialRegularsecondarysmwithop(),
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(

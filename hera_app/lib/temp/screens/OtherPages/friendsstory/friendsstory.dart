@@ -26,40 +26,40 @@ class _FriendsStoryState extends State<FriendsStory> {
           StoryView(
             storyItems: [
               // StoryItem.text(
-              //   "I guess you'd love to see more of our food. That's great.",
+              //   'I guess you'd love to see more of our food. That's great.',
               //   Colors.blue,
               // ),
               // StoryItem.text(
-              //   "Nice!\n\nTap to continue.",
+              //   'Nice!\n\nTap to continue.',
               //   Colors.red,
               // ),
               // StoryItem.pageImage(
               //     NetworkImage(
-              //         "https://image.ibb.co/cU4WGx/Omotuo-Groundnut-Soup-braperucci-com-1.jpg"),
-              //     caption: "Still sampling",
+              //         'https://image.ibb.co/cU4WGx/Omotuo-Groundnut-Soup-braperucci-com-1.jpg'),
+              //     caption: 'Still sampling',
               //     ),
               StoryItem.pageImage(
-                url: "https://image.ibb.co/cU4WGx/Omotuo-Groundnut-Soup-braperucci-com-1.jpg",
+                url: 'https://image.ibb.co/cU4WGx/Omotuo-Groundnut-Soup-braperucci-com-1.jpg',
                 imageFit: BoxFit.cover, controller: null,
                 // controller: null
-                // caption: "Still sampling",
+                // caption: 'Still sampling',
               ),
               StoryItem.pageImage(
-                url: "assets/images/story.png", imageFit: BoxFit.cover, controller: null,
-                // caption: "Still sampling",
+                url: 'assets/images/story.png', imageFit: BoxFit.cover, controller: null,
+                // caption: 'Still sampling',
               ),
               // StoryItem.pageGif(
-              //     "https://media.giphy.com/media/5GoVLqeAOo6PK/giphy.gif",
-              //     caption: "Working with gifs",
+              //     'https://media.giphy.com/media/5GoVLqeAOo6PK/giphy.gif',
+              //     caption: 'Working with gifs',
               //     controller: storyController),
               // StoryItem.pageGif(
-              //   "https://media.giphy.com/media/XcA8krYsrEAYXKf4UQ/giphy.gif",
-              //   caption: "Hello, from the other side",
+              //   'https://media.giphy.com/media/XcA8krYsrEAYXKf4UQ/giphy.gif',
+              //   caption: 'Hello, from the other side',
               //   controller: storyController,
               // ),
               // StoryItem.pageGif(
-              //   "https://media.giphy.com/media/XcA8krYsrEAYXKf4UQ/giphy.gif",
-              //   caption: "Hello, from the other side2",
+              //   'https://media.giphy.com/media/XcA8krYsrEAYXKf4UQ/giphy.gif',
+              //   caption: 'Hello, from the other side2',
               //   controller: storyController,
               // ),
             ],
@@ -109,7 +109,7 @@ class _FriendsStoryState extends State<FriendsStory> {
                     height: 44,
                     decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
                     child: TextFormField(
-                      initialValue: "Reply",
+                      initialValue: 'Reply',
                       style: textArialRegularWhite(),
                       keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
@@ -127,7 +127,7 @@ class _FriendsStoryState extends State<FriendsStory> {
                           contentPadding: EdgeInsets.all(10),
                           // border: InputBorder.none,
                           enabledBorder: const OutlineInputBorder(
-                            borderSide: const BorderSide(color: Colors.white, width: 0.0),
+                            borderSide: BorderSide(color: Colors.white, width: 0.0),
                           ),
                           focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.white),

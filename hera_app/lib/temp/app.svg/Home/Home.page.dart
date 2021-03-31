@@ -10,7 +10,7 @@ import 'package:hera_app/temp/screens/Home/tabs/search.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class HomePage extends StatelessWidget {
-  get con => Get.put(HomePageController());
+  HomePageController get con => Get.put(HomePageController());
 
   final list = <Widget>[
     Container(

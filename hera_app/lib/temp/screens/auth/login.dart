@@ -24,7 +24,7 @@ class _LoginState extends State<Login> {
     selectedRadio = 0;
   }
 
-  setSelectedRadio(int val) {
+  void setSelectedRadio(int val) {
     setState(() {
       selectedRadio = val;
     });
@@ -112,7 +112,7 @@ class _LoginState extends State<Login> {
         child: RichText(
           text: TextSpan(
             children: <TextSpan>[
-              TextSpan(text: "Email ID", style: textArialRegularWhite()),
+              TextSpan(text: 'Email ID', style: textArialRegularWhite()),
               TextSpan(
                 text: ' *',
                 style: TextStyle(color: Color(0xFFFFFFFF)),
@@ -131,7 +131,7 @@ class _LoginState extends State<Login> {
         height: 50,
         decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(10)),
         child: TextFormField(
-          initialValue: "email",
+          initialValue: 'email',
           style: textArialRegularsecondary(),
           keyboardType: TextInputType.emailAddress,
           decoration: InputDecoration(
@@ -163,7 +163,7 @@ class _LoginState extends State<Login> {
         child: RichText(
           text: TextSpan(
             children: <TextSpan>[
-              TextSpan(text: "Password", style: textArialRegularWhite()),
+              TextSpan(text: 'Password', style: textArialRegularWhite()),
               // TextSpan(
               //   text: ' *',
               //   style: TextStyle(color: Color(0xFFFFFFFF)),
@@ -182,7 +182,7 @@ class _LoginState extends State<Login> {
         height: 50,
         decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(10)),
         child: TextFormField(
-          initialValue: "12345",
+          initialValue: '12345',
           style: textArialRegularsecondary(),
           keyboardType: TextInputType.emailAddress,
           decoration: InputDecoration(
@@ -256,7 +256,7 @@ class _LoginState extends State<Login> {
       // ignore: deprecated_member_use
       child: RaisedButton(
         shape: RoundedRectangleBorder(
-          borderRadius: new BorderRadius.circular(10.0),
+          borderRadius: BorderRadius.circular(10.0),
         ),
         // size: GFSize.LARGE,
         color: secondary,
@@ -266,7 +266,7 @@ class _LoginState extends State<Login> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              "Login",
+              'Login',
               style: textArialBoldlgwhite(),
             ),
           ],
@@ -286,7 +286,7 @@ class _LoginState extends State<Login> {
       child: Padding(
           padding: const EdgeInsets.only(bottom: 10.0),
           child: Text(
-            "Don't have an account?",
+            'Don\'t have an account?',
             style: textArialBoldWhite(),
           )),
     );
@@ -313,7 +313,7 @@ class _LoginState extends State<Login> {
       //   child: RichText(
       //     text: TextSpan(
       //       children: <TextSpan>[
-      //         TextSpan(text: "Register?", style: textbarlowRegularaPrimary()),
+      //         TextSpan(text: 'Register?', style: textbarlowRegularaPrimary()),
       //         TextSpan(
       //           text: '',
       //           style: TextStyle(color: primary),
@@ -344,7 +344,7 @@ class _LoginState extends State<Login> {
               color: Color(0xFF3B5998),
               onPressed: () {},
               child: Text(
-                "Log in with Facebook",
+                'Log in with Facebook',
                 // style: textBarlowRegularrWhite(),
               ),
             ),

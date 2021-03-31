@@ -43,13 +43,13 @@ class _ChatState extends State<Chat> {
             ],
           ),
         ),
-        iconTheme: new IconThemeData(color: secondary),
+        iconTheme: IconThemeData(color: secondary),
         leading: InkWell(
           onTap: () {
             Navigator.of(context).pop();
           },
           child: Image.asset(
-            "assets/icons/backarrow.png",
+            'assets/icons/backarrow.png',
             scale: 3,
             color: secondary,
           ),
@@ -163,7 +163,7 @@ class _ChatState extends State<Chat> {
           padding: EdgeInsets.all(10),
           decoration: BoxDecoration(color: Color(0xFFF6F9FD), borderRadius: BorderRadius.circular(15)),
           child: Text(
-            "Good morning, what's up?🙂",
+            'Good morning, what\'s up?🙂',
             style: textArialRegularSecondaryxs(),
           ),
         ),

@@ -17,7 +17,7 @@ class PostLikeWidgetController extends BaseController {
 
   static String get userId => AppController.find.user().getId();
 
-  toggleLike() {
+  void toggleLike() {
     postLiked.toggle();
 
     //
@@ -33,7 +33,7 @@ class PostLikeWidgetController extends BaseController {
   }
 
   @override
-  onInit() {
+  void onInit() {
     _sub = firestore //
         .get<TLike>(postId + '_' + userId, reactive: true)
         .listen((event) {

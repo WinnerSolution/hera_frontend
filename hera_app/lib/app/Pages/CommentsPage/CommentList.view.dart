@@ -5,6 +5,7 @@ import 'package:hera_app/components/widgets/ItemListWidget.dart';
 import 'package:hera_app/controllers/AppController.dart';
 import 'package:hera_app/themes/styles.dart';
 import 'package:hera_core/hera_core.dart';
+import 'package:pedantic/pedantic.dart';
 import 'package:softi_common/core.dart';
 import 'package:softi_common/resource.dart';
 
@@ -25,13 +26,13 @@ class CommentListController extends CollectionController<TComment> {
   TextEditingController lastCommentController = TextEditingController();
 
   Future<void> postComment() async {
-    controllerTaskHandler(
+    await controllerTaskHandler(
       task: () async {
-        firestore.save<TComment>(TComment(
+        unawaited(firestore.save<TComment>(TComment(
           comment: lastCommentController.text,
           postId: postId,
           userId: AppController.find.user().id,
-        ));
+        )));
         lastCommentController.clear();
         // return 'Posted !';
       },
@@ -42,12 +43,14 @@ class CommentListController extends CollectionController<TComment> {
 
 class CommentListView extends BaseView<CommentListController> {
   final TPost post;
+
+  @override
   final String tag;
 
   CommentListView(this.post, {this.tag});
 
   @override
-  init() => CommentListController(post.getId());
+  CommentListController init() => CommentListController(post.getId());
 
   @override
   Widget builder(controller) {
@@ -81,7 +84,7 @@ class CommentListView extends BaseView<CommentListController> {
               child: TextFormField(
                 controller: controller.lastCommentController,
                 decoration: InputDecoration(
-                    hintText: "Your comment here.....",
+                    hintText: 'Your comment here.....',
                     hintStyle: textArialRegularsecondarysmwithop(),
                     // suffixIcon: Text('Post',style: textArialRegularsecondarysmwithop(),),
                     // ignore: deprecated_member_use

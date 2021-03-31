@@ -26,7 +26,7 @@ class _LikesState extends State<Likes> {
             Navigator.of(context).pop();
           },
           child: Image.asset(
-            "assets/icons/backarrow.png",
+            'assets/icons/backarrow.png',
             scale: 3,
             color: secondary,
           ),

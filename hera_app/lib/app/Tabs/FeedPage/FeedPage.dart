@@ -8,7 +8,7 @@ import 'package:softi_common/core.dart';
 
 class FeedPage extends BaseView<FeedPageController> {
   @override
-  init() => FeedPageController();
+  FeedPageController init() => FeedPageController();
 
   @override
   String get tag => null;

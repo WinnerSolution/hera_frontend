@@ -25,7 +25,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
         elevation: 0.0,
         iconTheme: IconThemeData(color: secondary),
         leading: Image.asset(
-          "assets/icons/backarrow.png",
+          'assets/icons/backarrow.png',
           scale: 3,
           color: secondary,
         ),
@@ -47,7 +47,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
         // ignore: deprecated_member_use
         child: RaisedButton(
           shape: RoundedRectangleBorder(
-            borderRadius: new BorderRadius.circular(10.0),
+            borderRadius: BorderRadius.circular(10.0),
           ),
           color: secondary,
           onPressed: () {
@@ -60,7 +60,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Text(
-                "Submit",
+                'Submit',
                 style: textArialBoldlgwhite(),
               ),
             ],
@@ -124,7 +124,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
               Container(
                   width: MediaQuery.of(context).size.width * 0.8,
                   child: Text(
-                    "Don't worry, please enter your Email ID",
+                    'Don\'t worry, please enter your Email ID',
                     style: textArialRegularsecondarywithOP(),
                   )),
             ],
@@ -142,7 +142,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
         child: RichText(
           text: TextSpan(
             children: <TextSpan>[
-              TextSpan(text: "Email ID", style: textArialRegularWhite()),
+              TextSpan(text: 'Email ID', style: textArialRegularWhite()),
               TextSpan(
                 text: ' *',
                 style: TextStyle(color: Color(0xFFFFFFFF)),
@@ -161,7 +161,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
         height: 50,
         decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(10)),
         child: TextFormField(
-          initialValue: "email",
+          initialValue: 'email',
           style: textArialRegularsecondary(),
           keyboardType: TextInputType.emailAddress,
           decoration: InputDecoration(

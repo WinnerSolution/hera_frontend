@@ -29,7 +29,7 @@ class _ConversationsState extends State<Conversations> {
             Navigator.of(context).pop();
           },
           child: Image.asset(
-            "assets/icons/backarrow.png",
+            'assets/icons/backarrow.png',
             scale: 3,
             color: secondary,
           ),
@@ -78,7 +78,7 @@ class _ConversationsState extends State<Conversations> {
               width: 17,
               height: 17,
             ),
-            Text(" Search Friend", style: textArialRegularsecondarywithop())
+            Text(' Search Friend', style: textArialRegularsecondarywithop())
           ],
         ),
       ),

@@ -146,9 +146,9 @@ class AppController extends BaseController //
     // user.stream.listen((event) => );
   }
 
-  logout() {
+  Future<void> logout() async {
     Get.find<UserPresence>().setOffline();
-    authApi.signOut();
+    await authApi.signOut();
   }
 
   @override
@@ -175,7 +175,7 @@ class AppController extends BaseController //
   }
 
   bool isConnectedUser(userId) {
-    bool _result = (user()?.id ?? '-1') == (userId ?? '');
+    var _result = (user()?.id ?? '-1') == (userId ?? '');
     return _result;
   }
 

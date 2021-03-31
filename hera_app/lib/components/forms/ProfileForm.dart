@@ -23,17 +23,6 @@ class ProfileFormController extends ResourceFormController<TUser> {
     Get.back<TUser>(result: record);
   }
 
-  @override
-  onInit() {
-    // busy.listen((isBusy) {
-    //   if (isBusy)
-    //     loading.showStatus();
-    //   else
-    //     loading.dismiss();
-    // });
-    super.onInit();
-  }
-
   FutureOr<Uint8List> compressImage(MediaAsset media) {
     // Image compression
     if (media is FileMediaAsset) {
@@ -146,9 +135,9 @@ class ProfileForm extends StatelessWidget {
                         labelText: 'Gender',
                       ),
                       items: [
-                        DropdownMenuItem(child: 'Female'.bodyText1.make(), value: 0),
-                        DropdownMenuItem(child: 'Male'.bodyText1.make(), value: 1),
-                        DropdownMenuItem(child: 'Other'.bodyText1.make(), value: 2),
+                        DropdownMenuItem(value: 0, child: 'Female'.bodyText1.make()),
+                        DropdownMenuItem(value: 1, child: 'Male'.bodyText1.make()),
+                        DropdownMenuItem(value: 2, child: 'Other'.bodyText1.make()),
                       ],
                     ),
                     FormBuilderDateTimePicker(

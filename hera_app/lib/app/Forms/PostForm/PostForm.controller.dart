@@ -23,11 +23,11 @@ class AddPostController extends ResourceFormController<TPost> {
   @override
   Future<void> afterResourceSave(record) async {
     await uploadProfileImage(record);
-    await Get.back<TPost>(result: record);
+    Get.back<TPost>(result: record);
   }
 
   @override
-  onReady() {
+  void onReady() {
     // busy.listen((isBusy) {
     //   if (isBusy)
     //     loading.showStatus();
@@ -45,7 +45,7 @@ class AddPostController extends ResourceFormController<TPost> {
     selectedImage(_list.isNotEmpty ? _list.first : null);
   }
 
-  uploadProfileImage(TPost record) async {
+  Future<void> uploadProfileImage(TPost record) async {
     if (selectedImage == null) return;
     await controllerTaskHandler(
         task: () async {

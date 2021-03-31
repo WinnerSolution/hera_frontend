@@ -36,7 +36,7 @@ class _PostStatusState extends State<PostStatus> with TickerProviderStateMixin {
             Navigator.of(context).pop();
           },
           child: Image.asset(
-            "assets/icons/backarrow.png",
+            'assets/icons/backarrow.png',
             scale: 3,
             color: secondary,
           ),
@@ -53,7 +53,7 @@ class _PostStatusState extends State<PostStatus> with TickerProviderStateMixin {
                   width: 35,
                   height: 35,
                 ),
-                Text("What's on your mind?", style: textArialRegularsecondarywithop())
+                Text('What\'s on your mind?', style: textArialRegularsecondarywithop())
               ],
             ),
           ),
@@ -69,7 +69,7 @@ class _PostStatusState extends State<PostStatus> with TickerProviderStateMixin {
               keyboardType: TextInputType.emailAddress,
               decoration: InputDecoration(
                   hintStyle: textArialRegularsecondary(),
-                  hintText: "Type Here.....",
+                  hintText: 'Type Here.....',
                   errorBorder: OutlineInputBorder(borderSide: BorderSide(width: 0, color: Color(0xFFF44242))),
                   errorStyle: TextStyle(color: Color(0xFFF44242)),
                   contentPadding: EdgeInsets.all(10),
@@ -131,7 +131,7 @@ class _PostStatusState extends State<PostStatus> with TickerProviderStateMixin {
               // ignore: deprecated_member_use
               child: RaisedButton(
                 shape: RoundedRectangleBorder(
-                  borderRadius: new BorderRadius.circular(5.0),
+                  borderRadius: BorderRadius.circular(5.0),
                 ),
                 // size: GFSize.LARGE,
                 color: primary,
@@ -146,7 +146,7 @@ class _PostStatusState extends State<PostStatus> with TickerProviderStateMixin {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Text(
-                      "Post",
+                      'Post',
                       style: textArialBoldlgwhite(),
                     ),
                   ],

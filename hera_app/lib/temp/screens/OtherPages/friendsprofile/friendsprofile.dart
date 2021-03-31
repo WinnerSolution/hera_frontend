@@ -32,7 +32,7 @@ class _FriendsProfileState extends State<FriendsProfile1> {
             Navigator.of(context).pop();
           },
           child: Image.asset(
-            "assets/icons/backarrow.png",
+            'assets/icons/backarrow.png',
             scale: 3,
             color: secondary,
           ),
@@ -63,7 +63,7 @@ class _FriendsProfileState extends State<FriendsProfile1> {
       height: MediaQuery.of(context).size.height * 0.48,
       decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: new BorderRadius.only(
+          borderRadius: BorderRadius.only(
             bottomLeft: Radius.circular(20.0),
             bottomRight: Radius.circular(20.0),
           ),
@@ -153,9 +153,10 @@ class _FriendsProfileState extends State<FriendsProfile1> {
                 child: RaisedButton(
                   onPressed: () {},
                   shape: RoundedRectangleBorder(
-                    borderRadius: new BorderRadius.circular(10.0),
+                    borderRadius: BorderRadius.circular(10.0),
                   ),
                   color: primary,
+                  padding: EdgeInsets.only(left: 20, right: 20),
                   child: Row(
                     children: <Widget>[
                       Image.asset(
@@ -168,7 +169,6 @@ class _FriendsProfileState extends State<FriendsProfile1> {
                       )
                     ],
                   ),
-                  padding: EdgeInsets.only(left: 20, right: 20),
                 ),
               ),
               Container(
@@ -184,7 +184,7 @@ class _FriendsProfileState extends State<FriendsProfile1> {
                   color: Colors.transparent,
                   elevation: 0,
                   shape: RoundedRectangleBorder(
-                      borderRadius: new BorderRadius.circular(10.0), side: BorderSide(color: secondary)),
+                      borderRadius: BorderRadius.circular(10.0), side: BorderSide(color: secondary)),
                   child: Text(
                     'Message',
                     style: textArialRegularlgsecondary(),

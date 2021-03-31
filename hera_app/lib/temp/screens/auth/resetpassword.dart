@@ -32,7 +32,7 @@ class _ResetPasswordState extends State<ResetPassword> {
             Navigator.of(context).pop();
           },
           child: Image.asset(
-            "assets/icons/backarrow.png",
+            'assets/icons/backarrow.png',
             scale: 3,
             color: secondary,
           ),
@@ -55,7 +55,7 @@ class _ResetPasswordState extends State<ResetPassword> {
         // ignore: deprecated_member_use
         child: RaisedButton(
           shape: RoundedRectangleBorder(
-            borderRadius: new BorderRadius.circular(10.0),
+            borderRadius: BorderRadius.circular(10.0),
           ),
           // size: GFSize.LARGE,
           color: secondary,
@@ -70,7 +70,7 @@ class _ResetPasswordState extends State<ResetPassword> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Text(
-                "Submit",
+                'Submit',
                 style: textArialBoldlgwhite(),
               ),
             ],
@@ -139,7 +139,7 @@ class _ResetPasswordState extends State<ResetPassword> {
               Container(
                   width: MediaQuery.of(context).size.width * 0.87,
                   child: Text(
-                    "Please enter the 4 digit code received in your Email",
+                    'Please enter the 4 digit code received in your Email',
                     style: textArialRegularsecondarywithOP(),
                   )),
             ],
@@ -157,7 +157,7 @@ class _ResetPasswordState extends State<ResetPassword> {
         child: RichText(
           text: TextSpan(
             children: <TextSpan>[
-              TextSpan(text: "New Password", style: textArialRegularWhite()),
+              TextSpan(text: 'New Password', style: textArialRegularWhite()),
             ],
           ),
         ),
@@ -172,7 +172,7 @@ class _ResetPasswordState extends State<ResetPassword> {
         height: 50,
         decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(10)),
         child: TextFormField(
-          initialValue: "123456",
+          initialValue: '123456',
           style: textArialRegularsecondary(),
           keyboardType: TextInputType.emailAddress,
           decoration: InputDecoration(
@@ -206,7 +206,7 @@ class _ResetPasswordState extends State<ResetPassword> {
         child: RichText(
           text: TextSpan(
             children: <TextSpan>[
-              TextSpan(text: "Confirm New Password", style: textArialRegularWhite()),
+              TextSpan(text: 'Confirm New Password', style: textArialRegularWhite()),
             ],
           ),
         ),
@@ -221,7 +221,7 @@ class _ResetPasswordState extends State<ResetPassword> {
         height: 50,
         decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(10)),
         child: TextFormField(
-          initialValue: "123456",
+          initialValue: '123456',
           style: textArialRegularsecondary(),
           keyboardType: TextInputType.emailAddress,
           decoration: InputDecoration(
@@ -255,7 +255,7 @@ class _ResetPasswordState extends State<ResetPassword> {
         child: RichText(
           text: TextSpan(
             children: <TextSpan>[
-              TextSpan(text: "OTP", style: textArialRegularWhite()),
+              TextSpan(text: 'OTP', style: textArialRegularWhite()),
             ],
           ),
         ),

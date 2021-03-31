@@ -27,7 +27,7 @@ class ProfilePageController extends CollectionController<TPost> {
         );
 
   @override
-  onInit() {
+  void onInit() {
     super.onInit();
   }
 
@@ -46,8 +46,9 @@ class ProfilePageController extends CollectionController<TPost> {
       _userProfile()?.profileImage?.url ??
       'https://firebasestorage.googleapis.com/v0/b/softi-hera.appspot.com/o/dummy450x450.jpg?alt=media&token=10a37525-a4a5-4376-bd34-229b2d1a508c';
 
+  @override
   Future<void> loadView() async {
-    super.loadView();
+    await super.loadView();
 
     _userProfile = isConnectedUser //
         ? AppController.find.user

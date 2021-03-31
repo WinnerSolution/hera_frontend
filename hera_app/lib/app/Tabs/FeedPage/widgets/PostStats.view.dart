@@ -41,7 +41,7 @@ class PostStatsWidget extends BaseView<PostStatsController> {
   final TPost post;
 
   @override
-  init() => PostStatsController(post);
+  PostStatsController init() => PostStatsController(post);
 
   @override
   String get tag => post.getId();

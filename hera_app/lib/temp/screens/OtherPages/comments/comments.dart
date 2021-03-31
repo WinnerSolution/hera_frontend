@@ -28,7 +28,7 @@ class _CommentsState extends State<Comments> {
             Navigator.of(context).pop();
           },
           child: Image.asset(
-            "assets/icons/backarrow.png",
+            'assets/icons/backarrow.png',
             scale: 3,
             color: secondary,
           ),
@@ -68,7 +68,7 @@ class _CommentsState extends State<Comments> {
       //         ]
       //   ),
       //   child: TextFormField(
-      //         initialValue: "Your Comment .....",
+      //         initialValue: 'Your Comment .....',
       //         style: textArialRegularsecondarysmwithop(),
       //         keyboardType: TextInputType.emailAddress,
       //         decoration: InputDecoration(
@@ -106,12 +106,12 @@ class _CommentsState extends State<Comments> {
             borderRadius: BorderRadius.circular(15),
             boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.11), blurRadius: 0)]),
         child: TextFormField(
-          // initialValue: "Your Comment .....",
+          // initialValue: 'Your Comment .....',
           style: textArialRegularsecondarysmwithop(),
           keyboardType: TextInputType.emailAddress,
           decoration: InputDecoration(
               // suffixIcon: Text('Post',style: textArialRegularsecondarysmwithop(),),
-              hintText: "Your comment here.....",
+              hintText: 'Your comment here.....',
               hintStyle: textArialRegularsecondarysmwithop(),
               // ignore: deprecated_member_use
               suffixIcon: RaisedButton(

@@ -53,11 +53,11 @@ dependencies:
   story_view: 
   firebase_database:
   timeago:
+  pedantic:
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  pedantic:
   lint:
   faker:
 

@@ -11,7 +11,7 @@ import 'package:velocity_x/velocity_x.dart';
 class UserSnippetController extends RecordController<TUser> {
   UserSnippetController(
     String userId, {
-    reactive: true,
+    reactive = true,
   }) : super(userId, firestore, reactive: reactive);
 
   Rx<TUser> get user => record;
@@ -25,7 +25,7 @@ class UserSnippetController extends RecordController<TUser> {
   }
 
   //! handlers
-  handleProfileImageOnClic() => Get.to(() => ProfilePage(record().getId()));
+  void handleProfileImageOnClic() => Get.to(() => ProfilePage(record().getId()));
 }
 
 class UserSnippetView extends StatelessWidget {

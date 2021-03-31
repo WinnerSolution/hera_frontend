@@ -146,9 +146,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     decoration: BoxDecoration(
                       border: Border.all(color: primary, width: 2.0),
                       borderRadius: BorderRadius.circular(50),
-                      image: new DecorationImage(
+                      image: DecorationImage(
                         fit: BoxFit.cover,
-                        image: new AssetImage('assets/images/user.png'),
+                        image: AssetImage('assets/images/user.png'),
                       ),
                     ),
                   )),
@@ -169,9 +169,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     decoration: BoxDecoration(
                       border: Border.all(color: primary, width: 2.0),
                       borderRadius: BorderRadius.circular(50),
-                      image: new DecorationImage(
+                      image: DecorationImage(
                         fit: BoxFit.cover,
-                        image: new AssetImage('assets/images/user1.png'),
+                        image: AssetImage('assets/images/user1.png'),
                       ),
                     ),
                   )),
@@ -192,9 +192,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     decoration: BoxDecoration(
                       border: Border.all(color: primary, width: 2.0),
                       borderRadius: BorderRadius.circular(50),
-                      image: new DecorationImage(
+                      image: DecorationImage(
                         fit: BoxFit.cover,
-                        image: new AssetImage('assets/images/girl.png'),
+                        image: AssetImage('assets/images/girl.png'),
                       ),
                     ),
                   )),
@@ -215,9 +215,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     decoration: BoxDecoration(
                       border: Border.all(color: primary, width: 2.0),
                       borderRadius: BorderRadius.circular(50),
-                      image: new DecorationImage(
+                      image: DecorationImage(
                         fit: BoxFit.cover,
-                        image: new AssetImage('assets/images/u3.png'),
+                        image: AssetImage('assets/images/u3.png'),
                       ),
                     ),
                   )),
@@ -238,9 +238,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     decoration: BoxDecoration(
                       border: Border.all(color: primary, width: 2.0),
                       borderRadius: BorderRadius.circular(50),
-                      image: new DecorationImage(
+                      image: DecorationImage(
                         fit: BoxFit.contain,
-                        image: new AssetImage('assets/images/u4.png'),
+                        image: AssetImage('assets/images/u4.png'),
                       ),
                     ),
                   )),

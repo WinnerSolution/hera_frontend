@@ -23,7 +23,7 @@ class _SignUpState extends State<SignUp> {
     selectedRadio = 0;
   }
 
-  setSelectedRadio(int val) {
+  void setSelectedRadio(int val) {
     setState(() {
       selectedRadio = val;
     });
@@ -114,7 +114,7 @@ class _SignUpState extends State<SignUp> {
         child: RichText(
           text: TextSpan(
             children: <TextSpan>[
-              TextSpan(text: "UserName", style: textArialRegularWhite()),
+              TextSpan(text: 'UserName', style: textArialRegularWhite()),
               TextSpan(
                 text: ' *',
                 style: TextStyle(color: Color(0xFFFFFFFF)),
@@ -133,7 +133,7 @@ class _SignUpState extends State<SignUp> {
         height: 50,
         decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(10)),
         child: TextFormField(
-          initialValue: "user",
+          initialValue: 'user',
           style: textArialRegularsecondary(),
           keyboardType: TextInputType.emailAddress,
           decoration: InputDecoration(
@@ -163,7 +163,7 @@ class _SignUpState extends State<SignUp> {
         child: RichText(
           text: TextSpan(
             children: <TextSpan>[
-              TextSpan(text: "Email ID", style: textArialRegularWhite()),
+              TextSpan(text: 'Email ID', style: textArialRegularWhite()),
               TextSpan(
                 text: ' *',
                 style: TextStyle(color: Color(0xFFFFFFFF)),
@@ -182,7 +182,7 @@ class _SignUpState extends State<SignUp> {
         height: 50,
         decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(10)),
         child: TextFormField(
-          initialValue: "email",
+          initialValue: 'email',
           style: textArialRegularsecondary(),
           keyboardType: TextInputType.emailAddress,
           decoration: InputDecoration(
@@ -214,7 +214,7 @@ class _SignUpState extends State<SignUp> {
         child: RichText(
           text: TextSpan(
             children: <TextSpan>[
-              TextSpan(text: "Password", style: textArialRegularWhite()),
+              TextSpan(text: 'Password', style: textArialRegularWhite()),
               // TextSpan(
               //   text: ' *',
               //   style: TextStyle(color: Color(0xFFFFFFFF)),
@@ -233,7 +233,7 @@ class _SignUpState extends State<SignUp> {
         height: 50,
         decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(10)),
         child: TextFormField(
-          initialValue: "12345",
+          initialValue: '12345',
           style: textArialRegularsecondary(),
           keyboardType: TextInputType.emailAddress,
           decoration: InputDecoration(
@@ -264,7 +264,7 @@ class _SignUpState extends State<SignUp> {
         child: RichText(
           text: TextSpan(
             children: <TextSpan>[
-              TextSpan(text: "Confirm Password", style: textArialRegularWhite()),
+              TextSpan(text: 'Confirm Password', style: textArialRegularWhite()),
               TextSpan(
                 text: ' *',
                 style: TextStyle(color: Color(0xFFFFFFFF)),
@@ -283,7 +283,7 @@ class _SignUpState extends State<SignUp> {
         height: 50,
         decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(10)),
         child: TextFormField(
-          initialValue: "12345",
+          initialValue: '12345',
           style: textArialRegularsecondary(),
           keyboardType: TextInputType.emailAddress,
           decoration: InputDecoration(
@@ -406,7 +406,7 @@ class _SignUpState extends State<SignUp> {
       // ignore: deprecated_member_use
       child: RaisedButton(
         shape: RoundedRectangleBorder(
-          borderRadius: new BorderRadius.circular(10.0),
+          borderRadius: BorderRadius.circular(10.0),
         ),
         color: secondary,
         onPressed: () {
@@ -419,7 +419,7 @@ class _SignUpState extends State<SignUp> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              "Create Account",
+              'Create Account',
               style: textArialBoldlgwhite(),
             ),
           ],

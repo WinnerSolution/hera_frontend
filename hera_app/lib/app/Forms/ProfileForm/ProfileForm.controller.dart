@@ -21,7 +21,7 @@ class ProfileFormController extends ResourceFormController<TUser> {
   }
 
   @override
-  onInit() {
+  void onInit() {
     // busy.listen((isBusy) {
     //   if (isBusy)
     //     loading.showStatus();
@@ -31,7 +31,7 @@ class ProfileFormController extends ResourceFormController<TUser> {
     super.onInit();
   }
 
-  changeProfileImage() async {
+  Future<void> changeProfileImage() async {
     await controllerTaskHandler(
         task: () async {
           //
