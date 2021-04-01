@@ -2,31 +2,54 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
+import 'package:hera_app/components/forms/ProfileForm.dart';
+import 'package:hera_app/controllers/AppController.dart';
 import 'package:hera_app/themes/styles.dart';
 import 'package:hera_core/hera_core.dart';
+import 'package:softi_common/core.dart';
+import 'package:softi_common/resource.dart';
 
-class ProfileCardWidget extends StatelessWidget {
-  final TUser userProfile;
-  final TUserStats userStats;
-  final bool isConnectedUser;
-  final VoidCallback onPressed;
-  final VoidCallback onLogout;
+class ProfileCardController extends RecordController<TUser> {
+  ProfileCardController(
+    this.profileId,
+  ) : super(firestore.record<TUser>(), id: profileId, reactive: true);
 
-  const ProfileCardWidget({
-    Key key,
-    @required this.userProfile,
-    @required this.userStats,
-    @required this.isConnectedUser,
-    @required this.onPressed,
-    @required this.onLogout,
-  }) : super(key: key);
-
-  String get profileImage1 =>
-      userProfile.profileImage?.url ??
-      'https://firebasestorage.googleapis.com/v0/b/softi-hera.appspot.com/o/dummy450x450.jpg?alt=media&token=10a37525-a4a5-4376-bd34-229b2d1a508c';
+  final String profileId;
+  final Rx<TUserStats> _userStats = Rx<TUserStats>();
 
   @override
-  Widget build(BuildContext context) {
+  void onInit() {
+    super.onInit();
+    _userStats.bindStream(firestore.get<TUserStats>(profileId));
+  }
+
+  //! Getters
+  TUserStats get userStats => _userStats();
+  TUser get userProfile => record();
+  bool get isConnectedUser => AppController.find.isConnectedUser(profileId);
+
+  String get profileImage =>
+      userProfile?.profileImage?.url ??
+      'https://firebasestorage.googleapis.com/v0/b/softi-hera.appspot.com/o/dummy450x450.jpg?alt=media&token=10a37525-a4a5-4376-bd34-229b2d1a508c';
+
+  //! Handlers
+  void handleEditProfilePressed() => Get.to(() => ProfileForm(AppController.find.user()));
+  void handleOnLogout() => () => AppController.find.logout();
+}
+
+class ProfileCardView extends BaseView<ProfileCardController> {
+  final String profileId;
+
+  @override
+  ProfileCardController init() => ProfileCardController(profileId);
+
+  @override
+  String get tag => profileId;
+
+  const ProfileCardView(this.profileId, {Key key}) : super(key: key);
+
+  @override
+  Widget builder(controller) {
     return Container(
       width: Get.mediaQuery.size.width,
       // height: Get.mediaQuery.size.height * 0.5,
@@ -58,16 +81,16 @@ class ProfileCardWidget extends StatelessWidget {
             height: 130,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(50),
-                image: DecorationImage(image: CachedNetworkImageProvider(profileImage1), fit: BoxFit.cover)),
+                image: DecorationImage(image: CachedNetworkImageProvider(controller.profileImage), fit: BoxFit.cover)),
             child: Container(),
           ),
           SizedBox(height: 10),
           Text(
-            userProfile?.fullname ?? '',
+            controller.userProfile?.fullname ?? '',
             style: textArialBoldlgSecondary(),
           ),
           Text(
-            userProfile?.status ?? '',
+            controller.userProfile?.status ?? '',
             style: textArialRegularsecondarydull(),
           ),
           SizedBox(height: 20),
@@ -81,7 +104,7 @@ class ProfileCardWidget extends StatelessWidget {
                     style: textArialRegularsecondarydull(),
                   ),
                   Text(
-                    userStats.likesCount.toString(),
+                    controller.userStats?.likesCount.toString() ?? '',
                     style: textArialBoldlgSecondary(),
                   ),
                 ],
@@ -93,7 +116,7 @@ class ProfileCardWidget extends StatelessWidget {
                     style: textArialRegularsecondarydull(),
                   ),
                   Text(
-                    userStats.postsCount.toString(),
+                    controller.userStats?.postsCount.toString() ?? '',
                     style: textArialBoldlgSecondary(),
                   ),
                 ],
@@ -105,7 +128,7 @@ class ProfileCardWidget extends StatelessWidget {
                     style: textArialRegularsecondarydull(),
                   ),
                   Text(
-                    userStats.followersCount.toString(),
+                    controller.userStats?.followersCount.toString() ?? '',
                     style: textArialBoldlgSecondary(),
                   ),
                 ],
@@ -117,7 +140,7 @@ class ProfileCardWidget extends StatelessWidget {
                     style: textArialRegularsecondarydull(),
                   ),
                   Text(
-                    userStats.followingCount.toString(),
+                    controller.userStats?.followingCount.toString() ?? '',
                     style: textArialBoldlgSecondary(),
                   ),
                 ],
@@ -125,13 +148,13 @@ class ProfileCardWidget extends StatelessWidget {
             ],
           ),
           SizedBox(height: 20),
-          if (isConnectedUser)
+          if (controller.isConnectedUser)
             Container(
               width: 335,
               height: 44,
               // ignore: deprecated_member_use
               child: RaisedButton(
-                onPressed: onPressed,
+                onPressed: controller.handleEditProfilePressed,
                 color: Colors.transparent,
                 elevation: 0,
                 shape: RoundedRectangleBorder(
@@ -142,16 +165,16 @@ class ProfileCardWidget extends StatelessWidget {
                 ),
               ),
             ),
-          if (isConnectedUser)
+          if (controller.isConnectedUser)
             GFButton(
               type: GFButtonType.transparent,
               text: 'Sign Out from Hera',
               color: GFColors.ALT,
-              onPressed: onLogout,
+              onPressed: controller.handleOnLogout,
             ),
 
           // if (con.isConnectedUser)
-          if (!isConnectedUser)
+          if (!controller.isConnectedUser)
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[

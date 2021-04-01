@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hera_app/app/Pages/CommentsPage/CommentsPage.dart';
-import 'package:hera_app/app/Tabs/FeedPage/widgets/PostLikeWidget.smart.dart';
-import 'package:hera_app/app/Views/UserSnippetView.dart';
+import 'package:hera_app/app/Pages/NewLikesPage/LikesPage.view.dart';
+import 'package:hera_app/app/Tabs/FeedPage/widgets/PostLike.view.dart';
+import 'package:hera_app/app/Widgets/UserSnippet.view.dart';
 import 'package:hera_app/themes/styles.dart';
 import 'package:hera_core/hera_core.dart';
 import 'package:softi_common/core.dart';
@@ -12,12 +13,12 @@ import 'package:velocity_x/velocity_x.dart';
 
 class PostStatsController extends RecordController<TPostStats> with TimerControllerMixin {
   final TPost post;
-  PostStatsController(this.post) : super(post.getId(), firestore);
+  PostStatsController(this.post) : super(firestore.record<TPostStats>(), id: post.getId(), reactive: true);
 
   Rx<TPostStats> get postStats => record;
 
   @override
-  Duration get interval => 1.minutes;
+  Duration get interval => 1.hours;
 
   @override
   void onInit() {
@@ -88,7 +89,7 @@ class PostStatsWidget extends BaseView<PostStatsController> {
                 style: textArialRegularsecondarysmwithop(),
               )
             ],
-          ).p8(),
+          ).p8().onTap(() => Get.to(() => LikesPage(post))),
         ],
       ),
     );

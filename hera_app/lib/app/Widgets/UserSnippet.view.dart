@@ -9,19 +9,29 @@ import 'package:softi_common/resource.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class UserSnippetController extends RecordController<TUser> {
+  final String userId;
+
   UserSnippetController(
-    String userId, {
-    reactive = true,
-  }) : super(userId, firestore, reactive: reactive);
+    this.userId,
+  ) : super(firestore.record<TUser>(), id: userId, reactive: true);
 
   Rx<TUser> get user => record;
 
+  //! Helpers
   String getUserName() {
-    if (AppController.find.isConnectedUser(recordId)) {
+    if (AppController.find.isConnectedUser(userId)) {
       return 'me';
     } else {
       return user()?.fullname ?? '';
     }
+  }
+
+  bool isfollowingByCurrentUser() {
+    return false;
+  }
+
+  bool isfollowedByCurrentUser() {
+    return false;
   }
 
   //! handlers
@@ -105,6 +115,12 @@ class UserSnippetView extends StatelessWidget {
                   ],
                 ),
               ),
+              // SizedBox(width: 16),
+              // Image.asset(
+              //   'assets/icons/addfriend.png',
+              //   width: 30,
+              //   height: 30,
+              // ),
             ],
           ),
         ));

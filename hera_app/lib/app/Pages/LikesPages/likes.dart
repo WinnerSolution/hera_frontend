@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:hera_app/themes/styles.dart';
 
-class Likes extends StatefulWidget {
+class LikesPage extends StatefulWidget {
   @override
-  _LikesState createState() => _LikesState();
+  _LikesPageState createState() => _LikesPageState();
 }
 
-class _LikesState extends State<Likes> {
+class _LikesPageState extends State<LikesPage> {
   bool fav = true;
   @override
   Widget build(BuildContext context) {

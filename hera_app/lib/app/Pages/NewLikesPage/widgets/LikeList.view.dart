@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hera_app/app/Pages/CommentsPage/widgets/CommentWidget.dart';
+import 'package:hera_app/app/Pages/NewLikesPage/widgets/LikeWidget.dart';
 import 'package:hera_app/app/Widgets/ItemListWidget.dart';
 import 'package:hera_app/controllers/AppController.dart';
 import 'package:hera_app/themes/styles.dart';
@@ -9,14 +9,15 @@ import 'package:pedantic/pedantic.dart';
 import 'package:softi_common/core.dart';
 import 'package:softi_common/resource.dart';
 
-class CommentListController extends CollectionController<TComment> {
+class LikeListController extends CollectionController<TLike> {
   final String postId;
 
-  CommentListController(this.postId)
+  LikeListController(this.postId)
       : super(
-          firestore.collection<TComment>(),
+          firestore.collection<TLike>(),
           filter: Filter() //
               .$filter$eq('postId', postId)
+              .$filter$eq('like', true)
               .$orderBy('updatedAt', desc: true),
           options: CollectionOptions(pageSize: 20),
         );
@@ -41,16 +42,16 @@ class CommentListController extends CollectionController<TComment> {
   }
 }
 
-class CommentListView extends BaseView<CommentListController> {
+class LikeListView extends BaseView<LikeListController> {
   final TPost post;
 
   @override
   final String tag;
 
-  CommentListView(this.post, {this.tag});
+  LikeListView(this.post, {this.tag});
 
   @override
-  CommentListController init() => CommentListController(post.getId());
+  LikeListController init() => LikeListController(post.getId());
 
   @override
   Widget builder(controller) {
@@ -61,8 +62,8 @@ class CommentListView extends BaseView<CommentListController> {
           itemCount: controller.collection.data().length,
           crossAxisCount: 1,
           itemBuilder: (index) {
-            var comment = controller.collection.data()[index];
-            return CommentWidget(comment: comment);
+            var like = controller.collection.data()[index];
+            return LikeWidget(like: like);
           },
         ),
         Positioned(

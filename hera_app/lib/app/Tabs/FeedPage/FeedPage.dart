@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hera_app/app/Tabs/FeedPage/FeedPage.controller.dart';
 import 'package:hera_app/app/Tabs/FeedPage/widgets/PostFeedItem.dart';
-import 'package:hera_app/components/widgets/ItemSliverListWidget.dart';
+import 'package:hera_app/app/Widgets/ItemSliverListWidget.dart';
 import 'package:hera_app/themes/styles.dart';
 import 'package:softi_common/core.dart';
 

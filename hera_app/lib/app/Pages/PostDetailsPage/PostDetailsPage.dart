@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hera_app/app/Pages/CommentsPage/widgets/CommentWidget.dart';
 import 'package:hera_app/app/Pages/PostDetailsPage/PostDetailsPage.controller.dart';
-import 'package:hera_app/app/likes.dart';
-import 'package:hera_app/components/widgets/ItemListWidget.dart';
+import 'package:hera_app/app/Pages/LikesPages/likes.dart';
+import 'package:hera_app/app/Widgets/ItemListWidget.dart';
 import 'package:hera_app/themes/styles.dart';
 import 'package:hera_core/hera_core.dart';
 
@@ -487,7 +487,7 @@ class PostDetails extends StatelessWidget {
 
   Widget buildLikeTile() {
     return InkWell(
-      onTap: () => Get.to(() => Likes()),
+      onTap: () => Get.to(() => LikesPage()),
       child: Container(
         margin: EdgeInsets.only(left: 18, right: 20, top: 15, bottom: 15),
         decoration: BoxDecoration(border: Border(bottom: BorderSide(color: Colors.black.withOpacity(0.04)))),
