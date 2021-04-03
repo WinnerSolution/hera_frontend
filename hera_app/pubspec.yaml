@@ -40,7 +40,7 @@ dependencies:
   #     url: https://github.com/atoumbre/package_flutter_firebase.git
   #     ref: v0.1.2
 
-  get: 
+  get: ^4.1.2
   flutter_platform_widgets:
   velocity_x: 
   easy_debounce:

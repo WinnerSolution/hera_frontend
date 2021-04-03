@@ -10,7 +10,7 @@ class AddPostController extends ResourceFormController<TPost> {
   var maxImageWidth = 640;
   // final String createdBy;
 
-  Rx<File> selectedImage = Rx<File>();
+  Rx<File> selectedImage; // = Rx<File>(File());
 
   AddPostController(
     TPost post,

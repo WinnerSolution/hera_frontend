@@ -11,24 +11,24 @@ import 'package:softi_common/resource.dart';
 import 'package:timeago/timeago.dart' as timeago;
 import 'package:velocity_x/velocity_x.dart';
 
-class PostStatsController extends RecordController<TPostStats> with TimerControllerMixin {
+class PostStatsController extends RecordController<TPostStats> {
   final TPost post;
   PostStatsController(this.post) : super(firestore.record<TPostStats>(), id: post.getId(), reactive: true);
 
   Rx<TPostStats> get postStats => record;
 
-  @override
-  Duration get interval => 1.hours;
+  // @override
+  // Duration get interval => 1.hours;
 
   @override
   void onInit() {
-    startTimer();
+    // startTimer();
     super.onInit();
   }
 
   @override
   void onClose() {
-    stopTimer();
+    // stopTimer();
     super.onClose();
   }
 }
@@ -55,14 +55,14 @@ class PostStatsWidget extends BaseView<PostStatsController> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           Container(
-            width: 200,
-            child: ObxValue<Rx<DateTime>>((Rx<DateTime> clock) {
-              print(clock);
-              return UserSnippetView(con.post.createdBy,
-                  bottomText: post.updatedAt != null ? timeago.format(post.updatedAt, locale: 'en') : '');
-            }, con.clock),
-            // rightText: '',
-          ),
+              width: 200,
+              child:
+                  // ObxValue<Rx<DateTime>>((Rx<DateTime> clock) {
+                  //   return
+                  UserSnippetView(con.post.createdBy,
+                      bottomText: post.updatedAt != null ? timeago.format(post.updatedAt, locale: 'en') : '')
+              // }, con.clock),
+              ),
           Column(
             children: <Widget>[
               PostLikeWidget(post: post),

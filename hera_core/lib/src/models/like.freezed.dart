@@ -18,19 +18,10 @@ class _$TLikeTearOff {
 
 // ignore: unused_element
   _TLike call(
-      {String postId,
-      String userId,
-      String commentId,
-      DateTime likeTimestampe,
-      bool like = true,
-      DateTime createdAt,
-      DateTime updatedAt}) {
+      {String postId, String userId, DateTime createdAt, DateTime updatedAt}) {
     return _TLike(
       postId: postId,
       userId: userId,
-      commentId: commentId,
-      likeTimestampe: likeTimestampe,
-      like: like,
       createdAt: createdAt,
       updatedAt: updatedAt,
     );
@@ -52,10 +43,10 @@ mixin _$TLike {
 // String path,
 //
   String get postId;
-  String get userId;
-  String get commentId;
-  DateTime get likeTimestampe;
-  bool get like; //
+  String get userId; // String commentId,
+// DateTime likeTimestampe,
+// @Default(true) bool like,
+//
   DateTime get createdAt;
   DateTime get updatedAt;
 
@@ -69,13 +60,7 @@ abstract class $TLikeCopyWith<$Res> {
   factory $TLikeCopyWith(TLike value, $Res Function(TLike) then) =
       _$TLikeCopyWithImpl<$Res>;
   $Res call(
-      {String postId,
-      String userId,
-      String commentId,
-      DateTime likeTimestampe,
-      bool like,
-      DateTime createdAt,
-      DateTime updatedAt});
+      {String postId, String userId, DateTime createdAt, DateTime updatedAt});
 }
 
 /// @nodoc
@@ -90,20 +75,12 @@ class _$TLikeCopyWithImpl<$Res> implements $TLikeCopyWith<$Res> {
   $Res call({
     Object postId = freezed,
     Object userId = freezed,
-    Object commentId = freezed,
-    Object likeTimestampe = freezed,
-    Object like = freezed,
     Object createdAt = freezed,
     Object updatedAt = freezed,
   }) {
     return _then(_value.copyWith(
       postId: postId == freezed ? _value.postId : postId as String,
       userId: userId == freezed ? _value.userId : userId as String,
-      commentId: commentId == freezed ? _value.commentId : commentId as String,
-      likeTimestampe: likeTimestampe == freezed
-          ? _value.likeTimestampe
-          : likeTimestampe as DateTime,
-      like: like == freezed ? _value.like : like as bool,
       createdAt:
           createdAt == freezed ? _value.createdAt : createdAt as DateTime,
       updatedAt:
@@ -118,13 +95,7 @@ abstract class _$TLikeCopyWith<$Res> implements $TLikeCopyWith<$Res> {
       __$TLikeCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String postId,
-      String userId,
-      String commentId,
-      DateTime likeTimestampe,
-      bool like,
-      DateTime createdAt,
-      DateTime updatedAt});
+      {String postId, String userId, DateTime createdAt, DateTime updatedAt});
 }
 
 /// @nodoc
@@ -140,20 +111,12 @@ class __$TLikeCopyWithImpl<$Res> extends _$TLikeCopyWithImpl<$Res>
   $Res call({
     Object postId = freezed,
     Object userId = freezed,
-    Object commentId = freezed,
-    Object likeTimestampe = freezed,
-    Object like = freezed,
     Object createdAt = freezed,
     Object updatedAt = freezed,
   }) {
     return _then(_TLike(
       postId: postId == freezed ? _value.postId : postId as String,
       userId: userId == freezed ? _value.userId : userId as String,
-      commentId: commentId == freezed ? _value.commentId : commentId as String,
-      likeTimestampe: likeTimestampe == freezed
-          ? _value.likeTimestampe
-          : likeTimestampe as DateTime,
-      like: like == freezed ? _value.like : like as bool,
       createdAt:
           createdAt == freezed ? _value.createdAt : createdAt as DateTime,
       updatedAt:
@@ -167,16 +130,8 @@ class __$TLikeCopyWithImpl<$Res> extends _$TLikeCopyWithImpl<$Res>
 
 /// @nodoc
 class _$_TLike extends _TLike with DiagnosticableTreeMixin {
-  _$_TLike(
-      {this.postId,
-      this.userId,
-      this.commentId,
-      this.likeTimestampe,
-      this.like = true,
-      this.createdAt,
-      this.updatedAt})
-      : assert(like != null),
-        super._();
+  _$_TLike({this.postId, this.userId, this.createdAt, this.updatedAt})
+      : super._();
 
   factory _$_TLike.fromJson(Map<String, dynamic> json) =>
       _$_$_TLikeFromJson(json);
@@ -187,21 +142,17 @@ class _$_TLike extends _TLike with DiagnosticableTreeMixin {
   final String postId;
   @override
   final String userId;
-  @override
-  final String commentId;
-  @override
-  final DateTime likeTimestampe;
-  @JsonKey(defaultValue: true)
-  @override
-  final bool like;
-  @override //
+  @override // String commentId,
+// DateTime likeTimestampe,
+// @Default(true) bool like,
+//
   final DateTime createdAt;
   @override
   final DateTime updatedAt;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'TLike(postId: $postId, userId: $userId, commentId: $commentId, likeTimestampe: $likeTimestampe, like: $like, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'TLike(postId: $postId, userId: $userId, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -211,9 +162,6 @@ class _$_TLike extends _TLike with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('type', 'TLike'))
       ..add(DiagnosticsProperty('postId', postId))
       ..add(DiagnosticsProperty('userId', userId))
-      ..add(DiagnosticsProperty('commentId', commentId))
-      ..add(DiagnosticsProperty('likeTimestampe', likeTimestampe))
-      ..add(DiagnosticsProperty('like', like))
       ..add(DiagnosticsProperty('createdAt', createdAt))
       ..add(DiagnosticsProperty('updatedAt', updatedAt));
   }
@@ -226,14 +174,6 @@ class _$_TLike extends _TLike with DiagnosticableTreeMixin {
                 const DeepCollectionEquality().equals(other.postId, postId)) &&
             (identical(other.userId, userId) ||
                 const DeepCollectionEquality().equals(other.userId, userId)) &&
-            (identical(other.commentId, commentId) ||
-                const DeepCollectionEquality()
-                    .equals(other.commentId, commentId)) &&
-            (identical(other.likeTimestampe, likeTimestampe) ||
-                const DeepCollectionEquality()
-                    .equals(other.likeTimestampe, likeTimestampe)) &&
-            (identical(other.like, like) ||
-                const DeepCollectionEquality().equals(other.like, like)) &&
             (identical(other.createdAt, createdAt) ||
                 const DeepCollectionEquality()
                     .equals(other.createdAt, createdAt)) &&
@@ -247,9 +187,6 @@ class _$_TLike extends _TLike with DiagnosticableTreeMixin {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(postId) ^
       const DeepCollectionEquality().hash(userId) ^
-      const DeepCollectionEquality().hash(commentId) ^
-      const DeepCollectionEquality().hash(likeTimestampe) ^
-      const DeepCollectionEquality().hash(like) ^
       const DeepCollectionEquality().hash(createdAt) ^
       const DeepCollectionEquality().hash(updatedAt);
 
@@ -269,9 +206,6 @@ abstract class _TLike extends TLike {
   factory _TLike(
       {String postId,
       String userId,
-      String commentId,
-      DateTime likeTimestampe,
-      bool like,
       DateTime createdAt,
       DateTime updatedAt}) = _$_TLike;
 
@@ -283,13 +217,10 @@ abstract class _TLike extends TLike {
   String get postId;
   @override
   String get userId;
-  @override
-  String get commentId;
-  @override
-  DateTime get likeTimestampe;
-  @override
-  bool get like;
-  @override //
+  @override // String commentId,
+// DateTime likeTimestampe,
+// @Default(true) bool like,
+//
   DateTime get createdAt;
   @override
   DateTime get updatedAt;

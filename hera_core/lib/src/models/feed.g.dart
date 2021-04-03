@@ -1,15 +1,17 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'like.dart';
+part of 'feed.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_TLike _$_$_TLikeFromJson(Map<String, dynamic> json) {
-  return _$_TLike(
-    postId: json['postId'] as String,
-    userId: json['userId'] as String,
+_$_TFollower _$_$_TFollowerFromJson(Map<String, dynamic> json) {
+  return _$_TFollower(
+    followerId: json['followerId'] as String,
+    feedItemId: json['feedItemId'] as String,
+    feedType: json['feedType'] as String,
+    followingId: json['followingId'] as String,
     createdAt:
         const CustomDateTimeConverter().fromJson(json['createdAt'] as DateTime),
     updatedAt:
@@ -19,11 +21,14 @@ _$_TLike _$_$_TLikeFromJson(Map<String, dynamic> json) {
     ..path = json['path'] as String;
 }
 
-Map<String, dynamic> _$_$_TLikeToJson(_$_TLike instance) => <String, dynamic>{
+Map<String, dynamic> _$_$_TFollowerToJson(_$_TFollower instance) =>
+    <String, dynamic>{
       'id': instance.id,
       'path': instance.path,
-      'postId': instance.postId,
-      'userId': instance.userId,
+      'followerId': instance.followerId,
+      'feedItemId': instance.feedItemId,
+      'feedType': instance.feedType,
+      'followingId': instance.followingId,
       'createdAt': const CustomDateTimeConverter().toJson(instance.createdAt),
       'updatedAt': const CustomDateTimeConverter().toJson(instance.updatedAt),
     };

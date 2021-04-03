@@ -2,23 +2,14 @@ import 'package:flutter/material.dart';
 
 final primary = const Color(0xFF00BCD4);
 final secondary = const Color(0xFF3A506D);
-
 final blacktext = const Color(0xFF272A3F);
-
 final red = const Color(0xFFF34949);
-
 final grey = const Color(0xFFdddddd);
-
 final darkGrey = const Color(0xFF708090);
-
 final star = const Color(0xFFff8064);
-
 final greya = const Color(0xFFDCDCDC);
-
 final border = const Color(0xFFD4D4E0);
-
 final bg = const Color(0xFFF4F7FA);
-
 final bg2 = const Color(0xFFFDFDFD);
 final green = const Color(0xFF20C978);
 final greyb = const Color(0xFF707070);
@@ -167,19 +158,12 @@ TextStyle textArialRegularSecondaryxs() {
 }
 
 TextStyle textArialRegularsecondary() {
-  return TextStyle(
-      fontSize: 16.0,
-      color: secondary,
-      fontFamily: 'ArialRegular',
-      decoration: TextDecoration.none);
+  return TextStyle(fontSize: 16.0, color: secondary, fontFamily: 'ArialRegular', decoration: TextDecoration.none);
 }
 
 TextStyle textArialRegularsecondarydull() {
   return TextStyle(
-      fontSize: 16.0,
-      color: secondary.withOpacity(0.6),
-      fontFamily: 'ArialRegular',
-      decoration: TextDecoration.none);
+      fontSize: 16.0, color: secondary.withOpacity(0.6), fontFamily: 'ArialRegular', decoration: TextDecoration.none);
 }
 
 TextStyle textArialRegularSecondary() {
@@ -235,24 +219,13 @@ TextStyle textArialRegularlgWhiteeWithOp() {
 
 TextStyle textArialRegularsecondarywithOP() {
   return TextStyle(
-      fontSize: 18.0,
-      color: secondary.withOpacity(0.60),
-      fontFamily: 'ArialRegular',
-      decoration: TextDecoration.none);
+      fontSize: 18.0, color: secondary.withOpacity(0.60), fontFamily: 'ArialRegular', decoration: TextDecoration.none);
 }
 
 TextStyle textArialRegularlgsecondary() {
-  return TextStyle(
-      fontSize: 20.0,
-      color: secondary,
-      fontFamily: 'ArialRegular',
-      decoration: TextDecoration.none);
+  return TextStyle(fontSize: 20.0, color: secondary, fontFamily: 'ArialRegular', decoration: TextDecoration.none);
 }
 
 TextStyle textArialRegularlgwhite() {
-  return TextStyle(
-      fontSize: 20.0,
-      color: Colors.white,
-      fontFamily: 'ArialRegular',
-      decoration: TextDecoration.none);
+  return TextStyle(fontSize: 20.0, color: Colors.white, fontFamily: 'ArialRegular', decoration: TextDecoration.none);
 }

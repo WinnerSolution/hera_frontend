@@ -20,9 +20,9 @@ abstract class TLike extends IResourceData with BaseResourceDataMixin implements
     //
     String postId,
     String userId,
-    String commentId,
-    DateTime likeTimestampe,
-    @Default(true) bool like,
+    // String commentId,
+    // DateTime likeTimestampe,
+    // @Default(true) bool like,
 
     //
     DateTime createdAt,

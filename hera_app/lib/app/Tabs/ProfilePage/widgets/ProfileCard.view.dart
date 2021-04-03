@@ -15,7 +15,7 @@ class ProfileCardController extends RecordController<TUser> {
   ) : super(firestore.record<TUser>(), id: profileId, reactive: true);
 
   final String profileId;
-  final Rx<TUserStats> _userStats = Rx<TUserStats>();
+  final Rx<TUserStats> _userStats = Rx<TUserStats>(TUserStats());
 
   @override
   void onInit() {
