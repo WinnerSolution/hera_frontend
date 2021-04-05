@@ -1,4 +1,5 @@
 import 'package:hera_core/hera_core.dart';
+import 'package:softi_common/resource.dart';
 import 'package:softi_firebase/firestore.dart';
 
 final resourceMapper = <Type, FirestoreResource>{
@@ -39,6 +40,6 @@ final resourceMapper = <Type, FirestoreResource>{
   // ),
 };
 
-FirestoreResource<T> resourceResolver<T>() {
+FirestoreResource<T> resourceResolver<T extends IResourceData>() {
   return resourceMapper[T];
 }

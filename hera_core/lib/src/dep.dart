@@ -6,13 +6,15 @@ import 'package:get_storage/get_storage.dart';
 import 'package:hera_core/constants/firebase_settings.dart';
 import 'package:hera_core/src/providers/firestore_resources.dart';
 import 'package:hera_core/src/services/cloud_functions.dart';
+import 'package:hera_core/src/services/firesore_repo.dart';
+
 import 'package:softi_common/auth.dart';
 import 'package:softi_common/core.dart';
 import 'package:softi_common/resource.dart';
+import 'package:softi_common/services.dart';
 import 'package:softi_firebase/auth.dart';
 import 'package:softi_firebase/firestore.dart';
 import 'package:softi_firebase/services.dart';
-import 'package:softi_common/services.dart';
 
 //
 Future<void> coreDependenciesSetup() async {
@@ -26,8 +28,8 @@ Future<void> coreDependenciesSetup() async {
   Get.put<ILoadingService>(LoadingService());
 
   /// Get.put<DatabaseController>(DatabaseController(resourceMapper, firestoreCollectionService));
-  Get.put<ResourceBase>(
-    ResourceBase(resourceResolver, FirestoreCollectionService(FirebaseFirestore.instance)),
+  Get.put<IResourceBase>(
+    FirestoreResourceBase(resourceResolver, FirebaseFirestore.instance),
     tag: 'firestore',
   );
 
@@ -62,12 +64,16 @@ Future<void> coreDependenciesSetup() async {
 
   /// Cloud functions (Local module)
   Get.put<IRemoteStorageService>(FirebaseStorageService());
+
+  /// Firestore repo
+  Get.put(FirestoreRepo(firestore));
 }
 
 final ILocalStore localStorage = Get.find();
 final CloudFunctionsService functions = Get.find();
-final ResourceBase firestore = Get.find(tag: 'firestore');
+final IResourceBase firestore = Get.find(tag: 'firestore');
 final ILoadingService loading = Get.find();
 final IMediaPicker mediaPicker = Get.find();
 final ICameraService cameraService = Get.find();
 final IRemoteStorageService cloudStorage = Get.find();
+final FirestoreRepo firestoreRepo = Get.find<FirestoreRepo>();

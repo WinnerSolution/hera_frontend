@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hera_app/app/Tabs/FeedPage/FeedPage.controller.dart';
-import 'package:hera_app/app/Tabs/FeedPage/widgets/PostFeedItem.dart';
+import 'package:hera_app/app/Tabs/FeedPage/widgets/PostFeedItemWidget.dart';
 import 'package:hera_app/app/Widgets/ItemSliverListWidget.dart';
 import 'package:hera_app/themes/styles.dart';
 import 'package:softi_common/core.dart';
@@ -71,7 +71,7 @@ class FeedPage extends BaseView<FeedPageController> {
             childAspectRatio: 1.1,
             itemBuilder: (index) {
               var record = controller.collection.data()[index];
-              return PostFeedItem(post: record).paddingSymmetric(horizontal: 5, vertical: 10);
+              return PostFeedItemWidget(post: record).paddingSymmetric(horizontal: 5, vertical: 10);
             },
           ),
           Obx(() => SliverToBoxAdapter(

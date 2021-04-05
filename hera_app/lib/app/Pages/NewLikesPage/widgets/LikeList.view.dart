@@ -29,11 +29,11 @@ class LikeListController extends CollectionController<TLike> {
   Future<void> postComment() async {
     await controllerTaskHandler(
       task: () async {
-        unawaited(firestore.save<TComment>(TComment(
-          comment: lastCommentController.text,
-          postId: postId,
-          userId: AppController.find.user().id,
-        )));
+        unawaited(firestore.api<TComment>().save(TComment(
+              comment: lastCommentController.text,
+              postId: postId,
+              userId: AppController.find.user().id,
+            )));
         lastCommentController.clear();
         // return 'Posted !';
       },

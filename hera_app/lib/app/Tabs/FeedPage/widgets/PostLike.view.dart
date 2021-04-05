@@ -20,33 +20,22 @@ class PostLikeWidgetController extends BaseController {
   void toggleLike() {
     postLiked.toggle();
 
+    firestoreRepo.toggleLike(postLiked(), userId, postId);
+
     //
     var _c = Get.find<PostStatsController>(tag: postId);
     _c.postStats(_c.postStats().incremetLikes(postLiked() ? 1 : -1));
 
     //
-
-    if (postLiked()) {
-      firestore.save<TLike>(TLike(
-        postId: postId,
-        userId: userId,
-        // like: postLiked(),
-      ));
-    } else {
-      firestore.delete<TLike>(TLike(
-        postId: postId,
-        userId: userId,
-        // like: postLiked(),
-      ).getId());
-    }
   }
 
   @override
   void onInit() {
     _sub = firestore //
-        .get<TLike>(postId + '_' + userId, reactive: true)
+        .api<TLike>()
+        .get(postId + '_' + userId, reactive: true)
         .listen((event) {
-      postLiked(event ?? false);
+      postLiked(event != null);
     });
 
     super.onInit();

@@ -49,13 +49,13 @@ class ProfileFormController extends ResourceFormController<TUser> {
           );
 
           if (result.result?.url != null) {
-            await firestore.save<TUser>(
-              user().copyWith(
-                profileImage: RemoteImage.fromNetworAsset(result.result),
-              )
-                ..setId(user().getId())
-                ..setPath(user().getPath()),
-            );
+            await firestore.api<TUser>().save(
+                  user().copyWith(
+                    profileImage: RemoteImage.fromNetworAsset(result.result),
+                  )
+                    ..setId(user().getId())
+                    ..setPath(user().getPath()),
+                );
           }
           // busy(false);
           return 'Saved';

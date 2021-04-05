@@ -34,7 +34,7 @@ class AppController extends BaseController //
     binder<AuthUser, TUser>(
       Get.find<IAuthService>().authUserStream.skip(0),
       user,
-      binder: (_authUser) => firestore.get<TUser>(_authUser.uid, reactive: true),
+      binder: (_authUser) => firestore.api<TUser>().get(_authUser.uid, reactive: true),
       canBind: (_authUser) => _authUser?.uid != null,
       handler: (_authUser, _event) {
         // _userEventCount++;
@@ -42,10 +42,10 @@ class AppController extends BaseController //
           user(_event);
         } else {
           isNewUser(true);
-          firestore.save<TUser>(TUser(
-            email: _authUser.email,
-            phone: _authUser.phoneNumber,
-          )..setId(_authUser.uid));
+          firestore.api<TUser>().save(TUser(
+                email: _authUser.email,
+                phone: _authUser.phoneNumber,
+              )..setId(_authUser.uid));
         }
       },
       // masterHandler: (_authUser) {
@@ -57,7 +57,7 @@ class AppController extends BaseController //
     binder<TUser, TUserStats>(
       user.stream,
       userStats,
-      binder: (_user) => firestore.get<TUserStats>(_user.id, reactive: true),
+      binder: (_user) => firestore.api<TUserStats>().get(_user.id, reactive: true),
       canBind: (_user) => _user?.isValid() ?? false,
       handler: (_user, _event) {
         // _userEventCount++;
@@ -65,12 +65,12 @@ class AppController extends BaseController //
           userStats(_event);
         } else {
           // isNewUser(true);
-          firestore.save<TUserStats>(TUserStats(
-            followersCount: 0,
-            followingCount: 0,
-            likesCount: 0,
-            postsCount: 0,
-          )..setId(_user.id));
+          firestore.api<TUserStats>().save(TUserStats(
+                followersCount: 0,
+                followingCount: 0,
+                likesCount: 0,
+                postsCount: 0,
+              )..setId(_user.id));
         }
       },
       // masterHandler: (_authUser) {

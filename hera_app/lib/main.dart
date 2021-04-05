@@ -1,28 +1,22 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_config/flutter_config.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 import 'package:hera_app/controllers/AppController.dart';
 import 'package:hera_app/controllers/UserPresenceController.dart';
+import 'package:hera_app/dep.dart';
 import 'package:hera_app/routes/routes.dart';
 import 'package:hera_core/hera_core.dart';
 import 'package:nested/nested.dart';
 import 'package:softi_common/core.dart';
 import 'package:softi_common/widgets.dart';
-import 'package:timeago/timeago.dart' as timeago;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   ///
-  await FlutterConfig.loadEnvVariables();
-
-  ///
   await coreDependenciesSetup();
-
-  timeago.setLocaleMessages('fr', timeago.FrMessages());
-  timeago.setLocaleMessages('fr', timeago.FrShortMessages());
+  await appDependenciesSetup();
 
   ///
   runApp(CivilioApp());

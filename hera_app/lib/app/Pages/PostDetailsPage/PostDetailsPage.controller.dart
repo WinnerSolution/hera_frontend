@@ -48,11 +48,12 @@ class PostDetailsPageController extends BaseController {
     await controllerTaskHandler(
       task: () async {
         unawaited(firestore
-            .save<TComment>(TComment(
-          comment: lastCommentController.text,
-          postId: post().getId(),
-          userId: AppController.find.user().id,
-        ))
+            .api<TComment>()
+            .save(TComment(
+              comment: lastCommentController.text,
+              postId: post().getId(),
+              userId: AppController.find.user().id,
+            ))
             .catchError((error, stackTrace) async {
           await loading.showToast('status');
         }));

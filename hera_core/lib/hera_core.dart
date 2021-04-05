@@ -15,6 +15,7 @@ export 'package:hera_core/src/models/value_object/contact_info.dart';
 export 'package:hera_core/src/models/value_object/presence_state.dart';
 export 'package:hera_core/src/models/value_object/remote_image.dart';
 export 'package:hera_core/src/providers/firestore_resources.dart';
+export 'package:hera_core/src/services/firesore_repo.dart';
 export 'package:hera_core/src/translations/strings.dart';
 export 'package:hera_core/src/translations/translate.dart';
 export 'package:hera_core/src/translations/translations.dart';

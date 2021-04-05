@@ -8,6 +8,6 @@ class FeedPageController extends CollectionController<TPost> {
           filter: Filter() //
               // .$filter$eq('createdBy', createdBy)
               .$orderBy('updatedAt', desc: true),
-          options: CollectionOptions(pageSize: 2),
+          options: CollectionOptions(pageSize: 20),
         );
 }

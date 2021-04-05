@@ -20,7 +20,7 @@ class ProfileCardController extends RecordController<TUser> {
   @override
   void onInit() {
     super.onInit();
-    _userStats.bindStream(firestore.get<TUserStats>(profileId));
+    _userStats.bindStream(firestore.api<TUserStats>().get(profileId));
   }
 
   //! Getters

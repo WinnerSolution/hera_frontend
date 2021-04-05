@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hera_app/controllers/AppController.dart';
 import 'package:nested/nested.dart';
+import 'package:pedantic/pedantic.dart';
 import 'package:softi_common/auth.dart';
 
 class UserPresence extends SuperController {
@@ -69,10 +70,12 @@ class UserPresence extends SuperController {
 
   void setAway() => _changeUserPresence(isAwayFirestore);
 
-  void rtdbAndLocalFsPresence(AuthUser authUser) {
+  void rtdbAndLocalFsPresence(AuthUser authUser) async {
     _cancel();
 
     if (authUser == null) return;
+
+    await FirebaseDatabase.instance.setPersistenceEnabled(false);
 
     _userStatusDatabaseRef = FirebaseDatabase.instance
         .reference() //
@@ -86,7 +89,7 @@ class UserPresence extends SuperController {
       }
     });
 
-    _userStatusDatabaseRef.onDisconnect().update(isOffline).then((result) => null);
+    unawaited(_userStatusDatabaseRef.onDisconnect().update(isOffline));
   }
 }
 
