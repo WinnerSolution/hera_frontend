@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hera_app/app/Home/home.dart';
 import 'package:hera_app/themes/styles.dart';
-import 'package:story_view/story_view.dart';
 
 class FriendsStory extends StatefulWidget {
   @override
@@ -9,11 +7,11 @@ class FriendsStory extends StatefulWidget {
 }
 
 class _FriendsStoryState extends State<FriendsStory> {
-  final storyController = StoryController();
+  // final storyController = StoryController();
 
   @override
   void dispose() {
-    storyController.dispose();
+    // storyController.dispose();
     super.dispose();
   }
 
@@ -23,56 +21,57 @@ class _FriendsStoryState extends State<FriendsStory> {
     return Scaffold(
       body: Stack(
         children: <Widget>[
-          StoryView(
-            storyItems: [
-              // StoryItem.text(
-              //   'I guess you'd love to see more of our food. That's great.',
-              //   Colors.blue,
-              // ),
-              // StoryItem.text(
-              //   'Nice!\n\nTap to continue.',
-              //   Colors.red,
-              // ),
-              // StoryItem.pageImage(
-              //     NetworkImage(
-              //         'https://image.ibb.co/cU4WGx/Omotuo-Groundnut-Soup-braperucci-com-1.jpg'),
-              //     caption: 'Still sampling',
-              //     ),
-              StoryItem.pageImage(
-                url: 'https://image.ibb.co/cU4WGx/Omotuo-Groundnut-Soup-braperucci-com-1.jpg',
-                imageFit: BoxFit.cover, controller: null,
-                // controller: null
-                // caption: 'Still sampling',
-              ),
-              StoryItem.pageImage(
-                url: 'assets/images/story.png', imageFit: BoxFit.cover, controller: null,
-                // caption: 'Still sampling',
-              ),
-              // StoryItem.pageGif(
-              //     'https://media.giphy.com/media/5GoVLqeAOo6PK/giphy.gif',
-              //     caption: 'Working with gifs',
-              //     controller: storyController),
-              // StoryItem.pageGif(
-              //   'https://media.giphy.com/media/XcA8krYsrEAYXKf4UQ/giphy.gif',
-              //   caption: 'Hello, from the other side',
-              //   controller: storyController,
-              // ),
-              // StoryItem.pageGif(
-              //   'https://media.giphy.com/media/XcA8krYsrEAYXKf4UQ/giphy.gif',
-              //   caption: 'Hello, from the other side2',
-              //   controller: storyController,
-              // ),
-            ],
-            onComplete: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => Home()),
-              );
-            },
-            progressPosition: ProgressPosition.top,
-            repeat: true,
-            controller: storyController,
-          ),
+          // StoryView(
+          //   storyItems: [
+          //     // StoryItem.text(
+          //     //   'I guess you'd love to see more of our food. That's great.',
+          //     //   Colors.blue,
+          //     // ),
+          //     // StoryItem.text(
+          //     //   'Nice!\n\nTap to continue.',
+          //     //   Colors.red,
+          //     // ),
+          //     // StoryItem.pageImage(
+          //     //     NetworkImage(
+          //     //         'https://image.ibb.co/cU4WGx/Omotuo-Groundnut-Soup-braperucci-com-1.jpg'),
+          //     //     caption: 'Still sampling',
+          //     //     ),
+          //     StoryItem.pageImage(
+          //       url: 'https://image.ibb.co/cU4WGx/Omotuo-Groundnut-Soup-braperucci-com-1.jpg',
+          //       imageFit: BoxFit.cover, controller: null,
+          //       // controller: null
+          //       // caption: 'Still sampling',
+          //     ),
+          //     StoryItem.pageImage(
+          //       url: 'assets/images/story.png', imageFit: BoxFit.cover, controller: null,
+          //       // caption: 'Still sampling',
+          //     ),
+          //     // StoryItem.pageGif(
+          //     //     'https://media.giphy.com/media/5GoVLqeAOo6PK/giphy.gif',
+          //     //     caption: 'Working with gifs',
+          //     //     controller: storyController),
+          //     // StoryItem.pageGif(
+          //     //   'https://media.giphy.com/media/XcA8krYsrEAYXKf4UQ/giphy.gif',
+          //     //   caption: 'Hello, from the other side',
+          //     //   controller: storyController,
+          //     // ),
+          //     // StoryItem.pageGif(
+          //     //   'https://media.giphy.com/media/XcA8krYsrEAYXKf4UQ/giphy.gif',
+          //     //   caption: 'Hello, from the other side2',
+          //     //   controller: storyController,
+          //     // ),
+          //   ],
+          //   onComplete: () {
+          //     Navigator.push(
+          //       context,
+          //       MaterialPageRoute(builder: (context) => Home()),
+          //     );
+          //   },
+          //   progressPosition: ProgressPosition.top,
+          //   repeat: true,
+          //   controller: storyController,
+          // ),
+
           Positioned(
             bottom: 0,
             child: Container(

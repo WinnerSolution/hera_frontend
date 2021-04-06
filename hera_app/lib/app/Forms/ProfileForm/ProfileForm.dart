@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
+import 'package:hera_app/components/widgets/t.dart';
 import 'package:hera_app/themes/styles.dart';
 import 'package:hera_core/hera_core.dart';
 import 'package:softi_common/core.dart';
@@ -140,7 +141,6 @@ class EditProfile extends StatelessWidget {
             buildplacenametextfield(),
             buildemailtext(),
             buildemailtextfield(),
-            // buildAccounttext(),
             buildPreivacySwitch(),
             buildNotificationSwitch(),
           ],
@@ -360,6 +360,7 @@ class EditProfile extends StatelessWidget {
               style: textArialRegularsecondary(),
             ),
             GFToggle(
+              value: true,
               onChanged: (bool value) {},
               type: GFToggleType.ios,
               enabledThumbColor: Color(0xFF8DD378),

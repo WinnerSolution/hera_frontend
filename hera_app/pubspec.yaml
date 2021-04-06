@@ -27,8 +27,8 @@ dependencies:
   softi_mediamanager:
     path: ../../../packages/package_flutter_mediamanager
 
-  softi_form:
-    path: ../../../packages/package_flutter_form
+  # softi_form:
+  #   path: ../../../packages/package_flutter_form
 
   # softi_common:
   #   git:
@@ -40,33 +40,29 @@ dependencies:
   #     url: https://github.com/atoumbre/package_flutter_firebase.git
   #     ref: v0.1.2
 
-  get: 
-  flutter_platform_widgets:
-  velocity_x: 
-  easy_debounce:
-  cached_network_image:
+  get: ^4.1.3 
+  flutter_platform_widgets: ^1.1.0
+  velocity_x: ^2.6.1 
+  easy_debounce: ^2.0.0
+  cached_network_image: ^3.0.0
   flutter_config: 
-  flutter_staggered_grid_view: 
-  getwidget:
-  flutter_svg: 
+  flutter_staggered_grid_view: ^0.4.0-nullsafety.3 
+  getwidget: ^2.0.1-nullsafety.4
+  flutter_svg: ^0.21.0-nullsafety.0 
   pin_entry_text_field: 
-  story_view: 
-  firebase_database:
-  timeago:
-  pedantic:
+  story_view: ^0.13.0-nullsafety.1 
+  firebase_database: ^6.1.1
+  timeago: ^3.0.2
+  pedantic: ^1.11.0
+  flutter_datetime_picker:
+  datetime_picker_formfield: ^2.0.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  lint:
-  faker:
-
-dependency_overrides:
-  intl: ^0.17.0
-  extended_image: 1.5.0-dev
-  date_range_picker:
-    git:
-      url: https://github.com/LempereurBenjamin/date_range_picker
+  lint: ^1.5.3
+  faker: ^2.0.0-rc.2
+  
 
 flutter:
   uses-material-design: true

@@ -29,14 +29,13 @@ dependencies:
   #     url: https://github.com/atoumbre/package_flutter_firebase.git
   #     ref: v0.1.2
   
-  cloud_functions:
-  freezed_annotation:
-  json_annotation:
-  # phone_number:
-  nested:
-  geocoding:
-  dio:
-  retrofit:
+  cloud_functions: ^1.0.2
+  freezed_annotation: ^0.14.1
+  json_annotation: ^4.0.1
+  nested: ^1.0.0
+  geocoding: ^2.0.0
+  dio: ^4.0.0
+  retrofit: ^2.0.0-beta1
   flutter_config: #^1.0.8
 
 
@@ -45,14 +44,14 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  pedantic:
+  pedantic: ^1.11.0
   build_runner:
-  json_serializable:
-  retrofit_generator:
-  freezed:
+  json_serializable: ^4.1.0
+  retrofit_generator: ^2.0.0-beta3
+  freezed: ^0.14.1+2
 
-dependency_overrides:
-  intl: ^0.17.0
+# dependency_overrides:
+#   intl: ^0.17.0
   # extended_image: 1.5.0-dev
   
 flutter:

@@ -9,5 +9,11 @@ class CustomLocationConverter implements JsonConverter<Location, Map<String, dyn
   Location fromJson(Map<String, dynamic> json) => Location.fromMap(json ?? {});
 
   @override
-  Map<String, dynamic> toJson(Location json) => json?.toJson() ?? Location().toJson();
+  Map<String, dynamic> toJson(Location json) =>
+      json?.toJson() ??
+      Location(
+        latitude: null,
+        longitude: null,
+        timestamp: null,
+      ).toJson();
 }

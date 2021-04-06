@@ -94,6 +94,7 @@ class _PostStatusState extends State<PostStatus> with TickerProviderStateMixin {
               children: <Widget>[
                 Text('Allow comments', style: textArialRegularsecondary()),
                 GFToggle(
+                  value: true,
                   onChanged: (bool value) {},
                   type: GFToggleType.ios,
                   enabledThumbColor: Color(0xFF8DD378),

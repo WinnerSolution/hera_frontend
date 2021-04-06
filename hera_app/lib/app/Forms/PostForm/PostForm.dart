@@ -163,6 +163,7 @@ class PostForm extends StatelessWidget {
             style: textArialRegularsecondary(),
           ),
           GFToggle(
+            value: true,
             onChanged: (bool value) {},
             type: GFToggleType.ios,
             enabledThumbColor: Color(0xFF8DD378),

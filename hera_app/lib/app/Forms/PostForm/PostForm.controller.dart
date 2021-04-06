@@ -3,27 +3,27 @@ import 'dart:io';
 import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:get/get.dart';
 import 'package:hera_app/controllers/AppController.dart';
-import 'package:hera_core/hera_core.dart' as core;
-import 'package:softi_form/form.dart';
+import 'package:hera_core/hera_core.dart';
+import 'package:softi_common/form.dart';
 
-class AddPostController extends ResourceFormController<core.TPost> {
+class AddPostController extends ResourceFormController<TPost> {
   var maxImageWidth = 640;
   // final String createdBy;
 
-  Rx<File> selectedImage = Rx<File>();
+  Rx<File> selectedImage = Rx<File>(null);
 
   AddPostController(
-    core.TPost post,
+    TPost post,
     // this.createdBy,
-  ) : super(record: post, db: core.firestore);
+  ) : super(post, db: firestore);
 
-  Rx<core.TUser> get user => AppController.find.user;
+  Rx<TUser> get user => AppController.find.user;
   String get userProfileImageUrl => AppController.find.userProfileImageUrl;
 
   @override
   Future<void> afterResourceSave(record) async {
     await uploadProfileImage(record);
-    Get.back<core.TPost>(result: record);
+    Get.back<TPost>(result: record);
   }
 
   @override
@@ -41,15 +41,16 @@ class AddPostController extends ResourceFormController<core.TPost> {
   Future<void> selectPostImage() async {
     // selectedImage(await mediaPicker.singleImageSelect(source: await selectPickerSource(), crop: true));
 
-    var _list = (await core.mediaPicker.selectMediaFromGallery()).map((e) => e.file).toList();
+    var _list = (await mediaPicker.selectMediaFromGallery()).map((e) => e.file).toList();
+    if (selectedImage == null) selectedImage(null);
     selectedImage(_list.isNotEmpty ? _list.first : null);
   }
 
-  Future<void> uploadProfileImage(core.TPost record) async {
+  Future<void> uploadProfileImage(TPost record) async {
     if (selectedImage == null) return;
     await controllerTaskHandler(
         task: () async {
-          var result = await core.cloudStorage.uploadMedia(
+          var result = await cloudStorage.uploadMedia(
             imageToUpload: await FlutterImageCompress.compressWithFile(
               selectedImage().absolute.path,
               minHeight: maxImageWidth,
@@ -59,13 +60,13 @@ class AddPostController extends ResourceFormController<core.TPost> {
           );
 
           var newRecord = record.copyWith(
-            images: [core.RemoteImage.fromNetworAsset(result.result)],
+            images: [RemoteImage.fromNetworAsset(result.result)],
           )
             ..setId(record.id)
             ..setPath(record.path);
 
           if (result.result?.url != null) {
-            await core.firestore.api<core.TPost>().save(newRecord);
+            await firestore.api<TPost>().save(newRecord);
           }
           // busy(false);
           return 'Saved';

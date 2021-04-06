@@ -4,13 +4,13 @@ import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:get/get.dart';
 import 'package:hera_app/controllers/AppController.dart';
 import 'package:hera_core/hera_core.dart';
-import 'package:softi_form/form.dart';
+import 'package:softi_common/form.dart';
 import 'package:softi_mediamanager/index.dart';
 
 class ProfileFormController extends ResourceFormController<TUser> {
   var maxImageWidth = 640;
 
-  ProfileFormController(TUser profile) : super(record: profile, db: firestore);
+  ProfileFormController(TUser profile) : super(profile, db: firestore);
 
   Rx<TUser> get user => AppController.find.user;
   String get userProfileImageUrl => AppController.find.userProfileImageUrl;
