@@ -108,6 +108,7 @@ class _LoginState extends State<Login> {
     return Padding(
       padding: const EdgeInsets.only(top: 12.0),
       child: GFTypography(
+        text: '',
         showDivider: false,
         child: RichText(
           text: TextSpan(
@@ -159,6 +160,7 @@ class _LoginState extends State<Login> {
     return Padding(
       padding: const EdgeInsets.only(top: 12.0),
       child: GFTypography(
+        text: '',
         showDivider: false,
         child: RichText(
           text: TextSpan(

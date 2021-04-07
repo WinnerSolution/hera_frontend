@@ -3,8 +3,10 @@ import 'package:get/get.dart';
 import 'package:hera_app/app/Tabs/FeedPage/FeedPage.controller.dart';
 import 'package:hera_app/app/Tabs/FeedPage/widgets/PostFeedItemWidget.dart';
 import 'package:hera_app/app/Widgets/ItemSliverListWidget.dart';
+import 'package:hera_app/controllers/AppController.dart';
 import 'package:hera_app/themes/styles.dart';
 import 'package:softi_common/core.dart';
+import 'package:softi_common/services.dart';
 
 class FeedPage extends BaseView<FeedPageController> {
   @override
@@ -20,6 +22,15 @@ class FeedPage extends BaseView<FeedPageController> {
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
+            actions: [
+              Obx(
+                () {
+                  return AppController.find.connectivityType() != ConnectivityType.none //
+                      ? Icon(Icons.wifi, color: primary)
+                      : Icon(Icons.wifi_off, color: primary);
+                },
+              )
+            ],
             pinned: true,
             floating: true,
             snap: true,

@@ -54,7 +54,10 @@ Future<void> coreDependenciesSetup() async {
 
   // Get.find<IDynamicLinkService>().handleDeeplinks();
 
-//!
+  //!
+
+  /// Cloud functions (Local module)
+  Get.put<IConnectivityService>(ConnectivityService());
 
   /// Cloud functions (Local module)
   Get.put<IMediaPicker>(MediaPicker());

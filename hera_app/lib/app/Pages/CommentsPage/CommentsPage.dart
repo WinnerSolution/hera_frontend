@@ -7,7 +7,7 @@ import 'package:softi_common/core.dart';
 
 class CommentsPageControler extends BaseViewController {
   @override
-  Future<void> loadView() async => null;
+  Future<void> onViewInit() async => null;
 }
 
 class CommentsPage extends BaseView<CommentsPageControler> {

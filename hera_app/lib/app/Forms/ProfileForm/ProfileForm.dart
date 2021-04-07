@@ -11,9 +11,9 @@ import 'package:velocity_x/velocity_x.dart';
 
 import 'ProfileForm.controller.dart';
 
-class EditProfile extends StatelessWidget {
+class ProfileForm extends StatelessWidget {
   final TUser user;
-  EditProfile(this.user);
+  ProfileForm(this.user);
 
   ProfileFormController get con => Get.put(ProfileFormController(user));
 
@@ -153,6 +153,7 @@ class EditProfile extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 12.0),
       child: GFTypography(
+        text: '',
         showDivider: false,
         child: RichText(
           text: TextSpan(
@@ -202,6 +203,7 @@ class EditProfile extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 12.0),
       child: GFTypography(
+        text: '',
         showDivider: false,
         child: RichText(
           text: TextSpan(
@@ -251,6 +253,7 @@ class EditProfile extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 12.0),
       child: GFTypography(
+        text: '',
         showDivider: false,
         child: RichText(
           text: TextSpan(

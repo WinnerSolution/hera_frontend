@@ -110,6 +110,7 @@ class _SignUpState extends State<SignUp> {
     return Padding(
       padding: const EdgeInsets.only(top: 10.0),
       child: GFTypography(
+        text: '',
         showDivider: false,
         child: RichText(
           text: TextSpan(
@@ -159,6 +160,7 @@ class _SignUpState extends State<SignUp> {
     return Padding(
       padding: const EdgeInsets.only(top: 12.0),
       child: GFTypography(
+        text: '',
         showDivider: false,
         child: RichText(
           text: TextSpan(
@@ -210,6 +212,7 @@ class _SignUpState extends State<SignUp> {
     return Padding(
       padding: const EdgeInsets.only(top: 12.0),
       child: GFTypography(
+        text: '',
         showDivider: false,
         child: RichText(
           text: TextSpan(
@@ -260,6 +263,7 @@ class _SignUpState extends State<SignUp> {
     return Padding(
       padding: const EdgeInsets.only(top: 12.0),
       child: GFTypography(
+        text: '',
         showDivider: false,
         child: RichText(
           text: TextSpan(

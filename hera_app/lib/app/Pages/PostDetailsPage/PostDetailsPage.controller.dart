@@ -6,7 +6,7 @@ import 'package:pedantic/pedantic.dart';
 import 'package:softi_common/core.dart';
 import 'package:softi_common/resource.dart';
 
-class PostDetailsPageController extends BaseController {
+class PostDetailsPageController extends BaseController with TaskHandlerControllerMixin {
   final Rx<TPost> post;
   final ResourceCollection<TComment> commentCollection;
 

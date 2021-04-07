@@ -138,6 +138,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
     return Padding(
       padding: const EdgeInsets.only(top: 12.0),
       child: GFTypography(
+        text: '',
         showDivider: false,
         child: RichText(
           text: TextSpan(

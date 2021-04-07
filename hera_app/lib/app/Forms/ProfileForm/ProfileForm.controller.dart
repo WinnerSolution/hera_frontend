@@ -4,10 +4,11 @@ import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:get/get.dart';
 import 'package:hera_app/controllers/AppController.dart';
 import 'package:hera_core/hera_core.dart';
+import 'package:softi_common/core.dart';
 import 'package:softi_common/form.dart';
 import 'package:softi_mediamanager/index.dart';
 
-class ProfileFormController extends ResourceFormController<TUser> {
+class ProfileFormController extends ResourceFormController<TUser> with TaskHandlerControllerMixin {
   var maxImageWidth = 640;
 
   ProfileFormController(TUser profile) : super(profile, db: firestore);

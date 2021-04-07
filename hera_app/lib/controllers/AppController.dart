@@ -6,13 +6,15 @@ import 'package:hera_app/routes/routes.dart';
 import 'package:hera_core/hera_core.dart';
 import 'package:softi_common/auth.dart';
 import 'package:softi_common/core.dart';
+import 'package:softi_common/services.dart';
 
 class AppController extends BaseController //
     with
         ThemeControllerMixin,
         LocaleControllerMixin,
         BindingControllerMixin,
-        AuthControllerMixin {
+        AuthControllerMixin,
+        ConnectivityControllerMixin {
   //
   static AppController get find => Get.find<AppController>();
 
@@ -155,6 +157,7 @@ class AppController extends BaseController //
   void onInit() {
     getThemeMode();
     getLanguage();
+    initConnectivityMonitoring();
 
     super.onInit();
   }

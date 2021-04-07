@@ -5,14 +5,21 @@ import 'package:get/get.dart';
 import 'package:hera_app/controllers/AppController.dart';
 import 'package:hera_core/hera_core.dart';
 import 'package:softi_common/form.dart';
+import 'package:softi_common/core.dart';
 
-class AddPostController extends ResourceFormController<TPost> {
+class PostFormController extends ResourceFormController<TPost> with TaskHandlerControllerMixin {
+  @override
+  Future<void> onViewInit() async => null;
+
+  @override
+  Future<void> onViewReady() async => selectPostImage();
+
   var maxImageWidth = 640;
   // final String createdBy;
 
   Rx<File> selectedImage = Rx<File>(null);
 
-  AddPostController(
+  PostFormController(
     TPost post,
     // this.createdBy,
   ) : super(post, db: firestore);
@@ -24,18 +31,6 @@ class AddPostController extends ResourceFormController<TPost> {
   Future<void> afterResourceSave(record) async {
     await uploadProfileImage(record);
     Get.back<TPost>(result: record);
-  }
-
-  @override
-  void onReady() {
-    // busy.listen((isBusy) {
-    //   if (isBusy)
-    //     loading.showStatus();
-    //   else
-    //     loading.dismiss();
-    // });
-    selectPostImage();
-    super.onReady();
   }
 
   Future<void> selectPostImage() async {

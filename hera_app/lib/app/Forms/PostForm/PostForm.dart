@@ -5,9 +5,10 @@ import 'package:getwidget/getwidget.dart';
 import 'package:hera_app/app/Forms/PostForm/PostForm.controller.dart';
 import 'package:hera_app/themes/styles.dart';
 import 'package:hera_core/hera_core.dart';
+import 'package:softi_common/core.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-class PostForm extends StatelessWidget {
+class PostForm extends BaseView<PostFormController> {
   final TPost post;
   // final String createdBy;
   PostForm({
@@ -16,10 +17,11 @@ class PostForm extends StatelessWidget {
     // @required this.createdBy,
   }) : super(key: key);
 
-  AddPostController get con => Get.put(AddPostController(post));
+  @override
+  PostFormController init() => PostFormController(post);
 
   @override
-  Widget build(BuildContext context) {
+  Widget builder(con) {
     return Obx(
       () => Scaffold(
         appBar: AppBar(
@@ -43,7 +45,7 @@ class PostForm extends StatelessWidget {
             child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            buildSelectedPost(),
+            buildSelectedPost(con),
             FormBuilder(
               key: con.formKey,
               initialValue: con.initialValue,
@@ -89,7 +91,7 @@ class PostForm extends StatelessWidget {
     );
   }
 
-  Widget buildSelectedPost() {
+  Widget buildSelectedPost(con) {
     return Container(
       width: Get.mediaQuery.size.width,
       height: Get.mediaQuery.size.height * 0.5,

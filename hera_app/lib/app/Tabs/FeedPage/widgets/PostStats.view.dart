@@ -54,15 +54,17 @@ class PostStatsWidget extends BaseView<PostStatsController> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          Container(
-              width: 200,
-              child:
-                  // ObxValue<Rx<DateTime>>((Rx<DateTime> clock) {
-                  //   return
-                  UserSnippetView(con.post.createdBy,
-                      bottomText: post.updatedAt != null ? timeago.format(post.updatedAt, locale: 'en') : '')
-              // }, con.clock),
-              ),
+          Expanded(
+            child: Container(
+                // width: 200,
+                child:
+                    // ObxValue<Rx<DateTime>>((Rx<DateTime> clock) {
+                    //   return
+                    UserSnippetView(con.post.createdBy,
+                        bottomText: post.updatedAt != null ? timeago.format(post.updatedAt, locale: 'en') : '')
+                // }, con.clock),
+                ),
+          ),
           Column(
             children: <Widget>[
               PostLikeWidget(post: post),
