@@ -16,21 +16,6 @@ class PostStatsController extends RecordController<TPostStats> {
   PostStatsController(this.post) : super(firestore.record<TPostStats>(), id: post.getId(), reactive: true);
 
   Rx<TPostStats> get postStats => record;
-
-  // @override
-  // Duration get interval => 1.hours;
-
-  @override
-  void onInit() {
-    // startTimer();
-    super.onInit();
-  }
-
-  @override
-  void onClose() {
-    // stopTimer();
-    super.onClose();
-  }
 }
 
 class PostStatsWidget extends BaseView<PostStatsController> {

@@ -27,7 +27,7 @@ class LikeListController extends CollectionController<TLike> {
   TextEditingController lastCommentController = TextEditingController();
 
   Future<void> postComment() async {
-    await controllerTaskHandler(
+    await serviceTaskHandler(
       task: () async {
         unawaited(firestore.api<TComment>().save(TComment(
               comment: lastCommentController.text,
@@ -37,7 +37,7 @@ class LikeListController extends CollectionController<TLike> {
         lastCommentController.clear();
         // return 'Posted !';
       },
-      errorHandler: (e) => '/!\\',
+      // errorHandler: (e) => '/!\\',
     );
   }
 }

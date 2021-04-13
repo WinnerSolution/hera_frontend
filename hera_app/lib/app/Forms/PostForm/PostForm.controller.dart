@@ -4,15 +4,15 @@ import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:get/get.dart';
 import 'package:hera_app/controllers/AppController.dart';
 import 'package:hera_core/hera_core.dart';
+import 'package:pedantic/pedantic.dart';
 import 'package:softi_common/form.dart';
-import 'package:softi_common/core.dart';
 
-class PostFormController extends ResourceFormController<TPost> with TaskHandlerControllerMixin {
+class PostFormController extends ResourceFormController<TPost> {
   @override
-  Future<void> onViewInit() async => null;
-
-  @override
-  Future<void> onViewReady() async => selectPostImage();
+  Future<void> onViewReady() async {
+    await super.onViewReady();
+    return selectPostImage();
+  }
 
   var maxImageWidth = 640;
   // final String createdBy;
@@ -43,31 +43,61 @@ class PostFormController extends ResourceFormController<TPost> with TaskHandlerC
 
   Future<void> uploadProfileImage(TPost record) async {
     if (selectedImage == null) return;
-    await controllerTaskHandler(
-        task: () async {
-          var result = await cloudStorage.uploadMedia(
-            imageToUpload: await FlutterImageCompress.compressWithFile(
-              selectedImage().absolute.path,
-              minHeight: maxImageWidth,
-              minWidth: maxImageWidth,
-            ),
-            title: 'users_picutures/' + AppController.find.user().id + '/posts/' + record.id,
-          );
 
-          var newRecord = record.copyWith(
-            images: [RemoteImage.fromNetworAsset(result.result)],
-          )
-            ..setId(record.id)
-            ..setPath(record.path);
+    var res = await serviceTaskHandler(
+      task: () async {
+        unawaited(loading.showStatus(status: ''));
 
-          if (result.result?.url != null) {
-            await firestore.api<TPost>().save(newRecord);
-          }
-          // busy(false);
-          return 'Saved';
-        },
-        // messageType: 0,
-        // loadingMessage: 'Uploading ...',
-        errorHandler: (e) => 'An error occured');
+        var result = await cloudStorage.uploadMedia(
+          imageToUpload: await FlutterImageCompress.compressWithFile(
+            selectedImage().absolute.path,
+            minHeight: maxImageWidth,
+            minWidth: maxImageWidth,
+          ),
+          title: 'users_picutures/' + AppController.find.user().id + '/posts/' + record.id,
+        );
+
+        var newRecord = record.copyWith(
+          images: [RemoteImage.fromNetworAsset(result.result)],
+        )
+          ..setId(record.id)
+          ..setPath(record.path);
+
+        if (result.result?.url != null) {
+          await firestore.api<TPost>().save(newRecord);
+        }
+        unawaited(loading.showStatus(status: 'Saved'));
+        return 'Saved';
+      },
+    );
+
+    if (res.isError()) toggleError();
+
+    // await controllerTaskHandler(
+    //     task: () async {
+    //       var result = await cloudStorage.uploadMedia(
+    //         imageToUpload: await FlutterImageCompress.compressWithFile(
+    //           selectedImage().absolute.path,
+    //           minHeight: maxImageWidth,
+    //           minWidth: maxImageWidth,
+    //         ),
+    //         title: 'users_picutures/' + AppController.find.user().id + '/posts/' + record.id,
+    //       );
+
+    //       var newRecord = record.copyWith(
+    //         images: [RemoteImage.fromNetworAsset(result.result)],
+    //       )
+    //         ..setId(record.id)
+    //         ..setPath(record.path);
+
+    //       if (result.result?.url != null) {
+    //         await firestore.api<TPost>().save(newRecord);
+    //       }
+    //       // busy(false);
+    //       return 'Saved';
+    //     },
+    //     // messageType: 0,
+    //     // loadingMessage: 'Uploading ...',
+    //     errorHandler: (e) => 'An error occured');
   }
 }

@@ -16,19 +16,19 @@ class HomeController extends BaseViewController with SingleGetTickerProviderMixi
   RxInt currentIndex = 0.obs;
 
   void _handleTabSelection() {
-    currentIndex(0);
+    currentIndex++;
   }
 
   @override
+  // ignore: must_call_super
   Future<void> onViewInit() async {
     tabController = TabController(length: 4, vsync: this, initialIndex: 0);
     tabController.addListener(_handleTabSelection);
   }
 
   @override
-  Future<void> onViewClose() async {
-    tabController.dispose();
-  }
+  // ignore: must_call_super
+  Future<void> onViewClose() async {}
 
   void handleAddPostOnPressed() {
     Get.to(() => PostForm(post: TPost(createdBy: AppController.find.user().getId())));
@@ -115,45 +115,50 @@ class Home extends BaseView<HomeController> {
         decoration: BoxDecoration(boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.29), blurRadius: 1)]),
         child: BottomAppBar(
           shape: CircularNotchedRectangle(),
-          child: GFTabBar(
-            // initialIndex: controller.currentIndex,
-            // isScrollable: controller.currentIndex() == 0,
-            length: 4,
-            controller: controller.tabController,
-            tabs: [
-              Tab(
-                child: Image.asset('assets/icons/home.png',
-                    width: 28,
-                    height: 28,
-                    color: controller.tabController.index == 0 ? secondary : secondary.withOpacity(0.3)),
-              ),
-              Tab(
-                child: Image.asset('assets/icons/search.png',
-                    width: 28,
-                    height: 28,
-                    color: controller.tabController.index == 1 ? secondary : secondary.withOpacity(0.3)),
-              ),
-              Tab(
-                child: Image.asset('assets/icons/fav.png',
-                    width: 28,
-                    height: 28,
-                    color: controller.tabController.index == 2 ? secondary : secondary.withOpacity(0.3)),
-              ),
-              Tab(
-                child: Image.asset('assets/icons/profile.png',
-                    width: 28,
-                    height: 28,
-                    color: controller.tabController.index == 3 ? secondary : secondary.withOpacity(0.3)),
-              ),
-            ],
-            indicatorColor: Colors.transparent,
-            // labelColor: primary,
-            labelPadding: EdgeInsets.all(0),
-            tabBarColor: Colors.white,
-            // unselectedLabelColor: Colors.white,
-            labelStyle: TextStyle(color: Colors.red),
+          child: Obx(
+            () {
+              print(controller.currentIndex());
+              return GFTabBar(
+                // initialIndex: controller.currentIndex,
+                // isScrollable: controller.currentIndex() == 0,
+                length: 4,
+                controller: controller.tabController,
+                tabs: [
+                  Tab(
+                    child: Image.asset('assets/icons/home.png',
+                        width: 28,
+                        height: 28,
+                        color: controller.tabController.index == 0 ? secondary : secondary.withOpacity(0.3)),
+                  ),
+                  Tab(
+                    child: Image.asset('assets/icons/search.png',
+                        width: 28,
+                        height: 28,
+                        color: controller.tabController.index == 1 ? secondary : secondary.withOpacity(0.3)),
+                  ),
+                  Tab(
+                    child: Image.asset('assets/icons/fav.png',
+                        width: 28,
+                        height: 28,
+                        color: controller.tabController.index == 2 ? secondary : secondary.withOpacity(0.3)),
+                  ),
+                  Tab(
+                    child: Image.asset('assets/icons/profile.png',
+                        width: 28,
+                        height: 28,
+                        color: controller.tabController.index == 3 ? secondary : secondary.withOpacity(0.3)),
+                  ),
+                ],
+                indicatorColor: Colors.transparent,
+                // labelColor: primary,
+                labelPadding: EdgeInsets.all(0),
+                tabBarColor: Colors.white,
+                // unselectedLabelColor: Colors.white,
+                labelStyle: TextStyle(color: Colors.red),
 
-            unselectedLabelStyle: TextStyle(color: primary),
+                unselectedLabelStyle: TextStyle(color: primary),
+              );
+            },
           ),
         ),
       ),

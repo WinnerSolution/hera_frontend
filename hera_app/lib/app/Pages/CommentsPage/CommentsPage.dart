@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:hera_app/app/Pages/CommentsPage/CommentList.view.dart';
 import 'package:hera_app/themes/styles.dart';
 import 'package:hera_core/hera_core.dart';
@@ -7,7 +6,12 @@ import 'package:softi_common/core.dart';
 
 class CommentsPageControler extends BaseViewController {
   @override
+  // ignore: must_call_super
   Future<void> onViewInit() async => null;
+
+  @override
+  // ignore: must_call_super
+  Future<void> onViewClose() async => null;
 }
 
 class CommentsPage extends BaseView<CommentsPageControler> {
@@ -35,7 +39,7 @@ class CommentsPage extends BaseView<CommentsPageControler> {
         iconTheme: IconThemeData(color: secondary),
         elevation: 0.3,
         leading: InkWell(
-          onTap: () => Get.back(),
+          onTap: controller.navigateBack,
           child: Image.asset(
             'assets/icons/backarrow.png',
             scale: 3,

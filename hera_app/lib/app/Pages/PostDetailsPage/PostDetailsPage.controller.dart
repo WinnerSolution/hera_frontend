@@ -6,7 +6,7 @@ import 'package:pedantic/pedantic.dart';
 import 'package:softi_common/core.dart';
 import 'package:softi_common/resource.dart';
 
-class PostDetailsPageController extends BaseController with TaskHandlerControllerMixin {
+class PostDetailsPageController extends BaseController {
   final Rx<TPost> post;
   final ResourceCollection<TComment> commentCollection;
 
@@ -45,23 +45,21 @@ class PostDetailsPageController extends BaseController with TaskHandlerControlle
   }
 
   Future<void> postComment() async {
-    await controllerTaskHandler(
+    await serviceTaskHandler(
       task: () async {
-        unawaited(firestore
-            .api<TComment>()
-            .save(TComment(
+        unawaited(firestore.api<TComment>().save(TComment(
               comment: lastCommentController.text,
               postId: post().getId(),
               userId: AppController.find.user().id,
-            ))
-            .catchError((error, stackTrace) async {
-          await loading.showToast('status');
-        }));
+            )));
+        //     .catchError((error, stackTrace) async {
+        //   await loading.showToast('status');
+        // }));
 
         lastCommentController.clear();
         return 'Posted !';
       },
-      errorHandler: (e) => 'Error /!\\',
+      // errorHandler: (e) => 'Error /!\\',
     );
   }
 }

@@ -7,7 +7,12 @@ import 'package:softi_common/core.dart';
 
 class LikesPageControler extends BaseViewController {
   @override
+  // ignore: must_call_super
   Future<void> onViewInit() async => null;
+
+  @override
+  // ignore: must_call_super
+  Future<void> onViewClose() async => null;
 }
 
 class LikesPage extends BaseView<LikesPageControler> {

@@ -26,13 +26,11 @@ class CommentListController extends CollectionController<TComment> {
   TextEditingController lastCommentController = TextEditingController();
 
   Future<void> postComment() async {
-    await controllerTaskHandler(
-      task: () async {
-        unawaited(firestoreRepo.addPostComment(AppController.find.user().id, postId, lastCommentController.text));
-        lastCommentController.clear();
-      },
-      errorHandler: (e) => '/!\\',
-    );
+    await serviceTaskHandler(task: () async {
+      unawaited(firestoreRepo.addPostComment(AppController.find.user().id, postId, lastCommentController.text));
+      lastCommentController.clear();
+    });
+    // errorHandler: (e) => '/!\\',
   }
 }
 
